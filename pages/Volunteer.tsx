@@ -1,9 +1,45 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Button from '../components/Button';
 import Reveal from '../components/Reveal';
 import { Briefcase, Video, FileText, PenTool, Users } from 'lucide-react';
 
 const Volunteer: React.FC = () => {
+  useEffect(() => {
+    // Scroll to top on mount
+    window.scrollTo(0, 0);
+
+    // Initialize Double the Donation v2 plugin
+    const initializePlugin = () => {
+      const container = document.getElementById("dtd-plugin");
+      if (!container) {
+        setTimeout(initializePlugin, 100);
+        return;
+      }
+
+      const dtd = (window as any).doublethedonation;
+      if (dtd && dtd.plugin && dtd.plugin.v2 && dtd.plugin.v2.load_plugin) {
+        try {
+          const config = {
+            sections: ["volunteer", "match", "payroll-giving"],
+          };
+          dtd.plugin.v2.load_plugin(
+            container,
+            "6HMm5sEaYqgnLZmU",
+            config
+          );
+          console.log("Double the Donation v2 plugin initialized successfully");
+        } catch (error) {
+          console.error("Error initializing Double the Donation v2 plugin:", error);
+        }
+      } else {
+        setTimeout(initializePlugin, 100);
+      }
+    };
+
+    const timer = setTimeout(initializePlugin, 100);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="pb-20">
        <div className="bg-primary text-white py-20 relative overflow-hidden">
@@ -42,9 +78,7 @@ const Volunteer: React.FC = () => {
             <div className="md:w-1/2 bg-slate-100 rounded-xl p-8 text-center">
                <h3 className="font-bold text-slate-900 mb-4">Does Your Employer Match?</h3>
                <p className="text-sm text-slate-600 mb-6">Many companies have programs you've never heard of. Search your employer below.</p>
-               <div className="bg-white h-48 rounded-lg border-2 border-dashed border-slate-300 flex items-center justify-center text-slate-400">
-                 [Double the Donation Widget Embed]
-               </div>
+               <div id="dtd-plugin" className="bg-white rounded-lg min-h-[200px]"></div>
             </div>
           </div>
         </Reveal>
@@ -122,6 +156,16 @@ const Volunteer: React.FC = () => {
             </div>
             <Button fullWidth>Submit Volunteer Interest</Button>
           </form>
+        </Reveal>
+
+        {/* Donation CTA Section */}
+        <Reveal className="max-w-2xl mx-auto mt-16 text-center">
+          <h2 className="text-2xl font-bold text-slate-900 mb-4">Can't Volunteer Right Now?</h2>
+          <p className="text-slate-600 mb-8">Your financial support helps us serve nonprofits and entrepreneurs in need.</p>
+          <div className="flex justify-center">
+            {/* @ts-ignore - Givebutter custom element */}
+            <givebutter-widget id="g8kM2L"></givebutter-widget>
+          </div>
         </Reveal>
       </div>
     </div>

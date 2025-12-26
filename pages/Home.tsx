@@ -13,7 +13,7 @@ const Home: React.FC = () => {
         {/* Background Image Container */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="Austin_skyline.jpeg" 
+            src="Austinskyline.jpeg" 
             alt="Austin Skyline at sunset" 
             className="w-full h-full object-cover object-center opacity-40 transform scale-105 transition-transform duration-[10s] hover:scale-100"
           />
