@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Twitter, Linkedin, Facebook, Instagram } from 'lucide-react';
+import { Twitter, Linkedin, Github } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
@@ -43,7 +43,7 @@ const Footer: React.FC = () => {
             <h3 className="text-white text-sm font-semibold uppercase tracking-wider mb-4 border-b border-accent pb-2 inline-block">Learn</h3>
             <ul className="space-y-3">
               <li><Link to="/common-cloud" className="hover:text-accent transition-colors">Common Cloud</Link></li>
-              <li><a href="https://gifteddreamers.substack.com" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">Substack</a></li>
+              <li><a href="#" className="hover:text-accent transition-colors">Substack</a></li>
               <li><Link to="/common-cloud" className="hover:text-accent transition-colors">Resources</Link></li>
             </ul>
           </div>
@@ -77,11 +77,10 @@ const Footer: React.FC = () => {
 
             {/* Social Icons */}
             <div className="flex md:justify-end gap-5">
-               <a href="https://gifteddreamers.substack.com" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-colors transform hover:scale-110"><span className="sr-only">Substack</span><svg className="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/></svg></a>
-               <a href="https://linkedin.com/company/gifteddreamers" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-colors transform hover:scale-110"><Linkedin className="h-6 w-6" /></a>
-               <a href="https://facebook.com/gifteddreamers" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-colors transform hover:scale-110"><Facebook className="h-6 w-6" /></a>
-               <a href="https://instagram.com/gifted.dreamers" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-colors transform hover:scale-110"><Instagram className="h-6 w-6" /></a>
-               <a href="https://www.x.com/gifteddreamers" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-colors transform hover:scale-110"><Twitter className="h-6 w-6" /></a>
+               <a href="#" className="text-slate-400 hover:text-white transition-colors transform hover:scale-110"><span className="sr-only">Substack</span><svg className="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/></svg></a>
+               <a href="#" className="text-slate-400 hover:text-white transition-colors transform hover:scale-110"><Linkedin className="h-6 w-6" /></a>
+               <a href="#" className="text-slate-400 hover:text-white transition-colors transform hover:scale-110"><Github className="h-6 w-6" /></a>
+               <a href="#" className="text-slate-400 hover:text-white transition-colors transform hover:scale-110"><Twitter className="h-6 w-6" /></a>
             </div>
           </div>
         </div>
