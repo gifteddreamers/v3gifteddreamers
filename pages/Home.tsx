@@ -4,18 +4,21 @@ import { ArrowRight, TrendingUp, AlertTriangle, ShieldCheck } from 'lucide-react
 import Button from '../components/Button';
 import Reveal from '../components/Reveal';
 
+// Import hero image - Vite will handle the path correctly
+import heroImage from '/Austin_skyline.jpeg';
+
 const Home: React.FC = () => {
   return (
     <div className="flex flex-col min-h-screen">
-      
+
       {/* Hero Section */}
       <section className="relative bg-[#023E8A] text-white overflow-hidden min-h-[85vh] flex items-center">
         {/* Background Image Container */}
         <div className="absolute inset-0 z-0">
           <img
-            src={`${import.meta.env.BASE_URL}Austin_skyline.jpeg`}
+            src={heroImage}
             alt="Austin Skyline at sunset"
-            className="w-full h-full object-cover object-center opacity-40 transform scale-105 transition-transform duration-[10s] hover:scale-100"
+            className="w-full h-full object-cover object-center opacity-70 transform scale-105 transition-transform duration-[10s] hover:scale-100"
           />
           {/* Enhanced Gradient Overlay for better text readability */}
           <div className="absolute inset-0 bg-gradient-to-tr from-[#023E8A] via-[#023E8A]/70 to-transparent"></div>

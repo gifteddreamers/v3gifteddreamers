@@ -42,8 +42,15 @@ const Volunteer: React.FC = () => {
             <div className="md:w-1/2 bg-slate-100 rounded-xl p-8 text-center">
                <h3 className="font-bold text-slate-900 mb-4">Does Your Employer Match?</h3>
                <p className="text-sm text-slate-600 mb-6">Many companies have programs you've never heard of. Search your employer below.</p>
-               <div className="bg-white h-48 rounded-lg border-2 border-dashed border-slate-300 flex items-center justify-center text-slate-400">
-                 [Double the Donation Widget Embed]
+               <div className="bg-white rounded-lg overflow-hidden">
+                 <iframe
+                   src="https://doublethedonation.com/matching-grant-database"
+                   width="100%"
+                   height="400"
+                   style={{ border: 'none' }}
+                   title="Double the Donation - Matching Gift Database"
+                   allow="clipboard-read; clipboard-write"
+                 />
                </div>
             </div>
           </div>
