@@ -12,9 +12,9 @@ const Home: React.FC = () => {
       <section className="relative bg-[#023E8A] text-white overflow-hidden min-h-[85vh] flex items-center">
         {/* Background Image Container */}
         <div className="absolute inset-0 z-0">
-          <img 
-            src="Austin_skyline.jpeg" 
-            alt="Austin Skyline at sunset" 
+          <img
+            src={`${import.meta.env.BASE_URL}Austin_skyline.jpeg`}
+            alt="Austin Skyline at sunset"
             className="w-full h-full object-cover object-center opacity-40 transform scale-105 transition-transform duration-[10s] hover:scale-100"
           />
           {/* Enhanced Gradient Overlay for better text readability */}
@@ -37,9 +37,11 @@ const Home: React.FC = () => {
               <Button size="lg" variant="primary" className="px-10 shadow-2xl shadow-primary/40">
                 Hire Us <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-[#023E8A] backdrop-blur-md transition-all">
-                Subscribe on Substack
-              </Button>
+              <a href="https://gifteddreamers.substack.com" target="_blank" rel="noopener noreferrer">
+                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-[#023E8A] backdrop-blur-md transition-all">
+                  Subscribe on Substack
+                </Button>
+              </a>
             </div>
           </Reveal>
         </div>
@@ -155,7 +157,9 @@ const Home: React.FC = () => {
             </Reveal>
           </div>
            <Reveal className="mt-16 text-center">
-            <Button size="lg" className="px-12">Book a Free 30-Minute Call</Button>
+            <a href="https://calendly.com/kristinesocall" target="_blank" rel="noopener noreferrer">
+              <Button size="lg" className="px-12">Book a Free 30-Minute Call</Button>
+            </a>
           </Reveal>
         </div>
       </section>
@@ -168,9 +172,11 @@ const Home: React.FC = () => {
             Every week we share what we learn: Which perks just opened applications, automation templates you can copy, real talk about nonprofit tech, and AI tools that actually work.
           </p>
           <p className="text-2xl font-bold text-accent mb-10">We're building in public. Follow along.</p>
-          <Button variant="outline" className="border-white text-white hover:bg-white hover:text-primary transition-all transform hover:scale-105">
-            Subscribe on Substack
-          </Button>
+          <a href="https://gifteddreamers.substack.com" target="_blank" rel="noopener noreferrer">
+            <Button variant="outline" className="border-white text-white hover:bg-white hover:text-primary transition-all transform hover:scale-105">
+              Subscribe on Substack
+            </Button>
+          </a>
         </Reveal>
       </section>
 
@@ -212,8 +218,12 @@ const Home: React.FC = () => {
         <Reveal className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl font-bold text-slate-900 mb-8">Ready to Find Your Free Stuff?</h2>
           <div className="flex flex-col sm:flex-row justify-center gap-4 mb-12">
-             <Button size="lg" className="px-10">Book a Free Call</Button>
-             <Button size="lg" variant="outline" className="px-10">Subscribe on Substack</Button>
+             <a href="https://calendly.com/kristinesocall" target="_blank" rel="noopener noreferrer">
+               <Button size="lg" className="px-10">Book a Free Call</Button>
+             </a>
+             <a href="https://gifteddreamers.substack.com" target="_blank" rel="noopener noreferrer">
+               <Button size="lg" variant="outline" className="px-10">Subscribe on Substack</Button>
+             </a>
           </div>
           <div className="flex flex-wrap justify-center gap-8 text-sm font-bold text-slate-600">
              <Link to="/services" className="hover:text-primary transition-colors flex items-center gap-1">Our Services <ArrowRight className="h-4 w-4" /></Link>

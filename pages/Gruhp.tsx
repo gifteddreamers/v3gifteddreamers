@@ -17,7 +17,9 @@ const Gruhp: React.FC = () => {
           <p className="text-xl text-slate-300 max-w-3xl mx-auto mb-8">
             Groceries. Rent. Utilities. Health Care. Pets. When systems fail, we step up. 100% of donations go directly to community members.
           </p>
-          <Button variant="primary" size="lg">Donate Now via Givebutter</Button>
+          <a href="https://givebutter.com/GRUHP" target="_blank" rel="noopener noreferrer">
+            <Button variant="primary" size="lg">Donate Now via Givebutter</Button>
+          </a>
         </Reveal>
       </div>
 
@@ -62,11 +64,17 @@ const Gruhp: React.FC = () => {
           </Reveal>
         </div>
 
-        {/* Givebutter Embed Placeholder */}
+        {/* Givebutter Embed */}
         <Reveal className="mt-20" delay={300}>
-          <div className="bg-slate-50 border-2 border-dashed border-slate-300 rounded-xl h-96 flex flex-col items-center justify-center text-slate-400">
-            <span className="font-semibold text-lg">[Givebutter Donation Widget Embed]</span>
-            <span className="mt-2 text-sm">Full donation form will appear here</span>
+          <div className="bg-slate-50 rounded-xl p-8">
+            <iframe
+              src="https://givebutter.com/embed/c/GRUHP"
+              width="100%"
+              height="600"
+              style={{ border: 'none', borderRadius: '8px' }}
+              title="GRUHP Donation Form"
+              allow="payment"
+            />
           </div>
           <div className="text-center mt-8 text-slate-500 text-sm">
             <p>Gifted Dreamers, Inc. is a 501(c)(3) nonprofit.</p>

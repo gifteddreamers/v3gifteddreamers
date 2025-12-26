@@ -55,9 +55,9 @@ const Footer: React.FC = () => {
             {/* Organization Info */}
             <div>
               <div className="flex items-center gap-3 mb-4">
-                <img 
-                  src="Gifted Dreamers LOGO.png" 
-                  alt="Logo" 
+                <img
+                  src={`${import.meta.env.BASE_URL}Gifted Dreamers LOGO.png`}
+                  alt="Logo"
                   className="w-8 h-8 object-contain"
                 />
                 <span className="text-white font-bold tracking-tight text-lg">Gifted Dreamers</span>
