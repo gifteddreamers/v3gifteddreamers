@@ -1,8 +1,50 @@
-import React from 'react';
-import Button from '../components/Button';
+import React, { useEffect } from 'react';
 import Reveal from '../components/Reveal';
 
+// Double the Donation API key
+const DTD_API_KEY = '6HMm5sEaYqgnLZmU';
+
 const MatchingGifts: React.FC = () => {
+  // Load Double the Donation plugin and Givebutter widget
+  useEffect(() => {
+    // Set global config for DTD
+    (window as any).DDCONF = { API_KEY: DTD_API_KEY };
+
+    // Load the DTD script
+    const dtdScript = document.createElement('script');
+    dtdScript.src = 'https://doublethedonation.com/api/js/ddplugin.js';
+    dtdScript.async = true;
+    document.head.appendChild(dtdScript);
+
+    // Load Givebutter elements script (required for widget)
+    const gbElementsScript = document.createElement('script');
+    gbElementsScript.src = 'https://js.givebutter.com/elements/latest.js';
+    document.head.appendChild(gbElementsScript);
+
+    // Load Givebutter widget library script
+    const gbScript = document.createElement('script');
+    gbScript.src = 'https://widgets.givebutter.com/latest.umd.cjs?acct=PWF9tXFflbTG12rU&p=other';
+    gbScript.async = true;
+    document.head.appendChild(gbScript);
+
+    return () => {
+      // Cleanup DTD
+      const existingDtdScript = document.querySelector('script[src="https://doublethedonation.com/api/js/ddplugin.js"]');
+      if (existingDtdScript) {
+        existingDtdScript.remove();
+      }
+      delete (window as any).DDCONF;
+      // Cleanup Givebutter scripts
+      const existingGbElementsScript = document.querySelector('script[src*="js.givebutter.com"]');
+      if (existingGbElementsScript) {
+        existingGbElementsScript.remove();
+      }
+      const existingGbScript = document.querySelector('script[src*="widgets.givebutter.com"]');
+      if (existingGbScript) {
+        existingGbScript.remove();
+      }
+    };
+  }, []);
   return (
     <div className="pb-20">
        <div className="bg-slate-900 text-white py-16">
@@ -11,17 +53,9 @@ const MatchingGifts: React.FC = () => {
           <p className="text-xl text-slate-300 max-w-3xl mx-auto mb-8">
             Many employers match charitable donations made by their employees. This means your contribution to Gifted Dreamers could be doubled or even tripled at no extra cost to you.
           </p>
-          <div className="max-w-md mx-auto">
-            <a
-              href="https://givebutter.com/gifteddreamers"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block"
-            >
-              <Button variant="primary" size="lg" className="bg-white text-slate-900 hover:bg-slate-100">
-                Donate Now via Givebutter
-              </Button>
-            </a>
+          <div className="flex justify-center">
+            {/* @ts-expect-error Givebutter custom element */}
+            <givebutter-widget id="jNybPp"></givebutter-widget>
           </div>
         </Reveal>
       </div>
@@ -31,17 +65,14 @@ const MatchingGifts: React.FC = () => {
            <h2 className="text-2xl font-bold text-slate-900 mb-6">Check Your Eligibility</h2>
            <p className="mb-6 text-slate-600">Search for your employer to see if they offer matching gifts</p>
            <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
-             <p className="text-slate-600 mb-4">
-               Use the search tool below to check if your employer matches charitable donations:
-             </p>
-             <a
-               href="https://doublethedonation.com/company-search"
-               target="_blank"
-               rel="noopener noreferrer"
-               className="text-primary hover:text-primary-dark font-semibold underline"
-             >
-               Search for Your Employer on Double the Donation →
-             </a>
+             <div id="dd-container">
+               <a href="https://doublethedonation.com/matching-grant-resources/matching-gift-basics/">Matching Gift</a> and{' '}
+               <a href="https://doublethedonation.com/matching-grant-resources/volunteer-grant-basics/">Volunteer Grant</a> information provided by
+               <br />
+               <a href="https://doublethedonation.com">
+                 <img alt="Powered by Double the Donation" src="https://doublethedonation.com/api/img/powered-by.png" />
+               </a>
+             </div>
              <p className="text-sm text-slate-500 mt-4">
                Our EIN: <strong>39-3863796</strong> | Organization: <strong>Gifted Dreamers, Inc.</strong>
              </p>
@@ -87,9 +118,8 @@ const MatchingGifts: React.FC = () => {
         <Reveal delay={500} className="text-center">
            <h2 className="text-2xl font-bold text-slate-900 mb-6">Ready to Make a Difference?</h2>
            <div className="flex justify-center gap-4">
-             <a href="https://givebutter.com/gifteddreamers" target="_blank" rel="noopener noreferrer">
-               <Button>Donate Now</Button>
-             </a>
+             {/* @ts-expect-error Givebutter custom element */}
+             <givebutter-widget id="jNybPp"></givebutter-widget>
            </div>
            <p className="mt-4 text-xs text-slate-500">Gifted Dreamers is a 501(c)(3) nonprofit. All donations are tax-deductible.</p>
         </Reveal>

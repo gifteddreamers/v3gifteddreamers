@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from '../components/Button';
 import Reveal from '../components/Reveal';
 import { Briefcase, Video, FileText, PenTool, Users, CheckCircle, AlertCircle } from 'lucide-react';
+
+// Double the Donation plugin configuration
+const DTD_API_KEY = '6HMm5sEaYqgnLZmU';
 
 // n8n webhook URL for volunteer form submissions
 const WEBHOOK_URL = 'https://n8n.cloudpublica.org/webhook/volunteer-form';
@@ -29,6 +32,31 @@ const skillOptions = [
 ];
 
 const Volunteer: React.FC = () => {
+  // Load Double the Donation plugin
+  useEffect(() => {
+    // Load the DTD script
+    const script = document.createElement('script');
+    script.src = 'https://doublethedonation.com/api/js/ddplugin.js';
+    script.async = true;
+    script.onload = () => {
+      // Initialize the plugin after script loads
+      const pluginNode = document.getElementById('dtd-plugin');
+      if (pluginNode && (window as any).doublethedonation?.plugin?.v2?.load_plugin) {
+        const config = { sections: ['volunteer', 'match', 'payroll-giving'] };
+        (window as any).doublethedonation.plugin.v2.load_plugin(pluginNode, DTD_API_KEY, config);
+      }
+    };
+    document.head.appendChild(script);
+
+    return () => {
+      // Cleanup script on unmount
+      const existingScript = document.querySelector('script[src="https://doublethedonation.com/api/js/ddplugin.js"]');
+      if (existingScript) {
+        existingScript.remove();
+      }
+    };
+  }, []);
+
   const [formData, setFormData] = useState<FormData>({
     firstName: '',
     lastName: '',
@@ -159,15 +187,8 @@ const Volunteer: React.FC = () => {
             <div className="md:w-1/2 bg-slate-100 rounded-xl p-8 text-center">
                <h3 className="font-bold text-slate-900 mb-4">Does Your Employer Match?</h3>
                <p className="text-sm text-slate-600 mb-6">Many companies have programs you've never heard of. Search your employer below.</p>
-               <div className="bg-white rounded-lg overflow-hidden">
-                 <iframe
-                   src="https://doublethedonation.com/matching-grant-database"
-                   width="100%"
-                   height="400"
-                   style={{ border: 'none' }}
-                   title="Double the Donation - Matching Gift Database"
-                   allow="clipboard-read; clipboard-write"
-                 />
+               <div className="bg-white rounded-lg overflow-hidden p-4">
+                 <div id="dtd-plugin"></div>
                </div>
             </div>
           </div>
