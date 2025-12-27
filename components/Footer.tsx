@@ -75,13 +75,13 @@ const Footer: React.FC = () => {
               </p>
             </div>
 
-            {/* Social Icons */}
-            <div className="flex md:justify-end gap-5">
-               <a href="https://gifteddreamers.substack.com" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-colors transform hover:scale-110"><span className="sr-only">Substack</span><svg className="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/></svg></a>
-               <a href="https://linkedin.com/company/gifteddreamers" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-colors transform hover:scale-110"><Linkedin className="h-6 w-6" /></a>
-               <a href="https://facebook.com/gifteddreamers" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-colors transform hover:scale-110"><Facebook className="h-6 w-6" /></a>
-               <a href="https://instagram.com/gifted.dreamers" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-colors transform hover:scale-110"><Instagram className="h-6 w-6" /></a>
-               <a href="https://www.x.com/gifteddreamers" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-colors transform hover:scale-110"><Twitter className="h-6 w-6" /></a>
+            {/* Social Icons - min 44x44px touch targets for accessibility */}
+            <div className="flex md:justify-end gap-2">
+               <a href="https://gifteddreamers.substack.com" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Substack" className="flex items-center justify-center w-11 h-11 text-slate-400 hover:text-white transition-colors transform hover:scale-110"><span className="sr-only">Substack</span><svg className="h-6 w-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/></svg></a>
+               <a href="https://linkedin.com/company/gifteddreamers" target="_blank" rel="noopener noreferrer" aria-label="Follow us on LinkedIn" className="flex items-center justify-center w-11 h-11 text-slate-400 hover:text-white transition-colors transform hover:scale-110"><Linkedin className="h-6 w-6" aria-hidden="true" /></a>
+               <a href="https://facebook.com/gifteddreamers" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook" className="flex items-center justify-center w-11 h-11 text-slate-400 hover:text-white transition-colors transform hover:scale-110"><Facebook className="h-6 w-6" aria-hidden="true" /></a>
+               <a href="https://instagram.com/gifted.dreamers" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram" className="flex items-center justify-center w-11 h-11 text-slate-400 hover:text-white transition-colors transform hover:scale-110"><Instagram className="h-6 w-6" aria-hidden="true" /></a>
+               <a href="https://www.x.com/gifteddreamers" target="_blank" rel="noopener noreferrer" aria-label="Follow us on X (Twitter)" className="flex items-center justify-center w-11 h-11 text-slate-400 hover:text-white transition-colors transform hover:scale-110"><Twitter className="h-6 w-6" aria-hidden="true" /></a>
             </div>
           </div>
         </div>

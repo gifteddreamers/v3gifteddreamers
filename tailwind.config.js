@@ -16,13 +16,13 @@ export default {
           dark: '#023E8A',
         },
         accent: {
-          DEFAULT: '#00B4D8',
-          hover: '#48CAE4',
-          light: '#ADE8F4',
+          DEFAULT: '#0891B2', // Darkened from #00B4D8 for WCAG AA contrast (4.5:1+)
+          hover: '#06B6D4',
+          light: '#67E8F9',
         },
         brand: {
           dark: '#0077B6',
-          light: '#00B4D8',
+          light: '#0891B2',
         }
       }
     }
