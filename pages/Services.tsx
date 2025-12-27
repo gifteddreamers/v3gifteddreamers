@@ -3,7 +3,13 @@ import { CheckCircle, Zap, Shield, Clock } from 'lucide-react';
 import Button from '../components/Button';
 import Reveal from '../components/Reveal';
 
-const toolLogos = [
+interface ToolLogo {
+  name: string;
+  url: string;
+  maxWidth?: string;
+}
+
+const toolLogos: ToolLogo[] = [
   // Major cloud/enterprise
   { name: 'Google', url: '/logos/google.png' },
   { name: 'Microsoft', url: '/logos/microsoft.svg' },
@@ -23,7 +29,7 @@ const toolLogos = [
   { name: 'Docker', url: '/logos/docker.svg' },
   // AI
   { name: 'OpenAI', url: '/logos/openai.svg' },
-  { name: 'Anthropic', url: '/logos/anthropic.svg' },
+  { name: 'Anthropic', url: '/logos/anthropic.svg', maxWidth: 'max-w-20' },
   // Automation
   { name: 'Zapier', url: '/logos/zapier.svg' },
   { name: 'n8n', url: '/logos/n8n.png' },
@@ -82,7 +88,7 @@ const Services: React.FC = () => {
                 key={logo.name}
                 src={logo.url}
                 alt={logo.name}
-                className="h-6 md:h-8 w-auto object-contain opacity-70 hover:opacity-100 transition-all"
+                className={`h-6 md:h-8 object-contain hover:opacity-80 transition-all ${logo.maxWidth || 'w-auto'}`}
                 title={logo.name}
               />
             ))}
