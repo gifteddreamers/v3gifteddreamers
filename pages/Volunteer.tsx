@@ -1,9 +1,105 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from '../components/Button';
 import Reveal from '../components/Reveal';
-import { Briefcase, Video, FileText, PenTool, Users } from 'lucide-react';
+import { Briefcase, Video, FileText, PenTool, Users, CheckCircle, AlertCircle } from 'lucide-react';
+
+// n8n webhook URL for volunteer form submissions
+const WEBHOOK_URL = 'https://n8n.cloudpublica.org/webhook/volunteer-form';
+
+interface FormData {
+  firstName: string;
+  lastName: string;
+  email: string;
+  company: string;
+  skills: string[];
+  message: string;
+}
+
+const skillOptions = [
+  { value: 'sysadmin', label: 'System Administration' },
+  { value: 'security', label: 'Security / DevSecOps' },
+  { value: 'ai-ml', label: 'AI / Machine Learning' },
+  { value: 'automation', label: 'Automation / n8n' },
+  { value: 'accounting', label: 'Accounting / Bookkeeping' },
+  { value: 'content', label: 'Content Creation' },
+  { value: 'social-media', label: 'Social Media' },
+  { value: 'design', label: 'Graphic Design' },
+  { value: 'video', label: 'Video Production' },
+  { value: 'community', label: 'Community Management' },
+];
 
 const Volunteer: React.FC = () => {
+  const [formData, setFormData] = useState<FormData>({
+    firstName: '',
+    lastName: '',
+    email: '',
+    company: '',
+    skills: [],
+    message: '',
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSkillToggle = (skill: string) => {
+    setFormData(prev => ({
+      ...prev,
+      skills: prev.skills.includes(skill)
+        ? prev.skills.filter(s => s !== skill)
+        : [...prev.skills, skill]
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+    setErrorMessage('');
+
+    try {
+      const response = await fetch(WEBHOOK_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          email: formData.email,
+          company: formData.company,
+          skills: formData.skills,
+          message: formData.message,
+          submittedAt: new Date().toISOString(),
+          source: 'v3gifteddreamers',
+        }),
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({
+          firstName: '',
+          lastName: '',
+          email: '',
+          company: '',
+          skills: [],
+          message: '',
+        });
+      } else {
+        throw new Error('Failed to submit form');
+      }
+    } catch (error) {
+      setSubmitStatus('error');
+      setErrorMessage('There was an error submitting your application. Please try again or email volunteer@gifteddreamers.org');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className="pb-20">
        <div className="bg-primary text-white py-20 relative overflow-hidden">
@@ -102,33 +198,126 @@ const Volunteer: React.FC = () => {
         {/* Sign Up Form */}
         <Reveal className="max-w-2xl mx-auto">
           <h2 className="text-2xl font-bold text-slate-900 mb-6 text-center">Interested in Volunteering?</h2>
-          <form className="space-y-6 bg-white p-8 rounded-xl shadow-sm border border-slate-200" action="mailto:volunteer@gifteddreamers.org" method="POST" encType="text/plain">
-            <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1">Name</label>
-              <input type="text" name="name" required className="w-full rounded-md border-slate-300 shadow-sm focus:border-primary focus:ring-primary p-2 border" />
+
+          {submitStatus === 'success' ? (
+            <div className="bg-green-50 border border-green-200 rounded-xl p-8 text-center">
+              <CheckCircle className="h-12 w-12 text-green-500 mx-auto mb-4" />
+              <h3 className="text-xl font-bold text-green-800 mb-2">Application Submitted!</h3>
+              <p className="text-green-700">Thank you for your interest in volunteering. We'll be in touch soon!</p>
             </div>
-            <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1">Email</label>
-              <input type="email" name="email" required className="w-full rounded-md border-slate-300 shadow-sm focus:border-primary focus:ring-primary p-2 border" />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1">Company (for grant lookup)</label>
-              <input type="text" name="company" className="w-full rounded-md border-slate-300 shadow-sm focus:border-primary focus:ring-primary p-2 border" />
-            </div>
-             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1">Skills / Interests</label>
-              <input type="text" name="skills" className="w-full rounded-md border-slate-300 shadow-sm focus:border-primary focus:ring-primary p-2 border" />
-            </div>
-            <div>
-               <label className="block text-sm font-medium text-slate-700 mb-1">Hours available per month</label>
-              <select name="hours" className="w-full rounded-md border-slate-300 shadow-sm focus:border-primary focus:ring-primary p-2 border">
-                <option value="1-5">1-5 hours</option>
-                <option value="5-10">5-10 hours</option>
-                <option value="10+">10+ hours</option>
-              </select>
-            </div>
-            <Button type="submit" fullWidth>Submit Volunteer Interest</Button>
-          </form>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-6 bg-white p-8 rounded-xl shadow-sm border border-slate-200">
+              {submitStatus === 'error' && (
+                <div className="bg-red-50 border border-red-200 rounded-lg p-4 flex items-start gap-3">
+                  <AlertCircle className="h-5 w-5 text-red-500 flex-shrink-0 mt-0.5" />
+                  <p className="text-red-700 text-sm">{errorMessage}</p>
+                </div>
+              )}
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-slate-700 mb-1">First Name *</label>
+                  <input
+                    type="text"
+                    name="firstName"
+                    value={formData.firstName}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full rounded-md border-slate-300 shadow-sm focus:border-primary focus:ring-primary p-2 border"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-slate-700 mb-1">Last Name *</label>
+                  <input
+                    type="text"
+                    name="lastName"
+                    value={formData.lastName}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full rounded-md border-slate-300 shadow-sm focus:border-primary focus:ring-primary p-2 border"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-slate-700 mb-1">Email *</label>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  required
+                  className="w-full rounded-md border-slate-300 shadow-sm focus:border-primary focus:ring-primary p-2 border"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-slate-700 mb-1">Company (for volunteer grant lookup)</label>
+                <input
+                  type="text"
+                  name="company"
+                  value={formData.company}
+                  onChange={handleInputChange}
+                  placeholder="e.g., Microsoft, Google, Salesforce"
+                  className="w-full rounded-md border-slate-300 shadow-sm focus:border-primary focus:ring-primary p-2 border"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-slate-700 mb-2">Skills / Interests (select all that apply)</label>
+                <div className="grid grid-cols-2 gap-2">
+                  {skillOptions.map(skill => (
+                    <label
+                      key={skill.value}
+                      className={`flex items-center gap-2 p-3 rounded-lg border cursor-pointer transition-colors ${
+                        formData.skills.includes(skill.value)
+                          ? 'bg-primary/10 border-primary text-primary'
+                          : 'bg-slate-50 border-slate-200 hover:bg-slate-100'
+                      }`}
+                    >
+                      <input
+                        type="checkbox"
+                        checked={formData.skills.includes(skill.value)}
+                        onChange={() => handleSkillToggle(skill.value)}
+                        className="sr-only"
+                      />
+                      <span className={`w-4 h-4 rounded border flex items-center justify-center ${
+                        formData.skills.includes(skill.value) ? 'bg-primary border-primary' : 'border-slate-300'
+                      }`}>
+                        {formData.skills.includes(skill.value) && (
+                          <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                          </svg>
+                        )}
+                      </span>
+                      <span className="text-sm">{skill.label}</span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-slate-700 mb-1">Tell us about yourself</label>
+                <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  rows={4}
+                  placeholder="What interests you about volunteering with Gifted Dreamers? What would you like to learn or contribute?"
+                  className="w-full rounded-md border-slate-300 shadow-sm focus:border-primary focus:ring-primary p-2 border"
+                />
+              </div>
+
+              <Button type="submit" fullWidth disabled={isSubmitting}>
+                {isSubmitting ? 'Submitting...' : 'Submit Volunteer Application'}
+              </Button>
+
+              <p className="text-xs text-slate-500 text-center">
+                By submitting, you agree to be contacted about volunteer opportunities.
+                Your information will be stored securely and never shared with third parties.
+              </p>
+            </form>
+          )}
         </Reveal>
       </div>
     </div>
