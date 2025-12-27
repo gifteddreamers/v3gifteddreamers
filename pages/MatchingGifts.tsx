@@ -97,25 +97,110 @@ const MatchingGifts: React.FC = () => {
            </Reveal>
         </div>
 
-        <Reveal delay={400} className="bg-slate-50 p-8 rounded-xl mb-16">
-          <h2 className="text-2xl font-bold text-slate-900 mb-6">Frequently Asked Questions</h2>
-          <div className="space-y-6">
-            <div>
-              <h3 className="font-bold text-slate-900 mb-1">What is a matching gift?</h3>
-              <p className="text-slate-600 text-sm">A corporate donation that matches an employee's charitable contribution.</p>
+        {/* Maximize Your Impact Section */}
+        <Reveal delay={400} className="mb-16">
+          <h2 className="text-2xl font-bold text-slate-900 mb-8 text-center">Maximize Your Impact</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
+              <div className="flex items-start gap-4">
+                <div className="bg-emerald-100 rounded-full p-2 flex-shrink-0">
+                  <svg className="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="font-bold text-slate-900 mb-2">No Extra Cost to You</h3>
+                  <p className="text-slate-600 text-sm">Your employer covers the matching contribution entirely. You get to double your impact without spending an additional cent.</p>
+                </div>
+              </div>
             </div>
-             <div>
-              <h3 className="font-bold text-slate-900 mb-1">How long does the process take?</h3>
-              <p className="text-slate-600 text-sm">Typically 6-8 weeks, depending on your employer.</p>
+            <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
+              <div className="flex items-start gap-4">
+                <div className="bg-emerald-100 rounded-full p-2 flex-shrink-0">
+                  <svg className="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="font-bold text-slate-900 mb-2">Build Resilient Communities</h3>
+                  <p className="text-slate-600 text-sm">Matched donations help us deploy more infrastructure, support more communities, and accelerate the transition to sovereign, decentralized systems.</p>
+                </div>
+              </div>
             </div>
-            <div>
-              <h3 className="font-bold text-slate-900 mb-1">Are there minimums?</h3>
-              <p className="text-slate-600 text-sm">Often $25-$50. Check the search tool for your specific company.</p>
+            <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
+              <div className="flex items-start gap-4">
+                <div className="bg-emerald-100 rounded-full p-2 flex-shrink-0">
+                  <svg className="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="font-bold text-slate-900 mb-2">Tax Deductible</h3>
+                  <p className="text-slate-600 text-sm">Gifted Dreamers is a 501(c)(3) nonprofit. Both your original donation and the employer match are tax-deductible.</p>
+                </div>
+              </div>
+            </div>
+            <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
+              <div className="flex items-start gap-4">
+                <div className="bg-emerald-100 rounded-full p-2 flex-shrink-0">
+                  <svg className="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="font-bold text-slate-900 mb-2">Quick & Simple Process</h3>
+                  <p className="text-slate-600 text-sm">Most matching gift requests take just a few minutes to submit online. We'll provide all the information your employer needs.</p>
+                </div>
+              </div>
             </div>
           </div>
         </Reveal>
 
-        <Reveal delay={500} className="text-center">
+        {/* Cross-promotion to Volunteer */}
+        <Reveal delay={450} className="mb-16 text-center">
+          <div className="inline-flex items-center gap-3 px-6 py-4 bg-slate-100 border border-slate-200 rounded-xl">
+            <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+            <p className="text-slate-700">Volunteer your time to unlock employer grants too!</p>
+            <a href="#/volunteer" className="bg-primary text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-primary/90 transition-colors">
+              Volunteer to Earn Grants →
+            </a>
+          </div>
+        </Reveal>
+
+        {/* Extended FAQ Section */}
+        <Reveal delay={500} className="bg-slate-50 p-8 rounded-xl mb-16">
+          <h2 className="text-2xl font-bold text-slate-900 mb-6">Frequently Asked Questions</h2>
+          <div className="space-y-6">
+            <div>
+              <h3 className="font-bold text-slate-900 mb-1">What is a matching gift?</h3>
+              <p className="text-slate-600 text-sm">A matching gift is a corporate donation that matches an employee's charitable contribution, typically dollar-for-dollar. Some companies even offer 2:1 or 3:1 matches, tripling the impact of your donation.</p>
+            </div>
+            <div>
+              <h3 className="font-bold text-slate-900 mb-1">How do I know if my employer matches gifts?</h3>
+              <p className="text-slate-600 text-sm">Use the search tool above to find your employer. Our database includes thousands of companies with matching gift programs. You can also check with your HR department or employee benefits portal.</p>
+            </div>
+            <div>
+              <h3 className="font-bold text-slate-900 mb-1">How long does the matching process take?</h3>
+              <p className="text-slate-600 text-sm">Processing times vary by company, but most matching gifts are completed within 6-8 weeks. Some employers process matches more quickly, while others may take up to 3 months.</p>
+            </div>
+            <div>
+              <h3 className="font-bold text-slate-900 mb-1">Are there minimum or maximum amounts?</h3>
+              <p className="text-slate-600 text-sm">Each company sets its own guidelines. Some have minimum donation amounts (often $25-$50) and annual maximums (commonly $1,000-$10,000 per employee). Check your employer's specific policy using the search tool above.</p>
+            </div>
+            <div>
+              <h3 className="font-bold text-slate-900 mb-1">What information will my employer need?</h3>
+              <p className="text-slate-600 text-sm">Typically, employers require proof of your donation (receipt), our nonprofit tax ID (EIN: 39-3863796), and our mailing address. We'll provide all necessary documentation after you make your donation.</p>
+            </div>
+            <div>
+              <h3 className="font-bold text-slate-900 mb-1">Can retirees participate in matching gift programs?</h3>
+              <p className="text-slate-600 text-sm">Many companies extend matching gift benefits to retirees! Check the search tool above or contact your former employer's HR department to confirm eligibility.</p>
+            </div>
+          </div>
+        </Reveal>
+
+        <Reveal delay={600} className="text-center">
            <h2 className="text-2xl font-bold text-slate-900 mb-6">Ready to Make a Difference?</h2>
            <div className="flex justify-center gap-4">
              {/* @ts-expect-error Givebutter custom element */}
