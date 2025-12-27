@@ -49,7 +49,7 @@ const Services: React.FC = () => {
                 key={logo.name}
                 src={logo.url}
                 alt={logo.name}
-                className="h-6 md:h-8 w-auto object-contain grayscale hover:grayscale-0 opacity-50 hover:opacity-100 transition-all"
+                className="h-6 md:h-8 w-auto object-contain opacity-70 hover:opacity-100 transition-all"
                 title={logo.name}
               />
             ))}
