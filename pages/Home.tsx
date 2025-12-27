@@ -23,12 +23,10 @@ const Home: React.FC = () => {
           backgroundRepeat: 'no-repeat',
         }}
       >
-        {/* Dark overlay for better text readability */}
-        <div className="absolute inset-0 bg-slate-900/40"></div>
-        {/* Text Content with background box for readability */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
-          <Reveal className="max-w-3xl">
-            <div className="bg-slate-900/80 backdrop-blur-sm p-8 md:p-12 rounded-2xl">
+        {/* Text Content with background box for readability - positioned far left */}
+        <div className="relative z-10 w-full px-4 sm:px-6 lg:px-16 py-24 md:py-32">
+          <Reveal className="max-w-xl">
+            <div className="bg-slate-900/60 backdrop-blur-sm p-8 md:p-12 rounded-2xl">
               <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6 leading-tight">
                 <span className="text-white">$380K in Free Tools.</span><br/>
                 <span className="text-accent">We'll Help You Get Them.</span>
