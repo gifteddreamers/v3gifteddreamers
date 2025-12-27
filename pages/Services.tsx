@@ -7,10 +7,13 @@ const toolLogos = [
   { name: 'Google', url: '/logos/google.png' },
   { name: 'Microsoft', url: '/logos/microsoft.svg' },
   { name: 'Salesforce', url: '/logos/salesforce.svg' },
-  { name: 'QuickBooks', url: '/logos/quickbooks.svg' },
-  { name: 'Slack', url: '/logos/slack.png' },
-  { name: 'Canva', url: '/logos/canva.svg' },
   { name: 'AWS', url: '/logos/aws.svg' },
+  { name: 'Slack', url: '/logos/slack.png' },
+  { name: 'QuickBooks', url: '/logos/quickbooks.svg' },
+  { name: 'Datadog', url: '/logos/datadog.png' },
+  { name: 'GitLab', url: '/logos/gitlab.svg' },
+  { name: 'Canva', url: '/logos/canva.svg' },
+  { name: 'Anthropic', url: '/logos/anthropic.svg' },
   { name: 'n8n', url: '/logos/n8n.png' },
 ];
 

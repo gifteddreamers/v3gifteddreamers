@@ -12,10 +12,11 @@ const logos: Logo[] = [
   { name: 'Salesforce', url: '/logos/salesforce.svg', width: 'w-20' },
   { name: 'AWS', url: '/logos/aws.svg', width: 'w-16' },
   { name: 'Slack', url: '/logos/slack.png' },
+  { name: 'QuickBooks', url: '/logos/quickbooks.svg' },
   { name: 'Datadog', url: '/logos/datadog.png' },
   { name: 'GitLab', url: '/logos/gitlab.svg' },
-  { name: 'Canva', url: '/logos/canva.svg', width: 'w-16' },
-  { name: 'Anthropic', url: '/logos/anthropic.svg', width: 'w-20' },
+  { name: 'Canva', url: '/logos/canva.svg', width: 'w-20' },
+  { name: 'Anthropic', url: '/logos/anthropic.svg', width: 'w-24' },
   { name: 'n8n', url: '/logos/n8n.png', width: 'w-10' },
 ];
 
