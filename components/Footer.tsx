@@ -56,8 +56,8 @@ const Footer: React.FC = () => {
             <div>
               <div className="flex items-center gap-3 mb-4">
                 <img
-                  src={`${import.meta.env.BASE_URL}Gifted Dreamers LOGO.png`}
-                  alt="Logo"
+                  src={`${import.meta.env.BASE_URL}logo-200.png`}
+                  alt="Gifted Dreamers Logo"
                   className="w-8 h-8 object-contain"
                 />
                 <span className="text-white font-bold tracking-tight text-lg">Gifted Dreamers</span>
