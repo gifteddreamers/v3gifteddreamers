@@ -61,7 +61,9 @@ const Services: React.FC = () => {
               </div>
             </div>
             <div className="p-8 pt-0 mt-auto">
-              <Button fullWidth>Book a Perks Session</Button>
+              <a href="https://calendly.com/kristinesocall" target="_blank" rel="noopener noreferrer">
+                <Button fullWidth>Book a Perks Session</Button>
+              </a>
             </div>
           </Reveal>
 
@@ -110,7 +112,9 @@ const Services: React.FC = () => {
               </div>
             </div>
             <div className="p-8 pt-0 mt-auto">
-              <Button fullWidth>Book a Free Assessment</Button>
+              <a href="https://calendly.com/kristinesocall" target="_blank" rel="noopener noreferrer">
+                <Button fullWidth>Book a Free Assessment</Button>
+              </a>
             </div>
           </Reveal>
 

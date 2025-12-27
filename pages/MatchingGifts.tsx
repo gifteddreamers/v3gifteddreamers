@@ -65,7 +65,9 @@ const MatchingGifts: React.FC = () => {
         <Reveal delay={500} className="text-center">
            <h2 className="text-2xl font-bold text-slate-900 mb-6">Ready to Make a Difference?</h2>
            <div className="flex justify-center gap-4">
-             <Button>Donate Now</Button>
+             <a href="https://givebutter.com/gifteddreamers" target="_blank" rel="noopener noreferrer">
+               <Button>Donate Now</Button>
+             </a>
            </div>
            <p className="mt-4 text-xs text-slate-500">Gifted Dreamers is a 501(c)(3) nonprofit. All donations are tax-deductible.</p>
         </Reveal>

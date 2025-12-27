@@ -56,8 +56,12 @@ const About: React.FC = () => {
         <Reveal delay={400} className="bg-slate-50 p-8 rounded-xl mt-12 text-center">
           <h2 className="text-2xl font-bold text-slate-900 mb-4">Want to Work Together?</h2>
           <div className="flex justify-center gap-4">
-            <Button>Book a Free 30-Minute Call</Button>
-            <Button variant="outline">Subscribe on Substack</Button>
+            <a href="https://calendly.com/kristinesocall" target="_blank" rel="noopener noreferrer">
+              <Button>Book a Free 30-Minute Call</Button>
+            </a>
+            <a href="https://gifteddreamers.substack.com" target="_blank" rel="noopener noreferrer">
+              <Button variant="outline">Subscribe on Substack</Button>
+            </a>
           </div>
         </Reveal>
       </div>

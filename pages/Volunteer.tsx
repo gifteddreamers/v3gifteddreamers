@@ -102,32 +102,32 @@ const Volunteer: React.FC = () => {
         {/* Sign Up Form */}
         <Reveal className="max-w-2xl mx-auto">
           <h2 className="text-2xl font-bold text-slate-900 mb-6 text-center">Interested in Volunteering?</h2>
-          <form className="space-y-6 bg-white p-8 rounded-xl shadow-sm border border-slate-200">
+          <form className="space-y-6 bg-white p-8 rounded-xl shadow-sm border border-slate-200" action="mailto:volunteer@gifteddreamers.org" method="POST" encType="text/plain">
             <div>
               <label className="block text-sm font-medium text-slate-700 mb-1">Name</label>
-              <input type="text" className="w-full rounded-md border-slate-300 shadow-sm focus:border-primary focus:ring-primary p-2 border" />
+              <input type="text" name="name" required className="w-full rounded-md border-slate-300 shadow-sm focus:border-primary focus:ring-primary p-2 border" />
             </div>
             <div>
               <label className="block text-sm font-medium text-slate-700 mb-1">Email</label>
-              <input type="email" className="w-full rounded-md border-slate-300 shadow-sm focus:border-primary focus:ring-primary p-2 border" />
+              <input type="email" name="email" required className="w-full rounded-md border-slate-300 shadow-sm focus:border-primary focus:ring-primary p-2 border" />
             </div>
             <div>
               <label className="block text-sm font-medium text-slate-700 mb-1">Company (for grant lookup)</label>
-              <input type="text" className="w-full rounded-md border-slate-300 shadow-sm focus:border-primary focus:ring-primary p-2 border" />
+              <input type="text" name="company" className="w-full rounded-md border-slate-300 shadow-sm focus:border-primary focus:ring-primary p-2 border" />
             </div>
              <div>
               <label className="block text-sm font-medium text-slate-700 mb-1">Skills / Interests</label>
-              <input type="text" className="w-full rounded-md border-slate-300 shadow-sm focus:border-primary focus:ring-primary p-2 border" />
+              <input type="text" name="skills" className="w-full rounded-md border-slate-300 shadow-sm focus:border-primary focus:ring-primary p-2 border" />
             </div>
             <div>
                <label className="block text-sm font-medium text-slate-700 mb-1">Hours available per month</label>
-              <select className="w-full rounded-md border-slate-300 shadow-sm focus:border-primary focus:ring-primary p-2 border">
-                <option>1-5 hours</option>
-                <option>5-10 hours</option>
-                <option>10+ hours</option>
+              <select name="hours" className="w-full rounded-md border-slate-300 shadow-sm focus:border-primary focus:ring-primary p-2 border">
+                <option value="1-5">1-5 hours</option>
+                <option value="5-10">5-10 hours</option>
+                <option value="10+">10+ hours</option>
               </select>
             </div>
-            <Button fullWidth>Submit Volunteer Interest</Button>
+            <Button type="submit" fullWidth>Submit Volunteer Interest</Button>
           </form>
         </Reveal>
       </div>

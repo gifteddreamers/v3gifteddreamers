@@ -41,7 +41,9 @@ const Partners: React.FC = () => {
              <p className="text-slate-600 mb-6">
                When employees volunteer with us, you pay us—not them. Common rates: Microsoft $25/hr, Google $50/hr. Volunteers work on real projects: tech perks research, documentation, and AI tool testing.
              </p>
-             <Button variant="outline">Start a Volunteer Partnership</Button>
+             <a href="mailto:partnerships@gifteddreamers.org?subject=Volunteer Partnership Inquiry">
+               <Button variant="outline">Start a Volunteer Partnership</Button>
+             </a>
           </Reveal>
           <Reveal delay={200} className="bg-slate-50 p-8 rounded-xl">
              <h3 className="text-2xl font-bold text-slate-900 mb-4">Custom Engagements</h3>

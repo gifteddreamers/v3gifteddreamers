@@ -27,7 +27,9 @@ const CommonCloud: React.FC = () => {
              <FileText className="h-10 w-10 text-accent mb-4" />
              <h3 className="text-xl font-bold mb-2">Blog / Substack</h3>
              <p className="text-slate-600 mb-4">Deep dives on perks, automation templates, AI experiments. Subscribe for free weekly updates.</p>
-             <Button variant="outline" size="sm">Subscribe</Button>
+             <a href="https://gifteddreamers.substack.com" target="_blank" rel="noopener noreferrer">
+               <Button variant="outline" size="sm">Subscribe</Button>
+             </a>
           </Reveal>
           <Reveal delay={200} className="bg-white p-8 rounded-xl shadow-sm border border-slate-200">
              <Video className="h-10 w-10 text-accent mb-4" />
@@ -38,7 +40,10 @@ const CommonCloud: React.FC = () => {
              <MessageCircle className="h-10 w-10 text-accent mb-4" />
              <h3 className="text-xl font-bold mb-2">Community Chat</h3>
              <p className="text-slate-600 mb-4">Matrix/Element room for async questions. Help when you need it. No salespeople.</p>
-             <Button variant="outline" size="sm">Join Community</Button>
+{/* TODO: Update room ID once created on matrix.commoncloud.cc */}
+             <a href="https://matrix.to/#/#gifteddreamers:commoncloud.cc" target="_blank" rel="noopener noreferrer">
+               <Button variant="outline" size="sm">Join Community</Button>
+             </a>
           </Reveal>
         </div>
 

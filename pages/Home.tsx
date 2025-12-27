@@ -4,8 +4,9 @@ import { ArrowRight, TrendingUp, AlertTriangle, ShieldCheck } from 'lucide-react
 import Button from '../components/Button';
 import Reveal from '../components/Reveal';
 
-// Import hero image - Vite will handle the path correctly
-import heroImage from '/Austin_skyline.jpeg';
+// Images from public folder - use BASE_URL for correct path with base config
+const heroImage = `${import.meta.env.BASE_URL}Austin_skyline.jpeg`;
+const profileImage = `${import.meta.env.BASE_URL}kristine-socall.jpg`;
 
 const Home: React.FC = () => {
   return (
@@ -37,9 +38,11 @@ const Home: React.FC = () => {
               Most organizations don't know these programs exist. We do. We activate perks, clean up books, and automate workflows—at prices that make sense.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" variant="primary" className="px-10 shadow-2xl shadow-primary/40">
-                Hire Us <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
+              <a href="https://calendly.com/kristinesocall" target="_blank" rel="noopener noreferrer">
+                <Button size="lg" variant="primary" className="px-10 shadow-2xl shadow-primary/40">
+                  Hire Us <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </a>
               <a href="https://gifteddreamers.substack.com" target="_blank" rel="noopener noreferrer">
                 <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-[#023E8A] backdrop-blur-md transition-all">
                   Subscribe on Substack
@@ -189,7 +192,7 @@ const Home: React.FC = () => {
           <div className="flex flex-col md:flex-row items-center gap-10">
             <Reveal className="w-full md:w-2/5">
               <div className="aspect-square rounded-2xl overflow-hidden border-8 border-slate-50 shadow-2xl rotate-2">
-                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Kristine Socall" className="w-full h-full object-cover" />
+                <img src={profileImage} alt="Kristine Socall" className="w-full h-full object-cover" />
               </div>
             </Reveal>
             <Reveal className="w-full md:w-3/5" delay={200}>
