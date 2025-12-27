@@ -29,7 +29,7 @@ const Navbar: React.FC = () => {
                 alt="Gifted Dreamers Logo"
                 className="w-10 h-10 object-contain transition-transform group-hover:scale-110"
               />
-              <span className="text-xl font-bold text-slate-900 tracking-tight">Gifted <span className="text-primary">Dreamers</span></span>
+              <span className="text-xl font-bold tracking-tight"><span className="text-[#B91C1C]">Gifted</span> <span className="text-[#1976B5]">Dreamers</span></span>
             </Link>
           </div>
 
