@@ -4,17 +4,47 @@ import Button from '../components/Button';
 import Reveal from '../components/Reveal';
 
 const toolLogos = [
+  // Major cloud/enterprise
   { name: 'Google', url: '/logos/google.png' },
   { name: 'Microsoft', url: '/logos/microsoft.svg' },
-  { name: 'Salesforce', url: '/logos/salesforce.svg' },
   { name: 'AWS', url: '/logos/aws.svg' },
+  { name: 'Salesforce', url: '/logos/salesforce.svg' },
+  { name: 'Adobe', url: '/logos/adobe.svg' },
+  // Collaboration
   { name: 'Slack', url: '/logos/slack.png' },
-  { name: 'QuickBooks', url: '/logos/quickbooks.svg' },
-  { name: 'Datadog', url: '/logos/datadog.png' },
+  { name: 'Notion', url: '/logos/notion.svg' },
+  { name: 'Airtable', url: '/logos/airtable.svg' },
+  { name: 'Zoom', url: '/logos/zoom.svg' },
+  { name: 'Miro', url: '/logos/miro.svg' },
+  // Dev tools
+  { name: 'GitHub', url: '/logos/github.svg' },
   { name: 'GitLab', url: '/logos/gitlab.svg' },
-  { name: 'Canva', url: '/logos/canva.svg' },
+  { name: 'Figma', url: '/logos/figma.svg' },
+  { name: 'Docker', url: '/logos/docker.svg' },
+  // AI
+  { name: 'OpenAI', url: '/logos/openai.svg' },
   { name: 'Anthropic', url: '/logos/anthropic.svg' },
+  // Automation
+  { name: 'Zapier', url: '/logos/zapier.svg' },
   { name: 'n8n', url: '/logos/n8n.png' },
+  // Monitoring
+  { name: 'Datadog', url: '/logos/datadog.png' },
+  { name: 'Splunk', url: '/logos/splunk.svg' },
+  { name: 'PagerDuty', url: '/logos/pagerduty.svg' },
+  { name: 'NewRelic', url: '/logos/newrelic.svg' },
+  // Accounting/Nonprofit
+  { name: 'QuickBooks', url: '/logos/quickbooks.svg' },
+  { name: 'TechSoup', url: '/logos/techsoup.svg' },
+  { name: 'Givebutter', url: '/logos/givebutter.svg' },
+  { name: 'Twilio', url: '/logos/twilio.svg' },
+  // Privacy-focused/Self-hosted
+  { name: 'Nextcloud', url: '/logos/nextcloud.svg' },
+  { name: 'Element', url: '/logos/element.svg' },
+  { name: 'Matrix', url: '/logos/matrix.svg' },
+  { name: 'CryptPad', url: '/logos/cryptpad.svg' },
+  { name: 'SimpleX', url: '/logos/simplex.svg' },
+  { name: 'Kumu', url: '/logos/kumu.svg' },
+  { name: 'Canva', url: '/logos/canva.svg' },
 ];
 
 const Services: React.FC = () => {
