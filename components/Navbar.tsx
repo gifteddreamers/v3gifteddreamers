@@ -11,6 +11,7 @@ const Navbar: React.FC = () => {
     { label: 'Services', path: '/services' },
     { label: 'Volunteer', path: '/volunteer' },
     { label: 'GRUHP', path: '/gruhp' },
+    { label: 'Matching Gifts', path: '/matching-gifts' },
     { label: 'Partners', path: '/corporate-partners' },
     { label: 'Common Cloud', path: '/common-cloud' },
   ];
@@ -50,16 +51,20 @@ const Navbar: React.FC = () => {
           </div>
 
           <div className="hidden md:flex md:items-center">
-             <Button variant="primary" size="sm" className="gap-2 font-bold">
-               Book a Call
-             </Button>
+             <a href="https://calendly.com/kristinesocall" target="_blank" rel="noopener noreferrer">
+               <Button variant="primary" size="sm" className="gap-2 font-bold">
+                 Book a Call
+               </Button>
+             </a>
           </div>
 
           {/* Mobile menu button */}
           <div className="flex items-center md:hidden gap-3">
-             <Button variant="primary" size="sm" className="text-xs px-2 h-8 font-bold">
-               Book Call
-             </Button>
+             <a href="https://calendly.com/kristinesocall" target="_blank" rel="noopener noreferrer">
+               <Button variant="primary" size="sm" className="text-xs px-2 h-8 font-bold">
+                 Book Call
+               </Button>
+             </a>
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="inline-flex items-center justify-center p-2 rounded-md text-slate-500 hover:text-primary hover:bg-slate-100 focus:outline-none transition-colors"
@@ -90,9 +95,11 @@ const Navbar: React.FC = () => {
               </Link>
             ))}
             <div className="pt-4 pb-2 px-3">
-               <Button fullWidth onClick={() => setIsOpen(false)} className="font-bold">
-                 Book a Free Call <ArrowRight className="ml-2 h-4 w-4" />
-               </Button>
+               <a href="https://calendly.com/kristinesocall" target="_blank" rel="noopener noreferrer">
+                 <Button fullWidth onClick={() => setIsOpen(false)} className="font-bold">
+                   Book a Free Call <ArrowRight className="ml-2 h-4 w-4" />
+                 </Button>
+               </a>
             </div>
           </div>
         </div>
