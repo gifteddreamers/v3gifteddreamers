@@ -1,26 +1,59 @@
 import React from 'react';
 import Button from '../components/Button';
 import Reveal from '../components/Reveal';
-import { Heart } from 'lucide-react';
+import { Heart, ShoppingCart, Home, Zap, Stethoscope, PawPrint } from 'lucide-react';
 
 const Gruhp: React.FC = () => {
   return (
     <div className="pb-20">
-      <div className="bg-primary text-white py-20">
-        <Reveal className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      {/* Hero with warm gradient and urgency */}
+      <div className="bg-gradient-to-br from-[#7C3AED] via-[#9333EA] to-[#6D28D9] text-white py-24 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-accent rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 right-1/4 w-72 h-72 bg-white rounded-full blur-3xl"></div>
+        </div>
+        <Reveal className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <div className="flex justify-center mb-6">
-            <div className="bg-white/10 p-4 rounded-full">
-              <Heart className="h-10 w-10 text-accent" />
+            <div className="bg-white/20 backdrop-blur p-5 rounded-full animate-pulse">
+              <Heart className="h-12 w-12 text-white" />
             </div>
           </div>
-          <h1 className="text-4xl font-bold mb-4">GRUHP: Mutual Aid Community Crisis Fund</h1>
-          <p className="text-xl text-slate-300 max-w-3xl mx-auto mb-8">
-            Groceries. Rent. Utilities. Health Care. Pets. When systems fail, we step up. 100% of donations go directly to community members.
+          <div className="inline-block px-4 py-1 bg-white/20 backdrop-blur rounded-full text-sm font-medium mb-6">
+            Community Crisis Response
+          </div>
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">GRUHP: Mutual Aid Fund</h1>
+          <p className="text-xl text-purple-100 max-w-3xl mx-auto mb-4">
+            <strong>G</strong>roceries. <strong>R</strong>ent. <strong>U</strong>tilities. <strong>H</strong>ealth Care. <strong>P</strong>ets.
+          </p>
+          <p className="text-lg text-purple-200 max-w-2xl mx-auto mb-10">
+            When systems fail, we step up. 100% of donations go directly to community members in crisis.
           </p>
           <a href="https://givebutter.com/GRUHP" target="_blank" rel="noopener noreferrer">
-            <Button variant="primary" size="lg">Donate Now via Givebutter</Button>
+            <Button variant="primary" size="lg" className="bg-white text-purple-700 hover:bg-purple-50 shadow-xl">
+              Donate Now via Givebutter
+            </Button>
           </a>
         </Reveal>
+      </div>
+
+      {/* GRUHP Acronym Icons */}
+      <div className="bg-purple-50 py-8 border-b border-purple-100">
+        <div className="max-w-4xl mx-auto px-4 flex flex-wrap justify-center gap-6 md:gap-10">
+          {[
+            { icon: ShoppingCart, label: 'Groceries', color: 'text-green-600' },
+            { icon: Home, label: 'Rent', color: 'text-blue-600' },
+            { icon: Zap, label: 'Utilities', color: 'text-yellow-600' },
+            { icon: Stethoscope, label: 'Health Care', color: 'text-red-600' },
+            { icon: PawPrint, label: 'Pets', color: 'text-purple-600' },
+          ].map(({ icon: Icon, label, color }) => (
+            <div key={label} className="flex flex-col items-center">
+              <div className={`p-3 bg-white rounded-full shadow-sm ${color}`}>
+                <Icon className="h-6 w-6" />
+              </div>
+              <span className="text-xs font-medium text-slate-600 mt-2">{label}</span>
+            </div>
+          ))}
+        </div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -71,10 +104,22 @@ const Gruhp: React.FC = () => {
               src="https://givebutter.com/embed/c/GRUHP"
               width="100%"
               height="600"
-              style={{ border: 'none', borderRadius: '8px' }}
+              style={{ border: 'none', borderRadius: '8px', minHeight: '600px' }}
               title="GRUHP Donation Form"
               allow="payment"
             />
+            {/* Fallback link if embed doesn't load */}
+            <div className="text-center mt-4">
+              <p className="text-sm text-slate-500 mb-2">Having trouble seeing the donation form?</p>
+              <a
+                href="https://givebutter.com/GRUHP"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-purple-600 hover:text-purple-800 font-medium underline"
+              >
+                Click here to donate directly on Givebutter →
+              </a>
+            </div>
           </div>
           <div className="text-center mt-8 text-slate-500 text-sm">
             <p>Gifted Dreamers, Inc. is a 501(c)(3) nonprofit.</p>

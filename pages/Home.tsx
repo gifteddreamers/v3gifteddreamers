@@ -3,51 +3,54 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, TrendingUp, AlertTriangle, ShieldCheck } from 'lucide-react';
 import Button from '../components/Button';
 import Reveal from '../components/Reveal';
+import LogoCloud from '../components/LogoCloud';
 
-// Images from public folder - use BASE_URL for correct path with base config
-const heroImage = `${import.meta.env.BASE_URL}Austin_skyline.jpeg`;
-const profileImage = `${import.meta.env.BASE_URL}kristine-socall.jpg`;
+// Images from public folder - hardcoded paths for reliability
+const heroImage = '/Austin_skyline.jpeg';
+const profileImage = '/kristine-socall.jpg';
 
 const Home: React.FC = () => {
   return (
     <div className="flex flex-col min-h-screen">
 
       {/* Hero Section */}
-      <section className="relative bg-[#023E8A] text-white overflow-hidden min-h-[85vh] flex items-center">
-        {/* Background Image Container */}
-        <div className="absolute inset-0 z-0">
-          <img
-            src={heroImage}
-            alt="Austin Skyline at sunset"
-            className="w-full h-full object-cover object-center opacity-70 transform scale-105 transition-transform duration-[10s] hover:scale-100"
-          />
-          {/* Enhanced Gradient Overlay for better text readability */}
-          <div className="absolute inset-0 bg-gradient-to-tr from-[#023E8A] via-[#023E8A]/70 to-transparent"></div>
-        </div>
-
+      <section
+        className="relative text-white overflow-hidden min-h-[85vh] flex items-center bg-slate-900"
+        style={{
+          backgroundImage: `url(${heroImage})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+      >
+        {/* Dark overlay for better text readability */}
+        <div className="absolute inset-0 bg-slate-900/40"></div>
+        {/* Text Content with background box for readability */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
           <Reveal className="max-w-3xl">
-            <h1 className="text-4xl md:text-7xl font-bold tracking-tight mb-6 leading-tight drop-shadow-lg">
-              <span className="text-white">$380K in Free Tools.</span><br/>
-              <span className="text-accent">We'll Help You Get Them.</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-slate-100 mb-8 font-light drop-shadow">
-              Google, Microsoft, Salesforce, Datadog, and 200+ companies give away enterprise tools to nonprofits and startups.
-            </p>
-            <p className="text-lg text-slate-300 mb-10 max-w-2xl drop-shadow">
-              Most organizations don't know these programs exist. We do. We activate perks, clean up books, and automate workflows—at prices that make sense.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <a href="https://calendly.com/kristinesocall" target="_blank" rel="noopener noreferrer">
-                <Button size="lg" variant="primary" className="px-10 shadow-2xl shadow-primary/40">
-                  Hire Us <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-              </a>
-              <a href="https://gifteddreamers.substack.com" target="_blank" rel="noopener noreferrer">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-[#023E8A] backdrop-blur-md transition-all">
-                  Subscribe on Substack
-                </Button>
-              </a>
+            <div className="bg-slate-900/80 backdrop-blur-sm p-8 md:p-12 rounded-2xl">
+              <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6 leading-tight">
+                <span className="text-white">$380K in Free Tools.</span><br/>
+                <span className="text-accent">We'll Help You Get Them.</span>
+              </h1>
+              <p className="text-xl md:text-2xl text-slate-100 mb-6 font-light">
+                Google, Microsoft, Salesforce, Datadog, and 200+ companies give away enterprise tools to nonprofits and startups.
+              </p>
+              <p className="text-lg text-slate-300 mb-8 max-w-2xl">
+                Most organizations don't know these programs exist. We do. We activate perks, clean up books, and automate workflows—at prices that make sense.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <a href="https://calendly.com/kristinesocall" target="_blank" rel="noopener noreferrer">
+                  <Button size="lg" variant="primary" className="px-10">
+                    Hire Us <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
+                </a>
+                <a href="https://gifteddreamers.substack.com" target="_blank" rel="noopener noreferrer">
+                  <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-slate-900 transition-all">
+                    Subscribe on Substack
+                  </Button>
+                </a>
+              </div>
             </div>
           </Reveal>
         </div>
@@ -105,6 +108,9 @@ const Home: React.FC = () => {
         </div>
       </section>
 
+      {/* Logo Cloud - Enterprise Tools */}
+      <LogoCloud />
+
       {/* Services Overview */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -115,7 +121,7 @@ const Home: React.FC = () => {
             {/* Tech Perks */}
             <Reveal className="flex flex-col h-full group">
               <div className="aspect-video bg-slate-200 rounded-lg overflow-hidden mb-6 relative shadow-lg">
-                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Dashboard" className="w-full h-full object-cover transition-transform group-hover:scale-105" />
+                <img src="/images/dashboard-analytics.jpg" alt="Dashboard" className="w-full h-full object-cover transition-transform group-hover:scale-105" />
                 <div className="absolute top-4 left-4 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full">Perks Audit</div>
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-4">Tech Perks Audit</h3>
@@ -140,7 +146,7 @@ const Home: React.FC = () => {
             {/* Accounting */}
             <Reveal className="flex flex-col h-full group" delay={150}>
               <div className="aspect-video bg-slate-200 rounded-lg overflow-hidden mb-6 relative shadow-lg">
-                <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Accounting" className="w-full h-full object-cover transition-transform group-hover:scale-105" />
+                <img src="/images/accounting-papers.jpg" alt="Accounting" className="w-full h-full object-cover transition-transform group-hover:scale-105" />
                 <div className="absolute top-4 left-4 bg-accent text-white text-xs font-bold px-3 py-1 rounded-full">Accounting</div>
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-4">Accounting Cleanup</h3>

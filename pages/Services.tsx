@@ -1,26 +1,69 @@
 import React from 'react';
+import { CheckCircle, Zap, Shield, Clock } from 'lucide-react';
 import Button from '../components/Button';
 import Reveal from '../components/Reveal';
+
+const toolLogos = [
+  { name: 'Google', url: '/logos/google.png' },
+  { name: 'Microsoft', url: '/logos/microsoft.svg' },
+  { name: 'Salesforce', url: '/logos/salesforce.svg' },
+  { name: 'QuickBooks', url: '/logos/quickbooks.svg' },
+  { name: 'Slack', url: '/logos/slack.png' },
+  { name: 'Canva', url: '/logos/canva.svg' },
+  { name: 'AWS', url: '/logos/aws.svg' },
+  { name: 'n8n', url: '/logos/n8n.png' },
+];
 
 const Services: React.FC = () => {
   return (
     <div className="pb-20">
-      <div className="bg-primary text-white py-20">
-        <Reveal className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl font-bold mb-4">Tech Perks Audit + Accounting Cleanup</h1>
-          <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+      {/* Hero with gradient background */}
+      <div className="bg-gradient-to-br from-primary via-[#0353A4] to-primary text-white py-24 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-10 left-10 w-72 h-72 bg-accent rounded-full blur-3xl"></div>
+          <div className="absolute bottom-10 right-10 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+        </div>
+        <Reveal className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <div className="inline-block px-4 py-1 bg-white/10 backdrop-blur rounded-full text-sm font-medium mb-6">
+            Trusted by 50+ nonprofits
+          </div>
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">Tech Perks Audit + Accounting Cleanup</h1>
+          <p className="text-xl text-slate-200 max-w-3xl mx-auto mb-8">
             We help small nonprofits access enterprise tools and fix messy books. Clear pricing. No hidden fees. No dependency.
           </p>
+          <div className="flex flex-wrap justify-center gap-6 text-sm">
+            <div className="flex items-center gap-2"><CheckCircle className="h-5 w-5 text-accent" /> 475+ perks tracked</div>
+            <div className="flex items-center gap-2"><Zap className="h-5 w-5 text-accent" /> Same-week turnaround</div>
+            <div className="flex items-center gap-2"><Shield className="h-5 w-5 text-accent" /> 501(c)(3) nonprofit</div>
+          </div>
         </Reveal>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10">
+      {/* Tools We Use */}
+      <div className="bg-slate-50 py-8 border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+            <span className="text-xs font-bold uppercase tracking-widest text-slate-400">Tools We Use:</span>
+            {toolLogos.map((logo) => (
+              <img
+                key={logo.name}
+                src={logo.url}
+                alt={logo.name}
+                className="h-6 md:h-8 w-auto object-contain grayscale hover:grayscale-0 opacity-50 hover:opacity-100 transition-all"
+                title={logo.name}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           
           {/* Tech Perks Card */}
           <Reveal className="bg-white rounded-xl shadow-lg border border-slate-200 overflow-hidden flex flex-col h-full">
             <div className="h-48 bg-slate-100 relative">
-               <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Tech Perks" className="w-full h-full object-cover" />
+               <img src="/images/tech-dashboard.jpg" alt="Tech Perks" className="w-full h-full object-cover" />
                <div className="absolute inset-0 bg-primary/10"></div>
             </div>
             <div className="p-8 flex-grow">
@@ -70,7 +113,7 @@ const Services: React.FC = () => {
           {/* Accounting Card */}
           <Reveal className="bg-white rounded-xl shadow-lg border border-slate-200 overflow-hidden flex flex-col h-full" delay={150}>
             <div className="h-48 bg-slate-100 relative">
-               <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Accounting" className="w-full h-full object-cover" />
+               <img src="/images/accounting-papers.jpg" alt="Accounting" className="w-full h-full object-cover" />
                <div className="absolute inset-0 bg-primary/10"></div>
             </div>
             <div className="p-8 flex-grow">

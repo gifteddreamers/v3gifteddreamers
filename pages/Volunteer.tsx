@@ -102,15 +102,36 @@ const Volunteer: React.FC = () => {
 
   return (
     <div className="pb-20">
-       <div className="bg-primary text-white py-20 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" className="w-full h-full object-cover" alt="Volunteers" />
+       {/* Enhanced Hero with Impact Stats */}
+       <div className="bg-gradient-to-br from-primary via-[#0353A4] to-primary text-white py-24 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-20">
+          <img src="/images/volunteers-collaborating.jpg" className="w-full h-full object-cover" alt="Volunteers collaborating" />
         </div>
+        <div className="absolute inset-0 bg-gradient-to-t from-primary/90 to-transparent"></div>
         <Reveal className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl font-bold mb-4">Get Paid to Volunteer</h1>
-          <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+          <div className="inline-block px-4 py-1 bg-accent/20 backdrop-blur rounded-full text-sm font-medium text-accent mb-6">
+            Corporate Volunteer Programs
+          </div>
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">Get Paid to Volunteer</h1>
+          <p className="text-xl text-slate-200 max-w-3xl mx-auto mb-10">
             Your employer probably pays $25-50/hour when you volunteer. You learn skills. We get help. They write a check to the nonprofit. Everyone wins.
           </p>
+
+          {/* Impact Stats */}
+          <div className="flex flex-wrap justify-center gap-8 md:gap-16">
+            <div className="text-center">
+              <div className="text-4xl md:text-5xl font-bold text-accent">$50</div>
+              <div className="text-sm text-slate-300 mt-1">Max per hour</div>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl md:text-5xl font-bold text-white">10+</div>
+              <div className="text-sm text-slate-300 mt-1">Skill areas</div>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl md:text-5xl font-bold text-accent">100%</div>
+              <div className="text-sm text-slate-300 mt-1">Remote friendly</div>
+            </div>
+          </div>
         </Reveal>
       </div>
 
