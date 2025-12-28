@@ -97,29 +97,11 @@ const Gruhp: React.FC = () => {
           </Reveal>
         </div>
 
-        {/* Givebutter Embed */}
+        {/* Givebutter Widget */}
         <Reveal className="mt-20" delay={300}>
           <div className="bg-slate-50 rounded-xl p-8">
-            <iframe
-              src="https://givebutter.com/embed/c/GRUHP"
-              width="100%"
-              height="600"
-              style={{ border: 'none', borderRadius: '8px', minHeight: '600px' }}
-              title="GRUHP Donation Form"
-              allow="payment"
-            />
-            {/* Fallback link if embed doesn't load */}
-            <div className="text-center mt-4">
-              <p className="text-sm text-slate-500 mb-2">Having trouble seeing the donation form?</p>
-              <a
-                href="https://givebutter.com/GRUHP"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-purple-600 hover:text-purple-800 font-medium underline"
-              >
-                Click here to donate directly on Givebutter →
-              </a>
-            </div>
+            {/* @ts-ignore - Givebutter custom element */}
+            <givebutter-widget id="pnqxbg"></givebutter-widget>
           </div>
           <div className="text-center mt-8 text-slate-500 text-sm">
             <p>Gifted Dreamers, Inc. is a 501(c)(3) nonprofit.</p>
