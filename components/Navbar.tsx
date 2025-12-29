@@ -27,9 +27,11 @@ const Navbar: React.FC = () => {
               <img
                 src={`${import.meta.env.BASE_URL}logo-200.png`}
                 alt="Gifted Dreamers Logo"
+                width="40"
+                height="40"
                 className="w-10 h-10 object-contain transition-transform group-hover:scale-110"
               />
-              <span className="text-xl font-bold tracking-tight"><span className="text-[#B91C1C]">Gifted</span> <span className="text-[#1976B5]">Dreamers</span></span>
+              <span className="text-xl font-bold tracking-tight"><span className="text-red-600">Gifted</span> <span className="text-sky-600">Dreamers</span></span>
             </Link>
           </div>
 

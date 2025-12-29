@@ -7,7 +7,7 @@ const Partners: React.FC = () => {
     <div className="pb-20">
        <div className="bg-primary text-white py-20 relative overflow-hidden">
         <div className="absolute inset-0 opacity-20">
-           <img src="/images/handshake-partners.jpg" className="w-full h-full object-cover" alt="Handshake" />
+           <img src="/images/handshake-partners.jpg" width="2000" height="1500" className="w-full h-full object-cover" alt="Business partners shaking hands" />
         </div>
         <Reveal className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl font-bold mb-4">Partner With Us</h1>

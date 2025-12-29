@@ -133,7 +133,7 @@ const Volunteer: React.FC = () => {
        {/* Enhanced Hero with Impact Stats */}
        <div className="bg-gradient-to-br from-primary via-[#0353A4] to-primary text-white py-24 relative overflow-hidden">
         <div className="absolute inset-0 opacity-20">
-          <img src="/images/volunteers-collaborating.jpg" className="w-full h-full object-cover" alt="Volunteers collaborating" />
+          <img src="/images/volunteers-collaborating.jpg" width="2000" height="1125" className="w-full h-full object-cover" alt="Volunteers collaborating on projects" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-primary/90 to-transparent"></div>
         <Reveal className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

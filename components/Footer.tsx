@@ -58,9 +58,11 @@ const Footer: React.FC = () => {
                 <img
                   src={`${import.meta.env.BASE_URL}logo-200.png`}
                   alt="Gifted Dreamers Logo"
+                  width="32"
+                  height="32"
                   className="w-8 h-8 object-contain"
                 />
-                <span className="font-bold tracking-tight text-lg"><span className="text-[#B91C1C]">Gifted</span> <span className="text-[#1976B5]">Dreamers</span></span>
+                <span className="font-bold tracking-tight text-lg"><span className="text-red-400">Gifted</span> <span className="text-sky-400">Dreamers</span></span>
               </div>
               <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm mb-4">
                 <Link to="/about" className="hover:text-white transition-colors">About</Link>

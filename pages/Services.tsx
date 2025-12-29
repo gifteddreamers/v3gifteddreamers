@@ -102,7 +102,7 @@ const Services: React.FC = () => {
           {/* Tech Perks Card */}
           <Reveal className="bg-white rounded-xl shadow-lg border border-slate-200 overflow-hidden flex flex-col h-full">
             <div className="h-48 bg-slate-100 relative">
-               <img src="/images/tech-dashboard.jpg" alt="Tech Perks" className="w-full h-full object-cover" />
+               <img src="/images/tech-dashboard.jpg" alt="Tech Perks dashboard interface" width="800" height="533" className="w-full h-full object-cover" />
                <div className="absolute inset-0 bg-primary/10"></div>
             </div>
             <div className="p-8 flex-grow">
@@ -152,7 +152,7 @@ const Services: React.FC = () => {
           {/* Accounting Card */}
           <Reveal className="bg-white rounded-xl shadow-lg border border-slate-200 overflow-hidden flex flex-col h-full" delay={150}>
             <div className="h-48 bg-slate-100 relative">
-               <img src="/images/accounting-papers.jpg" alt="Accounting" className="w-full h-full object-cover" />
+               <img src="/images/accounting-papers.jpg" alt="Accounting documents and ledgers" width="800" height="459" className="w-full h-full object-cover" />
                <div className="absolute inset-0 bg-primary/10"></div>
             </div>
             <div className="p-8 flex-grow">
