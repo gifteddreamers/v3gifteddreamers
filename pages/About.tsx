@@ -1,18 +1,47 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Button from '../components/Button';
 import Reveal from '../components/Reveal';
 
 const About: React.FC = () => {
   return (
     <div className="pb-20">
+      {/* Hero Section */}
+      <section
+        className="relative text-white overflow-hidden min-h-[60vh] flex items-center"
+        style={{
+          backgroundImage: 'url(/images/about-hero.jpg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/70 to-slate-900/50"></div>
+        <div className="relative z-10 w-full px-4 sm:px-6 lg:px-16 py-24">
+          <Reveal className="max-w-3xl">
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+              The Accountant Who Got Tired of Watching Nonprofits Struggle
+            </h1>
+            <p className="text-xl md:text-2xl text-slate-100 font-light">
+              25 years of cleaning up financial messes. Now I'm teaching everyone how to access the same tools Fortune 500 companies use—for free.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Content Section */}
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <Reveal>
-          <h1 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6 leading-tight">
-            The Accountant Who Got Tired of Watching Nonprofits Struggle
-          </h1>
-          <p className="text-xl text-slate-600 mb-10">
-            25 years of cleaning up financial messes. Now I'm teaching everyone how to access the same tools Fortune 500 companies use—for free.
-          </p>
+        {/* Profile Section */}
+        <Reveal className="flex flex-col md:flex-row gap-8 items-center mb-12">
+          <img 
+            src="/kristine-socall.jpg" 
+            alt="Kristine Socall, Founder of Gifted Dreamers" 
+            className="w-48 h-48 rounded-full object-cover shadow-lg border-4 border-primary"
+          />
+          <div>
+            <h2 className="text-2xl font-bold text-slate-900 mb-2">Kristine Socall</h2>
+            <p className="text-lg text-primary font-semibold mb-2">Founder & CEO</p>
+            <p className="text-slate-600">MBA | 25 Years in Accounting | Nonprofit Advocate</p>
+          </div>
         </Reveal>
 
         <div className="prose prose-slate max-w-none">
