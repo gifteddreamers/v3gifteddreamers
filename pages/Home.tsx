@@ -23,10 +23,32 @@ const Home: React.FC = () => {
           backgroundRepeat: 'no-repeat',
         }}
       >
-        {/* Text Content with background box for readability - positioned left, wider box */}
+        {/* Technology overlay images */}
+        <div className="absolute inset-0 z-[1] pointer-events-none">
+          <img 
+            src="/images/tech-overlay-1.png" 
+            alt="" 
+            className="absolute top-10 right-20 w-64 h-64 opacity-20 mix-blend-screen"
+          />
+          <img 
+            src="/images/tech-overlay-2.png" 
+            alt="" 
+            className="absolute bottom-20 right-40 w-48 h-48 opacity-15 mix-blend-screen"
+          />
+          <img 
+            src="/images/tech-overlay-3.png" 
+            alt="" 
+            className="absolute top-1/2 right-10 w-56 h-56 opacity-10 mix-blend-screen"
+          />
+        </div>
+        
+        {/* Gradient box on left for text */}
+        <div className="absolute left-0 top-0 bottom-0 w-full lg:w-3/5 bg-gradient-to-r from-slate-900/95 via-slate-900/85 to-transparent z-[2]"></div>
+        
+        {/* Text Content */}
         <div className="relative z-10 w-full px-4 sm:px-6 lg:px-16 py-24 md:py-32">
           <Reveal className="max-w-2xl lg:max-w-[55%]">
-            <div className="bg-slate-900/60 backdrop-blur-sm p-8 md:p-12 rounded-2xl">
+            <div>
               <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6 leading-tight">
                 <span className="text-white">$380K in Free Tools.</span><br/>
                 <span className="text-accent">We'll Help You Get Them.</span>

@@ -25,13 +25,13 @@ const Navbar: React.FC = () => {
           <div className="flex items-center">
             <Link to="/" className="flex-shrink-0 flex items-center gap-3 group">
               <img
-                src={`${import.meta.env.BASE_URL}logo-200.png`}
+                src={`${import.meta.env.BASE_URL}logo-new.png`}
                 alt="Gifted Dreamers Logo"
                 width="40"
                 height="40"
                 className="w-10 h-10 object-contain transition-transform group-hover:scale-110"
               />
-              <span className="text-xl font-bold tracking-tight"><span className="text-red-600">Gifted</span> <span className="text-sky-600">Dreamers</span></span>
+              <span className="text-xl font-bold tracking-tight"><span className="text-accent">Gifted</span> <span className="text-primary">Dreamers</span></span>
             </Link>
           </div>
 

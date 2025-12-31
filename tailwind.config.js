@@ -11,18 +11,18 @@ export default {
       },
       colors: {
         primary: {
-          DEFAULT: '#0077B6',
-          light: '#0096C7',
-          dark: '#023E8A',
+          DEFAULT: '#036990',
+          light: '#0487B8',
+          dark: '#024B6B',
         },
         accent: {
-          DEFAULT: '#0891B2', // Darkened from #00B4D8 for WCAG AA contrast (4.5:1+)
-          hover: '#06B6D4',
-          light: '#67E8F9',
+          DEFAULT: '#9E212D',
+          hover: '#B92837',
+          light: '#C84D58',
         },
         brand: {
-          dark: '#0077B6',
-          light: '#0891B2',
+          blue: '#036990',
+          red: '#9E212D',
         }
       }
     }
