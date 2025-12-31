@@ -59,16 +59,44 @@ const CommonCloud: React.FC = () => {
           </Reveal>
         </div>
 
-        <Reveal className="max-w-3xl mx-auto text-center mb-16">
+        <Reveal className="max-w-5xl mx-auto text-center mb-16">
            <h2 className="text-2xl font-bold text-slate-900 mb-6">Why We Give This Away</h2>
            <p className="text-lg text-slate-600 mb-6">
              Most knowledge is locked behind $500/month coaching programs or enterprise software training. We think that's backwards. The playbooks exist. The tools are free. We just share them.
            </p>
            <div className="bg-slate-50 p-8 rounded-xl">
-             <p className="font-bold text-slate-900 text-lg">
-               LEARN IT → DOCUMENT IT → TEACH IT → GET PAID<br/>
-               <span className="text-sm font-normal text-slate-500">(IF YOU WANT US TO DO IT)</span>
-             </p>
+             <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-8 mb-6">
+               {/* Learn It */}
+               <div className="flex flex-col items-center">
+                 <img src="/images/learn.svg" alt="Learn" className="w-20 h-20 mb-3" />
+                 <p className="font-bold text-primary text-lg">LEARN IT</p>
+               </div>
+               
+               <div className="text-3xl text-slate-400 hidden md:block">→</div>
+               
+               {/* Document It */}
+               <div className="flex flex-col items-center">
+                 <img src="/images/document.svg" alt="Document" className="w-20 h-20 mb-3" />
+                 <p className="font-bold text-accent text-lg">DOCUMENT IT</p>
+               </div>
+               
+               <div className="text-3xl text-slate-400 hidden md:block">→</div>
+               
+               {/* Teach It */}
+               <div className="flex flex-col items-center">
+                 <img src="/images/teach.jpg" alt="Teach" className="w-20 h-20 mb-3 object-contain" />
+                 <p className="font-bold text-primary text-lg">TEACH IT</p>
+               </div>
+               
+               <div className="text-3xl text-slate-400 hidden md:block">→</div>
+               
+               {/* Get Paid */}
+               <div className="flex flex-col items-center">
+                 <div className="w-20 h-20 mb-3 flex items-center justify-center text-5xl">💰</div>
+                 <p className="font-bold text-accent text-lg">GET PAID</p>
+               </div>
+             </div>
+             <p className="text-sm font-normal text-slate-500">(IF YOU WANT US TO DO IT)</p>
            </div>
         </Reveal>
       </div>
