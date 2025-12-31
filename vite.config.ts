@@ -8,7 +8,7 @@ export default defineConfig(() => {
       server: {
         port: 3000,
         host: '0.0.0.0',
-        allowedHosts: 'all',
+        allowedHosts: ['3000-icy05hrjm3itezj3j337a-94580408.sg1.manus.computer'],
       },
       plugins: [react()],
       resolve: {
