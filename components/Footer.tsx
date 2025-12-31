@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Twitter, Linkedin, Facebook, Instagram } from 'lucide-react';
+// Social media icons are now using custom SVG files in /public/images/
 
 const Footer: React.FC = () => {
   return (
@@ -79,11 +79,27 @@ const Footer: React.FC = () => {
 
             {/* Social Icons - min 44x44px touch targets for accessibility */}
             <div className="flex md:justify-end gap-2">
-               <a href="https://gifteddreamers.substack.com" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Substack" className="flex items-center justify-center w-11 h-11 text-slate-400 hover:text-white transition-colors transform hover:scale-110"><span className="sr-only">Substack</span><svg className="h-6 w-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/></svg></a>
-               <a href="https://linkedin.com/company/gifteddreamers" target="_blank" rel="noopener noreferrer" aria-label="Follow us on LinkedIn" className="flex items-center justify-center w-11 h-11 text-slate-400 hover:text-white transition-colors transform hover:scale-110"><Linkedin className="h-6 w-6" aria-hidden="true" /></a>
-               <a href="https://facebook.com/gifteddreamers" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook" className="flex items-center justify-center w-11 h-11 text-slate-400 hover:text-white transition-colors transform hover:scale-110"><Facebook className="h-6 w-6" aria-hidden="true" /></a>
-               <a href="https://instagram.com/gifted.dreamers" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram" className="flex items-center justify-center w-11 h-11 text-slate-400 hover:text-white transition-colors transform hover:scale-110"><Instagram className="h-6 w-6" aria-hidden="true" /></a>
-               <a href="https://www.x.com/gifteddreamers" target="_blank" rel="noopener noreferrer" aria-label="Follow us on X (Twitter)" className="flex items-center justify-center w-11 h-11 text-slate-400 hover:text-white transition-colors transform hover:scale-110"><Twitter className="h-6 w-6" aria-hidden="true" /></a>
+               <a href="https://gifteddreamers.substack.com" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Substack" className="flex items-center justify-center w-11 h-11 hover:opacity-80 transition-opacity transform hover:scale-110">
+                 <img src={`${import.meta.env.BASE_URL}images/substack.png`} alt="Substack" className="h-6 w-6" />
+               </a>
+               <a href="https://linkedin.com/company/gifteddreamers" target="_blank" rel="noopener noreferrer" aria-label="Follow us on LinkedIn" className="flex items-center justify-center w-11 h-11 hover:opacity-80 transition-opacity transform hover:scale-110">
+                 <img src={`${import.meta.env.BASE_URL}images/linkedin.svg`} alt="LinkedIn" className="h-6 w-6" />
+               </a>
+               <a href="https://facebook.com/gifteddreamers" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook" className="flex items-center justify-center w-11 h-11 hover:opacity-80 transition-opacity transform hover:scale-110">
+                 <img src={`${import.meta.env.BASE_URL}images/facebook.svg`} alt="Facebook" className="h-6 w-6" />
+               </a>
+               <a href="https://instagram.com/gifted.dreamers" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram" className="flex items-center justify-center w-11 h-11 hover:opacity-80 transition-opacity transform hover:scale-110">
+                 <img src={`${import.meta.env.BASE_URL}images/instagram.svg`} alt="Instagram" className="h-6 w-6" />
+               </a>
+               <a href="https://youtube.com/@gifteddreamers" target="_blank" rel="noopener noreferrer" aria-label="Follow us on YouTube" className="flex items-center justify-center w-11 h-11 hover:opacity-80 transition-opacity transform hover:scale-110">
+                 <img src={`${import.meta.env.BASE_URL}images/youtube.svg`} alt="YouTube" className="h-6 w-6" />
+               </a>
+               <a href="http://tiktok.com/@gifteddreamers" target="_blank" rel="noopener noreferrer" aria-label="Follow us on TikTok" className="flex items-center justify-center w-11 h-11 hover:opacity-80 transition-opacity transform hover:scale-110">
+                 <img src={`${import.meta.env.BASE_URL}images/tiktok.svg`} alt="TikTok" className="h-6 w-6" />
+               </a>
+               <a href="https://www.x.com/gifteddreamers" target="_blank" rel="noopener noreferrer" aria-label="Follow us on X (Twitter)" className="flex items-center justify-center w-11 h-11 hover:opacity-80 transition-opacity transform hover:scale-110">
+                 <img src={`${import.meta.env.BASE_URL}images/X.svg`} alt="X (Twitter)" className="h-6 w-6" />
+               </a>
             </div>
           </div>
         </div>
