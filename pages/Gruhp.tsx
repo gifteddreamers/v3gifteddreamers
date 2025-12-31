@@ -6,26 +6,26 @@ import { Heart, ShoppingCart, Home, Zap, Stethoscope, PawPrint } from 'lucide-re
 const Gruhp: React.FC = () => {
   return (
     <div className="pb-20">
-      {/* Hero with warm gradient and urgency */}
-      <div className="bg-gradient-to-br from-[#7C3AED] via-[#9333EA] to-[#6D28D9] text-white py-24 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-accent rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 right-1/4 w-72 h-72 bg-white rounded-full blur-3xl"></div>
+      {/* Hero with community image */}
+      <div className="bg-white py-24 relative overflow-hidden">
+        <div className="absolute inset-0">
+          <img src="/images/gruhp-hero.png" alt="Diverse community" className="w-full h-full object-cover object-center" />
+          <div className="absolute inset-0 bg-gradient-to-t from-white via-white/80 to-white/40"></div>
         </div>
         <Reveal className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <div className="flex justify-center mb-6">
-            <div className="bg-white/20 backdrop-blur p-5 rounded-full animate-pulse">
-              <Heart className="h-12 w-12 text-white" />
+            <div className="bg-primary/10 backdrop-blur p-5 rounded-full animate-pulse">
+              <Heart className="h-12 w-12 text-primary" />
             </div>
           </div>
-          <div className="inline-block px-4 py-1 bg-white/20 backdrop-blur rounded-full text-sm font-medium mb-6">
+          <div className="inline-block px-4 py-1 bg-slate-900/80 backdrop-blur rounded-full text-sm font-medium mb-6 text-white">
             Community Crisis Response
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">GRUHP: Mutual Aid Fund</h1>
-          <p className="text-xl text-purple-100 max-w-3xl mx-auto mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-slate-900">GRUHP: Mutual Aid Fund</h1>
+          <p className="text-xl text-slate-800 max-w-3xl mx-auto mb-4">
             <strong>G</strong>roceries. <strong>R</strong>ent. <strong>U</strong>tilities. <strong>H</strong>ealth Care. <strong>P</strong>ets.
           </p>
-          <p className="text-lg text-purple-200 max-w-2xl mx-auto">
+          <p className="text-lg text-slate-700 max-w-2xl mx-auto">
             When systems fail, we step up. 100% of donations go directly to community members in crisis.
           </p>
         </Reveal>

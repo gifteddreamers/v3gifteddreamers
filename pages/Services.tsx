@@ -56,11 +56,11 @@ const toolLogos: ToolLogo[] = [
 const Services: React.FC = () => {
   return (
     <div className="pb-20">
-      {/* Hero with gradient background */}
+      {/* Hero with image background */}
       <div className="bg-gradient-to-br from-primary via-[#0353A4] to-primary text-white py-24 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-10 left-10 w-72 h-72 bg-accent rounded-full blur-3xl"></div>
-          <div className="absolute bottom-10 right-10 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+        <div className="absolute inset-0">
+          <img src="/images/services-hero.jpg" alt="Technology network" className="w-full h-full object-cover opacity-60" />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-900/80 via-slate-900/60 to-transparent"></div>
         </div>
         <Reveal className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <div className="inline-block px-4 py-1 bg-white/10 backdrop-blur rounded-full text-sm font-medium mb-6">
@@ -143,9 +143,9 @@ const Services: React.FC = () => {
               </div>
             </div>
             <div className="p-8 pt-0 mt-auto">
-              <a href="https://calendly.com/kristinesocall" target="_blank" rel="noopener noreferrer">
-                <Button fullWidth>Book a Perks Session</Button>
-              </a>
+              <Link to="/contact">
+                <Button fullWidth>Contact Us</Button>
+              </Link>
             </div>
           </Reveal>
 
@@ -194,9 +194,9 @@ const Services: React.FC = () => {
               </div>
             </div>
             <div className="p-8 pt-0 mt-auto">
-              <a href="https://calendly.com/kristinesocall" target="_blank" rel="noopener noreferrer">
-                <Button fullWidth>Book a Free Assessment</Button>
-              </a>
+              <Link to="/contact">
+                <Button fullWidth>Contact Us</Button>
+              </Link>
             </div>
           </Reveal>
 

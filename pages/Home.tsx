@@ -60,11 +60,11 @@ const Home: React.FC = () => {
                 Most organizations don't know these programs exist. We do. We activate perks, clean up books, and automate workflows—at prices that make sense.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <a href="https://calendly.com/kristinesocall" target="_blank" rel="noopener noreferrer">
+                <Link to="/contact">
                   <Button size="lg" variant="primary" className="px-10">
                     Hire Us <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
-                </a>
+                </Link>
                 <a href="https://gifteddreamers.substack.com" target="_blank" rel="noopener noreferrer">
                   <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-slate-900 transition-all">
                     Subscribe on Substack
@@ -189,9 +189,9 @@ const Home: React.FC = () => {
             </Reveal>
           </div>
            <Reveal className="mt-16 text-center">
-            <a href="https://calendly.com/kristinesocall" target="_blank" rel="noopener noreferrer">
-              <Button size="lg" className="px-12">Book a Free 30-Minute Call</Button>
-            </a>
+            <Link to="/contact">
+              <Button size="lg" className="px-12">Contact Us</Button>
+            </Link>
           </Reveal>
         </div>
       </section>
@@ -250,9 +250,9 @@ const Home: React.FC = () => {
         <Reveal className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl font-bold text-slate-900 mb-8">Ready to Find Your Free Stuff?</h2>
           <div className="flex flex-col sm:flex-row justify-center gap-4 mb-12">
-             <a href="https://calendly.com/kristinesocall" target="_blank" rel="noopener noreferrer">
-               <Button size="lg" className="px-10">Book a Free Call</Button>
-             </a>
+             <Link to="/contact">
+               <Button size="lg" className="px-10">Contact Us</Button>
+             </Link>
              <a href="https://gifteddreamers.substack.com" target="_blank" rel="noopener noreferrer">
                <Button size="lg" variant="outline" className="px-10">Subscribe on Substack</Button>
              </a>

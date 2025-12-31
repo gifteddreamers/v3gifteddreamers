@@ -53,20 +53,20 @@ const Navbar: React.FC = () => {
           </div>
 
           <div className="hidden md:flex md:items-center">
-             <a href="https://calendly.com/kristinesocall" target="_blank" rel="noopener noreferrer">
+             <Link to="/contact">
                <Button variant="primary" size="sm" className="gap-2 font-bold">
-                 Book a Call
+                 Contact Us
                </Button>
-             </a>
+             </Link>
           </div>
 
           {/* Mobile menu button */}
           <div className="flex items-center md:hidden gap-3">
-             <a href="https://calendly.com/kristinesocall" target="_blank" rel="noopener noreferrer">
+             <Link to="/contact">
                <Button variant="primary" size="sm" className="text-xs px-2 h-8 font-bold">
-                 Book Call
+                 Contact
                </Button>
-             </a>
+             </Link>
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="inline-flex items-center justify-center p-2 rounded-md text-slate-500 hover:text-primary hover:bg-slate-100 focus:outline-none transition-colors"
@@ -97,11 +97,11 @@ const Navbar: React.FC = () => {
               </Link>
             ))}
             <div className="pt-4 pb-2 px-3">
-               <a href="https://calendly.com/kristinesocall" target="_blank" rel="noopener noreferrer">
+               <Link to="/contact" onClick={() => setIsOpen(false)}>
                  <Button fullWidth onClick={() => setIsOpen(false)} className="font-bold">
-                   Book a Free Call <ArrowRight className="ml-2 h-4 w-4" />
+                   Contact Us <ArrowRight className="ml-2 h-4 w-4" />
                  </Button>
-               </a>
+               </Link>
             </div>
           </div>
         </div>
