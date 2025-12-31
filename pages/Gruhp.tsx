@@ -16,7 +16,7 @@ const Gruhp: React.FC = () => {
           backgroundRepeat: 'no-repeat',
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-br from-[#7C3AED]/80 via-[#9333EA]/70 to-[#6D28D9]/80"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-900/40 via-transparent to-slate-900/60"></div>
         <Reveal className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <div className="flex justify-center mb-6">
             <div className="bg-white/20 backdrop-blur p-5 rounded-full animate-pulse">
