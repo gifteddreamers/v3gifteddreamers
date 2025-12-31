@@ -47,18 +47,29 @@ const MatchingGifts: React.FC = () => {
   }, []);
   return (
     <div className="pb-20">
-       <div className="bg-slate-900 text-white py-16">
-        <Reveal className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl font-bold mb-4">Double Your Impact</h1>
-          <p className="text-xl text-slate-300 max-w-3xl mx-auto mb-8">
-            Many employers match charitable donations made by their employees. This means your contribution to Gifted Dreamers could be doubled or even tripled at no extra cost to you.
-          </p>
-          <div className="flex justify-center">
-            {/* @ts-expect-error Givebutter custom element */}
-            <givebutter-widget id="jNybPp"></givebutter-widget>
-          </div>
-        </Reveal>
-      </div>
+      {/* Hero Section */}
+      <section
+        className="relative text-white overflow-hidden min-h-[60vh] flex items-center"
+        style={{
+          backgroundImage: 'url(/images/matching-gifts-hero.jpg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/75 to-slate-900/60"></div>
+        <div className="relative z-10 w-full px-4 sm:px-6 lg:px-16 py-24">
+          <Reveal className="max-w-4xl mx-auto text-center">
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">Double Your Impact</h1>
+            <p className="text-xl md:text-2xl text-slate-100 mb-8 font-light">
+              Many employers match charitable donations made by their employees. This means your contribution to Gifted Dreamers could be doubled or even tripled at no extra cost to you.
+            </p>
+            <div className="flex justify-center">
+              {/* @ts-expect-error Givebutter custom element */}
+              <givebutter-widget id="jNybPp"></givebutter-widget>
+            </div>
+          </Reveal>
+        </div>
+      </section>
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <Reveal className="mb-16 text-center">

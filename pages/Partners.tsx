@@ -30,17 +30,25 @@ const Partners: React.FC = () => {
 
   return (
     <div className="pb-20">
-       <div className="bg-primary text-white py-20 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
-           <img src="/images/handshake-partners.jpg" width="2000" height="1500" className="w-full h-full object-cover" alt="Business partners shaking hands" />
+      {/* Hero Section */}
+      <section
+        className="relative text-white overflow-hidden min-h-[60vh] flex items-center"
+        style={{
+          backgroundImage: 'url(/images/partners-hero.jpg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/75 to-slate-900/60"></div>
+        <div className="relative z-10 w-full px-4 sm:px-6 lg:px-16 py-24">
+          <Reveal className="max-w-4xl mx-auto text-center">
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">Partner With Us</h1>
+            <p className="text-xl md:text-2xl text-slate-100 font-light">
+              Double donations through matching gifts. Generate volunteer grants from employee time. Support community infrastructure that lasts.
+            </p>
+          </Reveal>
         </div>
-        <Reveal className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl font-bold mb-4">Partner With Us</h1>
-          <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-            Double donations through matching gifts. Generate volunteer grants from employee time. Support community infrastructure that lasts.
-          </p>
-        </Reveal>
-      </div>
+      </section>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Matching Gifts */}

@@ -6,14 +6,26 @@ import { Video, MessageCircle, FileText, Calendar } from 'lucide-react';
 const CommonCloud: React.FC = () => {
   return (
     <div className="pb-20">
-       <div className="bg-primary text-white py-20">
-        <Reveal className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl font-bold mb-4">Common Cloud: The Learning Community</h1>
-          <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-            Free knowledge. Real community. No gatekeeping.
-          </p>
-        </Reveal>
-      </div>
+      {/* Hero Section */}
+      <section
+        className="relative text-white overflow-hidden min-h-[60vh] flex items-center bg-slate-900"
+        style={{
+          backgroundImage: 'url(/images/common-cloud-hero.png)',
+          backgroundSize: 'contain',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-900/60 via-transparent to-slate-900/80"></div>
+        <div className="relative z-10 w-full px-4 sm:px-6 lg:px-16 py-24">
+          <Reveal className="max-w-4xl mx-auto text-center">
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">Common Cloud: The Learning Community</h1>
+            <p className="text-xl md:text-2xl text-slate-100 font-light">
+              Free knowledge. Real community. No gatekeeping.
+            </p>
+          </Reveal>
+        </div>
+      </section>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
