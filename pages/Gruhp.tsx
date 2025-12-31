@@ -6,12 +6,17 @@ import { Heart, ShoppingCart, Home, Zap, Stethoscope, PawPrint, ArrowRight, Doll
 const Gruhp: React.FC = () => {
   return (
     <div className="pb-20">
-      {/* Hero with warm gradient and urgency */}
-      <div className="bg-gradient-to-br from-[#7C3AED] via-[#9333EA] to-[#6D28D9] text-white py-24 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-accent rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 right-1/4 w-72 h-72 bg-white rounded-full blur-3xl"></div>
-        </div>
+      {/* Hero with image background and purple overlay */}
+      <section
+        className="relative text-white overflow-hidden min-h-[60vh] flex items-center bg-slate-900"
+        style={{
+          backgroundImage: 'url(/images/gruhp-hero.png)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-br from-[#7C3AED]/80 via-[#9333EA]/70 to-[#6D28D9]/80"></div>
         <Reveal className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <div className="flex justify-center mb-6">
             <div className="bg-white/20 backdrop-blur p-5 rounded-full animate-pulse">
@@ -34,7 +39,7 @@ const Gruhp: React.FC = () => {
             </Button>
           </a>
         </Reveal>
-      </div>
+      </section>
 
       {/* GRUHP Acronym Icons */}
       <div className="bg-purple-50 py-8 border-b border-purple-100">
