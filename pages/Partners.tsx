@@ -1,8 +1,33 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Button from '../components/Button';
 import Reveal from '../components/Reveal';
 
+// Double the Donation plugin configuration
+const DTD_API_KEY = '6HMm5sEaYqgnLZmU';
+
 const Partners: React.FC = () => {
+  // Load Double the Donation plugin
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://doublethedonation.com/api/js/ddplugin.js';
+    script.async = true;
+    script.onload = () => {
+      const pluginNode = document.getElementById('dtd-plugin-partners');
+      if (pluginNode && (window as any).doublethedonation?.plugin?.v2?.load_plugin) {
+        const config = { sections: ['match', 'payroll-giving'] };
+        (window as any).doublethedonation.plugin.v2.load_plugin(pluginNode, DTD_API_KEY, config);
+      }
+    };
+    document.head.appendChild(script);
+
+    return () => {
+      const existingScript = document.querySelector('script[src="https://doublethedonation.com/api/js/ddplugin.js"]');
+      if (existingScript) {
+        existingScript.remove();
+      }
+    };
+  }, []);
+
   return (
     <div className="pb-20">
        <div className="bg-primary text-white py-20 relative overflow-hidden">
@@ -28,8 +53,8 @@ const Partners: React.FC = () => {
                </p>
              </div>
              <div className="md:w-1/2 w-full">
-               <div className="bg-slate-50 h-48 rounded-lg border-2 border-dashed border-slate-300 flex items-center justify-center text-slate-400">
-                 [Double the Donation Widget Embed]
+               <div id="dtd-plugin-partners" className="bg-white rounded-lg border border-slate-200 p-4">
+                 {/* Double the Donation plugin will load here */}
                </div>
              </div>
           </div>

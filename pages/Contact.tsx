@@ -1,6 +1,6 @@
 import React from 'react';
-import { Mail, Phone, MapPin, Calendar } from 'lucide-react';
-import Button from '../components/Button';
+import { Mail, MapPin } from 'lucide-react';
+import ContactForm from '../components/ContactForm';
 import Reveal from '../components/Reveal';
 
 const Contact: React.FC = () => {
@@ -21,23 +21,16 @@ const Contact: React.FC = () => {
       {/* Contact Options */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             
-            {/* Book a Call */}
+            {/* Contact Form */}
             <Reveal>
-              <div className="bg-white p-8 rounded-xl shadow-lg border border-slate-100 hover:shadow-xl transition-shadow">
-                <div className="flex items-center justify-center w-16 h-16 bg-primary/10 text-primary rounded-full mb-6">
-                  <Calendar className="h-8 w-8" />
-                </div>
-                <h3 className="text-2xl font-bold text-slate-900 mb-4">Schedule a Call</h3>
-                <p className="text-slate-600 mb-6">
-                  Book a free 30-minute consultation to discuss your nonprofit's needs and how we can help.
-                </p>
-                <a href="https://calendly.com/kristinesocall" target="_blank" rel="noopener noreferrer">
-                  <Button variant="primary" fullWidth>
-                    Book on Calendly
-                  </Button>
-                </a>
+              <div className="lg:col-span-2">
+                <ContactForm 
+                  formType="contact"
+                  title="Send Us a Message"
+                  subtitle="Fill out the form below and we'll get back to you within 24 hours."
+                />
               </div>
             </Reveal>
 

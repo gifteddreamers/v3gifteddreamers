@@ -62,7 +62,7 @@ const Footer: React.FC = () => {
                   height="32"
                   className="w-8 h-8 object-contain"
                 />
-                <span className="font-bold tracking-tight text-lg"><span className="text-accent">Gifted</span> <span className="text-primary">Dreamers</span></span>
+                <span className="font-bold tracking-tight text-lg"><span className="text-primary">Gifted</span> <span className="text-accent">Dreamers</span></span>
               </div>
               <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm mb-4">
                 <Link to="/about" className="hover:text-white transition-colors">About</Link>

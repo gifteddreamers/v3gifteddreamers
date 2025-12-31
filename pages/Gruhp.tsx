@@ -25,14 +25,9 @@ const Gruhp: React.FC = () => {
           <p className="text-xl text-purple-100 max-w-3xl mx-auto mb-4">
             <strong>G</strong>roceries. <strong>R</strong>ent. <strong>U</strong>tilities. <strong>H</strong>ealth Care. <strong>P</strong>ets.
           </p>
-          <p className="text-lg text-purple-200 max-w-2xl mx-auto mb-10">
+          <p className="text-lg text-purple-200 max-w-2xl mx-auto">
             When systems fail, we step up. 100% of donations go directly to community members in crisis.
           </p>
-          <a href="https://givebutter.com/GRUHP" target="_blank" rel="noopener noreferrer">
-            <Button variant="primary" size="lg" className="bg-white text-purple-700 hover:bg-purple-50 shadow-xl">
-              Donate Now via Givebutter
-            </Button>
-          </a>
         </Reveal>
       </div>
 
@@ -97,16 +92,18 @@ const Gruhp: React.FC = () => {
           </Reveal>
         </div>
 
-        {/* Givebutter Widget */}
+        {/* Givebutter Widget - Centered */}
         <Reveal className="mt-20" delay={300}>
-          <div className="bg-slate-50 rounded-xl p-8">
-            {/* @ts-ignore - Givebutter custom element */}
-            <givebutter-widget id="pnqxbg"></givebutter-widget>
-          </div>
-          <div className="text-center mt-8 text-slate-500 text-sm">
-            <p>Gifted Dreamers, Inc. is a 501(c)(3) nonprofit.</p>
-            <p>EIN: 39-3863796</p>
-            <p>All donations are tax-deductible.</p>
+          <div className="max-w-3xl mx-auto">
+            <div className="bg-slate-50 rounded-xl p-8">
+              {/* @ts-ignore - Givebutter custom element */}
+              <givebutter-widget id="pnqxbg"></givebutter-widget>
+            </div>
+            <div className="text-center mt-8 text-slate-500 text-sm">
+              <p>Gifted Dreamers, Inc. is a 501(c)(3) nonprofit.</p>
+              <p>EIN: 39-3863796</p>
+              <p>All donations are tax-deductible.</p>
+            </div>
           </div>
         </Reveal>
       </div>

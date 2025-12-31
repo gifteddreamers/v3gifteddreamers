@@ -31,7 +31,7 @@ const Navbar: React.FC = () => {
                 height="40"
                 className="w-10 h-10 object-contain transition-transform group-hover:scale-110"
               />
-              <span className="text-xl font-bold tracking-tight"><span className="text-accent">Gifted</span> <span className="text-primary">Dreamers</span></span>
+              <span className="text-xl font-bold tracking-tight"><span className="text-primary">Gifted</span> <span className="text-accent">Dreamers</span></span>
             </Link>
           </div>
 
