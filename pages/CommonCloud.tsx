@@ -92,7 +92,7 @@ const CommonCloud: React.FC = () => {
                
                {/* Get Paid */}
                <div className="flex flex-col items-center">
-                 <div className="w-20 h-20 mb-3 flex items-center justify-center text-5xl">💰</div>
+                 <img src="/images/payment.svg" alt="Get Paid" className="w-20 h-20 mb-3" />
                  <p className="font-bold text-accent text-lg">GET PAID</p>
                </div>
              </div>
