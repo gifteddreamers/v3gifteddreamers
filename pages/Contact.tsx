@@ -2,6 +2,7 @@ import React from 'react';
 import { Mail, MapPin } from 'lucide-react';
 import ContactForm from '../components/ContactForm';
 import Reveal from '../components/Reveal';
+import Button from '../components/Button';
 
 const Contact: React.FC = () => {
   return (
