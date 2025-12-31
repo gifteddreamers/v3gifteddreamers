@@ -1,52 +1,141 @@
 {
   "mcpServers": {
     "gitlab": {
-      "command": "/bin/sh",
-      "args": ["-c", "GITLAB_PERSONAL_ACCESS_TOKEN=$(/opt/homebrew/bin/op read 'op://Engineering/dq63dtcdajtwqtigg65nytkthu/credential' --account gifteddreamers) /opt/homebrew/bin/npx -y @modelcontextprotocol/server-gitlab"],
-      "env": {
-        "GITLAB_API_URL": "https://gitlab.com/api/v4"
-      }
-    },
-    "github": {
-      "command": "/bin/sh",
-      "args": ["-c", "GITHUB_PERSONAL_ACCESS_TOKEN=$(/opt/homebrew/bin/op read 'op://Engineering/yvz27j55q3jfpigvbvnilrjzmm/credential' --account gifteddreamers) /opt/homebrew/bin/npx -y @modelcontextprotocol/server-github"]
+      "command": "/opt/homebrew/bin/npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "https://gitlab.com/api/v4/mcp"
+      ]
     },
     "slack": {
       "command": "/bin/sh",
-      "args": ["-c", "SLACK_BOT_TOKEN=$(/opt/homebrew/bin/op read 'op://Engineering/xxxeehxoyahmdykyluqmg6q3xy/credential' --account gifteddreamers) SLACK_TEAM_ID=T09HK3F2256 /opt/homebrew/bin/npx -y @modelcontextprotocol/server-slack"]
+      "args": [
+        "-c",
+        "SLACK_BOT_TOKEN=$(/opt/homebrew/bin/op read 'op://Engineering/xxxeehxoyahmdykyluqmg6q3xy/credential' --account gifteddreamers) SLACK_TEAM_ID=T09HK3F2256 /opt/homebrew/bin/npx -y @modelcontextprotocol/server-slack"
+      ]
     },
     "notion": {
-      "command": "/bin/sh",
-      "args": ["-c", "NOTION_API_KEY=$(/opt/homebrew/bin/op read 'op://Engineering/xwftvx6nslayxic6xyvvd5g54i/credential' --account gifteddreamers) /opt/homebrew/bin/npx -y @notionhq/notion-mcp-server"]
+      "command": "/opt/homebrew/bin/npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "https://mcp.notion.com/mcp"
+      ]
     },
     "n8n": {
       "command": "/bin/sh",
-      "args": ["-c", "N8N_API_KEY=$(/opt/homebrew/bin/op read 'op://Engineering/6amq5ivuilems7ztihhmmywj6u/credential' --account gifteddreamers) /opt/homebrew/bin/npx -y n8n-mcp"],
+      "args": [
+        "-c",
+        "N8N_API_KEY=$(/opt/homebrew/bin/op read 'op://Engineering/6amq5ivuilems7ztihhmmywj6u/credential' --account gifteddreamers) /opt/homebrew/bin/npx -y n8n-mcp"
+      ],
       "env": {
         "N8N_API_URL": "https://n8n.cloudpublica.org/",
         "MCP_MODE": "stdio",
         "LOG_LEVEL": "error"
       }
     },
-    "perplexity": {
-      "command": "/bin/sh",
-      "args": ["-c", "PERPLEXITY_API_KEY=$(/opt/homebrew/bin/op read 'op://Engineering/r7hrp4rx7tft3rbae2mfjpdm5e/credential' --account gifteddreamers) /opt/homebrew/bin/npx -y perplexity-mcp"]
-    },
     "linear": {
       "command": "/bin/sh",
-      "args": ["-c", "LINEAR_API_KEY=$(/opt/homebrew/bin/op read 'op://Engineering/mdgw6y5mkp53z5jryepobfpmvi/credential' --account gifteddreamers) /opt/homebrew/bin/npx -y @mseep/linear-mcp"]
+      "args": [
+        "-c",
+        "/opt/homebrew/bin/npx -y mcp-remote https://mcp.linear.app/mcp --header \"Authorization: Bearer $(/opt/homebrew/bin/op read 'op://Engineering/mdgw6y5mkp53z5jryepobfpmvi/credential' --account gifteddreamers)\""
+      ]
     },
     "google-maps": {
       "command": "/bin/sh",
-      "args": ["-c", "GOOGLE_MAPS_API_KEY=$(/opt/homebrew/bin/op read 'op://Engineering/j2qoyeig2uki5iqqavverfidlu/credential' --account gifteddreamers) docker run -i --rm -e GOOGLE_MAPS_API_KEY mcp/google-maps"]
+      "args": [
+        "-c",
+        "GOOGLE_MAPS_API_KEY=$(/opt/homebrew/bin/op read 'op://Engineering/j2qoyeig2uki5iqqavverfidlu/credential' --account gifteddreamers) docker run -i --rm -e GOOGLE_MAPS_API_KEY mcp/google-maps"
+      ]
     },
     "n8n-instance": {
       "command": "/bin/sh",
-      "args": ["-c", "/opt/homebrew/bin/npx -y mcp-remote https://n8n.cloudpublica.org/mcp-server/http --header \"Authorization: Bearer $(/opt/homebrew/bin/op read 'op://Engineering/luooictav42nw563febxtes7my/credential' --account gifteddreamers)\""]
+      "args": [
+        "-c",
+        "/opt/homebrew/bin/npx -y mcp-remote https://n8n.cloudpublica.org/mcp-server/http --header \"Authorization: Bearer $(/opt/homebrew/bin/op read 'op://Engineering/luooictav42nw563febxtes7my/credential' --account gifteddreamers)\""
+      ]
     },
     "MCP_DOCKER": {
       "command": "docker",
-      "args": ["mcp", "gateway", "run"]
+      "args": [
+        "mcp",
+        "gateway",
+        "run"
+      ]
+    },
+    "awslabs.aws-api-mcp-server": {
+      "command": "/opt/homebrew/bin/uvx",
+      "args": [
+        "awslabs.aws-api-mcp-server@latest"
+      ],
+      "env": {
+        "AWS_PROFILE": "default",
+        "AWS_REGION": "us-east-1"
+      }
+    },
+    "awslabs.aws-documentation-mcp-server": {
+      "command": "/opt/homebrew/bin/uvx",
+      "args": [
+        "awslabs.aws-documentation-mcp-server@latest"
+      ],
+      "env": {
+        "FASTMCP_LOG_LEVEL": "ERROR"
+      }
+    },
+    "awslabs.cdk-mcp-server": {
+      "command": "/opt/homebrew/bin/uvx",
+      "args": [
+        "awslabs.cdk-mcp-server@latest"
+      ],
+      "env": {
+        "FASTMCP_LOG_LEVEL": "ERROR"
+      }
+    },
+    "awslabs.cloudwatch-mcp-server": {
+      "command": "/opt/homebrew/bin/uvx",
+      "args": [
+        "awslabs.cloudwatch-mcp-server@latest"
+      ],
+      "env": {
+        "AWS_PROFILE": "default",
+        "AWS_REGION": "us-east-1",
+        "FASTMCP_LOG_LEVEL": "ERROR"
+      }
+    },
+    "awslabs.cost-explorer-mcp-server": {
+      "command": "/opt/homebrew/bin/uvx",
+      "args": [
+        "awslabs.cost-explorer-mcp-server@latest"
+      ],
+      "env": {
+        "AWS_PROFILE": "default",
+        "AWS_REGION": "us-east-1",
+        "FASTMCP_LOG_LEVEL": "ERROR"
+      }
+    },
+    "airtable": {
+      "command": "/bin/sh",
+      "args": [
+        "-c",
+        "AIRTABLE_API_KEY=$(/opt/homebrew/bin/op read 'op://Engineering/jgwgyimza4rxuv65vgdem3qncm/credential' --account gifteddreamers) /opt/homebrew/bin/npx -y airtable-mcp-server"
+      ]
+    },
+    "icons8mcp": {
+      "command": "/opt/homebrew/bin/npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "https://mcp.icons8.com/mcp/"
+      ]
+    },
+    "webflow": {
+      "command": "/opt/homebrew/bin/npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "https://mcp.webflow.com/sse"
+      ]
     }
   }
 }

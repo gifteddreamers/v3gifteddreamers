@@ -6,7 +6,7 @@ import Reveal from '../components/Reveal';
 import LogoCloud from '../components/LogoCloud';
 
 // Images from public folder - hardcoded paths for reliability
-const heroImage = '/Austin_skyline.jpeg';
+const heroImage = '/Austin_skyline_tech.png';
 const profileImage = '/kristine-socall.jpg';
 
 const Home: React.FC = () => {

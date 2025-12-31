@@ -1,33 +1,38 @@
 import React from 'react';
 import Button from '../components/Button';
 import Reveal from '../components/Reveal';
-import { Heart, ShoppingCart, Home, Zap, Stethoscope, PawPrint } from 'lucide-react';
+import { Heart, ShoppingCart, Home, Zap, Stethoscope, PawPrint, ArrowRight, DollarSign, BookOpen, Database, Globe } from 'lucide-react';
 
 const Gruhp: React.FC = () => {
   return (
     <div className="pb-20">
-      {/* Hero with community image */}
-      <div className="bg-white py-24 relative overflow-hidden">
-        <div className="absolute inset-0">
-          <img src="/images/gruhp-hero.png" alt="Diverse community" className="w-full h-full object-cover object-center" />
-          <div className="absolute inset-0 bg-gradient-to-t from-white via-white/80 to-white/40"></div>
+      {/* Hero with warm gradient and urgency */}
+      <div className="bg-gradient-to-br from-[#7C3AED] via-[#9333EA] to-[#6D28D9] text-white py-24 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-accent rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 right-1/4 w-72 h-72 bg-white rounded-full blur-3xl"></div>
         </div>
         <Reveal className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <div className="flex justify-center mb-6">
-            <div className="bg-primary/10 backdrop-blur p-5 rounded-full animate-pulse">
-              <Heart className="h-12 w-12 text-primary" />
+            <div className="bg-white/20 backdrop-blur p-5 rounded-full animate-pulse">
+              <Heart className="h-12 w-12 text-white" />
             </div>
           </div>
-          <div className="inline-block px-4 py-1 bg-slate-900/80 backdrop-blur rounded-full text-sm font-medium mb-6 text-white">
+          <div className="inline-block px-4 py-1 bg-white/20 backdrop-blur rounded-full text-sm font-medium mb-6">
             Community Crisis Response
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-slate-900">GRUHP: Mutual Aid Fund</h1>
-          <p className="text-xl text-slate-800 max-w-3xl mx-auto mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">GRUHP: Mutual Aid Fund</h1>
+          <p className="text-xl text-purple-100 max-w-3xl mx-auto mb-4">
             <strong>G</strong>roceries. <strong>R</strong>ent. <strong>U</strong>tilities. <strong>H</strong>ealth Care. <strong>P</strong>ets.
           </p>
-          <p className="text-lg text-slate-700 max-w-2xl mx-auto">
+          <p className="text-lg text-purple-200 max-w-2xl mx-auto mb-10">
             When systems fail, we step up. 100% of donations go directly to community members in crisis.
           </p>
+          <a href="https://givebutter.com/GRUHP" target="_blank" rel="noopener noreferrer">
+            <Button variant="primary" size="lg" className="bg-white text-purple-700 hover:bg-purple-50 shadow-xl">
+              Donate Now via Givebutter
+            </Button>
+          </a>
         </Reveal>
       </div>
 
@@ -83,8 +88,44 @@ const Gruhp: React.FC = () => {
             <p className="text-slate-600 mb-6">
               We're building a real-time transparency dashboard:
             </p>
-            <div className="flex items-center gap-2 text-sm font-mono bg-slate-100 p-4 rounded-md mb-6 overflow-x-auto">
-              <span>Donations</span> <span>→</span> <span>QuickBooks</span> <span>→</span> <span>Airtable</span> <span>→</span> <span>Public Site</span>
+            {/* Visual Transparency Flow */}
+            <div className="bg-gradient-to-r from-purple-50 to-blue-50 p-6 rounded-xl mb-6">
+              <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4">
+                {/* Donations */}
+                <div className="flex flex-col items-center">
+                  <div className="w-14 h-14 bg-green-500 rounded-xl flex items-center justify-center shadow-lg">
+                    <DollarSign className="h-7 w-7 text-white" />
+                  </div>
+                  <span className="text-xs font-semibold text-slate-700 mt-2">Donations</span>
+                </div>
+                <ArrowRight className="h-5 w-5 text-purple-400 hidden sm:block" />
+                <div className="text-purple-400 sm:hidden">↓</div>
+                {/* QuickBooks */}
+                <div className="flex flex-col items-center">
+                  <div className="w-14 h-14 bg-[#2CA01C] rounded-xl flex items-center justify-center shadow-lg">
+                    <BookOpen className="h-7 w-7 text-white" />
+                  </div>
+                  <span className="text-xs font-semibold text-slate-700 mt-2">QuickBooks</span>
+                </div>
+                <ArrowRight className="h-5 w-5 text-purple-400 hidden sm:block" />
+                <div className="text-purple-400 sm:hidden">↓</div>
+                {/* Airtable */}
+                <div className="flex flex-col items-center">
+                  <div className="w-14 h-14 bg-[#18BFFF] rounded-xl flex items-center justify-center shadow-lg">
+                    <Database className="h-7 w-7 text-white" />
+                  </div>
+                  <span className="text-xs font-semibold text-slate-700 mt-2">Airtable</span>
+                </div>
+                <ArrowRight className="h-5 w-5 text-purple-400 hidden sm:block" />
+                <div className="text-purple-400 sm:hidden">↓</div>
+                {/* Public Site */}
+                <div className="flex flex-col items-center">
+                  <div className="w-14 h-14 bg-purple-600 rounded-xl flex items-center justify-center shadow-lg">
+                    <Globe className="h-7 w-7 text-white" />
+                  </div>
+                  <span className="text-xs font-semibold text-slate-700 mt-2">Public Site</span>
+                </div>
+              </div>
             </div>
             <p className="font-bold text-slate-900">
               100% of GRUHP donations go to recipients. Zero admin fees. Zero overhead.
@@ -92,18 +133,27 @@ const Gruhp: React.FC = () => {
           </Reveal>
         </div>
 
-        {/* Givebutter Widget - Centered */}
+        {/* Givebutter Widget */}
         <Reveal className="mt-20" delay={300}>
-          <div className="max-w-3xl mx-auto">
-            <div className="bg-slate-50 rounded-xl p-8">
-              {/* @ts-ignore - Givebutter custom element */}
-              <givebutter-widget id="pnqxbg"></givebutter-widget>
-            </div>
-            <div className="text-center mt-8 text-slate-500 text-sm">
-              <p>Gifted Dreamers, Inc. is a 501(c)(3) nonprofit.</p>
-              <p>EIN: 39-3863796</p>
-              <p>All donations are tax-deductible.</p>
-            </div>
+          <div className="bg-slate-50 rounded-xl p-8">
+            {/* @ts-ignore - Givebutter custom element */}
+            <givebutter-widget id="pnqxbg"></givebutter-widget>
+          </div>
+
+          {/* Centered Donate Button */}
+          <div className="flex justify-center mt-10">
+            <a href="https://givebutter.com/GRUHP" target="_blank" rel="noopener noreferrer">
+              <Button variant="primary" size="lg" className="bg-purple-600 hover:bg-purple-700 text-white shadow-xl px-10">
+                <Heart className="h-5 w-5 mr-2" />
+                Donate Now
+              </Button>
+            </a>
+          </div>
+
+          <div className="text-center mt-8 text-slate-500 text-sm">
+            <p>Gifted Dreamers, Inc. is a 501(c)(3) nonprofit.</p>
+            <p>EIN: 39-3863796</p>
+            <p>All donations are tax-deductible.</p>
           </div>
         </Reveal>
       </div>
