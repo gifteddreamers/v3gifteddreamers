@@ -37,8 +37,8 @@ const ContactForm: React.FC<ContactFormProps> = ({
     setErrorMessage('');
 
     try {
-      // n8n webhook URL - will be configured with environment variable
-      const webhookUrl = import.meta.env.VITE_N8N_WEBHOOK_URL || 'https://your-n8n-instance.com/webhook/leads';
+      // n8n webhook URL
+      const webhookUrl = import.meta.env.VITE_N8N_WEBHOOK_URL || 'https://n8n.cloudpublica.org/webhook/leads';
       
       const response = await fetch(webhookUrl, {
         method: 'POST',
