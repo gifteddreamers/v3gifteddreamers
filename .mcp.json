@@ -8,6 +8,13 @@
         "https://gitlab.com/api/v4/mcp"
       ]
     },
+    "github": {
+      "command": "/bin/sh",
+      "args": [
+        "-c",
+        "GITHUB_PERSONAL_ACCESS_TOKEN=$(/opt/homebrew/bin/op read 'op://Engineering/3wawtjaiumpz54thmqqsfvqafq/credential' --account gifteddreamers) /opt/homebrew/bin/npx -y @modelcontextprotocol/server-github"
+      ]
+    },
     "slack": {
       "command": "/bin/sh",
       "args": [

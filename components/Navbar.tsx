@@ -25,7 +25,7 @@ const Navbar: React.FC = () => {
           <div className="flex items-center">
             <Link to="/" className="flex-shrink-0 flex items-center gap-3 group">
               <img
-                src={`${import.meta.env.BASE_URL}logo-new.png`}
+                src={`${import.meta.env.BASE_URL}logo-200.png`}
                 alt="Gifted Dreamers Logo"
                 width="40"
                 height="40"
