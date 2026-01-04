@@ -131,11 +131,16 @@ const Volunteer: React.FC = () => {
   return (
     <div className="pb-20">
        {/* Enhanced Hero with Impact Stats */}
-       <div className="bg-gradient-to-br from-primary via-[#0353A4] to-primary text-white py-24 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
-          <img src="/images/volunteers-collaborating.jpg" width="2000" height="1125" className="w-full h-full object-cover" alt="Volunteers collaborating on projects" />
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-t from-primary/90 to-transparent"></div>
+       <section
+        className="relative text-white overflow-hidden min-h-[60vh] flex items-center bg-slate-900"
+        style={{
+          backgroundImage: 'url(/images/volunteer-hero.jpg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-900/50 via-transparent to-slate-900/70"></div>
         <Reveal className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="inline-block px-4 py-1 bg-accent/20 backdrop-blur rounded-full text-sm font-medium text-accent mb-6">
             Corporate Volunteer Programs
@@ -161,7 +166,7 @@ const Volunteer: React.FC = () => {
             </div>
           </div>
         </Reveal>
-      </div>
+      </section>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Volunteer Grants Info */}
