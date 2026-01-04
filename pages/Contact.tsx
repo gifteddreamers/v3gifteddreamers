@@ -13,7 +13,7 @@ const Contact: React.FC = () => {
           <Reveal>
             <h1 className="text-4xl md:text-5xl font-bold mb-6">Get in Touch</h1>
             <p className="text-xl text-slate-100 max-w-3xl">
-              Ready to unlock free enterprise tools for your nonprofit? Let's talk about how we can help.
+              Ready to unlock free & discounted enterprise tools for your nonprofit? Let's talk about how we can help.
             </p>
           </Reveal>
         </div>
@@ -94,7 +94,7 @@ const Contact: React.FC = () => {
                   <div className="text-4xl font-bold text-primary mb-2">3</div>
                   <h3 className="text-xl font-bold text-slate-900 mb-2">Implementation</h3>
                   <p className="text-slate-600">
-                    We'll help you apply, set up, and maintain access to your free enterprise tools.
+                    We'll help you apply, set up, and maintain access to your free & discounted enterprise tools.
                   </p>
                 </div>
               </div>

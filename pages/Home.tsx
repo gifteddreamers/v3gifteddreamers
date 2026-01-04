@@ -32,7 +32,7 @@ const Home: React.FC = () => {
           <Reveal className="max-w-2xl lg:max-w-[55%]">
             <div>
               <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6 leading-tight">
-                <span className="text-white">$380K in Free Tools.</span><br/>
+                <span className="text-white">$380K in Free & Discounted Tools.</span><br/>
                 <span className="text-accent">We'll Help You Get Them.</span>
               </h1>
               <p className="text-xl md:text-2xl text-slate-100 mb-6 font-light">
@@ -117,7 +117,7 @@ const Home: React.FC = () => {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Reveal className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-slate-900 mb-4">We Fix Messes. We Find Free Stuff.</h2>
+            <h2 className="text-3xl font-bold text-slate-900 mb-4">We Fix Messes. We Find Perks.</h2>
           </Reveal>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20">
             {/* Tech Perks */}
@@ -230,7 +230,7 @@ const Home: React.FC = () => {
       {/* Final CTA */}
       <section className="py-24 bg-slate-50 border-t border-slate-200">
         <Reveal className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold text-slate-900 mb-8">Ready to Find Your Free Stuff?</h2>
+          <h2 className="text-4xl font-bold text-slate-900 mb-8">Ready to Find Your Perks?</h2>
           <div className="flex flex-col sm:flex-row justify-center gap-4 mb-12">
              <Link to="/contact">
                <Button size="lg" className="px-10">Contact Us</Button>

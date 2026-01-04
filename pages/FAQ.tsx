@@ -5,7 +5,7 @@ import { Search } from 'lucide-react';
 import { FAQItem } from '../types';
 
 const faqData: FAQItem[] = [
-  { category: 'Common Cloud', question: 'What is Gifted Dreamers?', answer: 'Gifted Dreamers is a 501(c)(3) nonprofit that helps small nonprofits and entrepreneurs access $380K+ in free enterprise tools.' },
+  { category: 'Common Cloud', question: 'What is Gifted Dreamers?', answer: 'Gifted Dreamers is a 501(c)(3) nonprofit that helps small nonprofits and entrepreneurs access $380K+ in free & discounted enterprise tools.' },
   { category: 'Donations', question: 'Is my donation tax-deductible?', answer: 'Yes! Gifted Dreamers is a 501(c)(3) nonprofit organization (EIN #39-3863796).' },
   { category: 'Matching Gifts', question: 'What are matching gifts?', answer: 'Matching gifts are charitable donations that employers match for their employees.' },
   { category: 'Volunteering', question: 'What are volunteer grants?', answer: 'Corporate giving programs where companies donate to nonprofits based on employee volunteer hours.' },

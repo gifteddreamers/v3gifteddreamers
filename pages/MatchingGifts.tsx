@@ -14,6 +14,12 @@ const MatchingGifts: React.FC = () => {
     const dtdScript = document.createElement('script');
     dtdScript.src = 'https://doublethedonation.com/api/js/ddplugin.js';
     dtdScript.async = true;
+    dtdScript.onload = () => {
+      // Initialize the plugin after script loads
+      if ((window as any).DD && (window as any).DD.plugin) {
+        (window as any).DD.plugin.init();
+      }
+    };
     document.head.appendChild(dtdScript);
 
     // Load Givebutter elements script (required for widget)

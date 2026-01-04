@@ -22,7 +22,7 @@ const About: React.FC = () => {
               The Accountant Who Got Tired of Watching Nonprofits Struggle
             </h1>
             <p className="text-xl md:text-2xl text-slate-100 font-light">
-              25 years of cleaning up financial messes. Now I'm teaching everyone how to access the same tools Fortune 500 companies use—for free.
+              25 years of cleaning up financial messes. Now I'm teaching everyone how to access the same tools Fortune 500 companies use—for free or at deep discounts.
             </p>
           </Reveal>
         </div>
@@ -54,7 +54,7 @@ const About: React.FC = () => {
               350+ bank accounts. 15 currencies. $2.8B in client assets. I've seen every financial disaster you can imagine. And I've fixed most of them.
             </p>
             <p className="mb-10">
-              Now I run Gifted Dreamers—a nonprofit that helps other nonprofits and entrepreneurs access $380K+ in free enterprise tools. Because I got tired of watching small organizations struggle with problems that shouldn't exist.
+              Now I run Gifted Dreamers—a nonprofit that helps other nonprofits and entrepreneurs access $380K+ in free & discounted enterprise tools. Because I got tired of watching small organizations struggle with problems that shouldn't exist.
             </p>
           </Reveal>
 

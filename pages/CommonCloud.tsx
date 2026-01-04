@@ -62,7 +62,7 @@ const CommonCloud: React.FC = () => {
         <Reveal className="max-w-5xl mx-auto text-center mb-16">
            <h2 className="text-2xl font-bold text-slate-900 mb-6">Why We Give This Away</h2>
            <p className="text-lg text-slate-600 mb-6">
-             Most knowledge is locked behind $500/month coaching programs or enterprise software training. We think that's backwards. The playbooks exist. The tools are free. We just share them.
+             Most knowledge is locked behind $500/month coaching programs or enterprise software training. We think that's backwards. The playbooks exist. The tools are free or discounted. We just share them.
            </p>
            <div className="bg-slate-50 p-8 rounded-xl">
              <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-8 mb-6">

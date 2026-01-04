@@ -95,7 +95,7 @@ const Gruhp: React.FC = () => {
         {/* Givebutter Widget - Centered */}
         <Reveal className="mt-20" delay={300}>
           <div className="max-w-3xl mx-auto">
-            <div className="bg-slate-50 rounded-xl p-8">
+            <div className="bg-slate-50 rounded-xl p-8 flex justify-center">
               {/* @ts-ignore - Givebutter custom element */}
               <givebutter-widget id="pnqxbg"></givebutter-widget>
             </div>
