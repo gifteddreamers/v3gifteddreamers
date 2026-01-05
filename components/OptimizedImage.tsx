@@ -73,7 +73,32 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
     );
   }
 
-  // If WebP is available, use picture element with source
+  // If WebP is available and this is a priority image, use direct WebP for fastest LCP
+  // For priority images, skip picture element to avoid any overhead
+  if (isWebP && isPriority) {
+    return (
+      <img
+        src={webpSrc}
+        alt={alt}
+        className={className}
+        width={width}
+        height={height}
+        loading={imageLoading}
+        fetchPriority={fetchPriority}
+        decoding="sync"
+        style={style}
+        onError={(e) => {
+          // Fallback to JPG if WebP fails to load
+          const target = e.target as HTMLImageElement;
+          if (target.src !== fallbackSrc) {
+            target.src = fallbackSrc;
+          }
+        }}
+      />
+    );
+  }
+
+  // If WebP is available (non-priority), use picture element with source
   if (isWebP) {
     return (
       <picture>
