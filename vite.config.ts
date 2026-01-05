@@ -37,7 +37,7 @@ export default defineConfig(({ mode }) => {
         rollupOptions: {
           output: {
             manualChunks: (id) => {
-              // Separate vendor chunks
+              // Separate vendor chunks for better caching
               if (id.includes('node_modules')) {
                 if (id.includes('react') || id.includes('react-dom')) {
                   return 'vendor-react';
@@ -49,6 +49,10 @@ export default defineConfig(({ mode }) => {
                   return 'vendor-icons';
                 }
                 return 'vendor';
+              }
+              // Keep critical CSS with main bundle for faster initial render
+              if (id.includes('index.css')) {
+                return undefined; // Inline with main bundle
               }
             },
             // Optimize chunk file names
