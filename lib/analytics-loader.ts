@@ -125,17 +125,23 @@ export function loadAnalytics() {
 
 /**
  * Load analytics after user interaction (scroll, click, touch)
- * This provides a fallback if consent banner isn't shown
+ * ONLY if user has given consent - prevents third-party cookies without consent
  */
 export function loadAnalyticsOnInteraction() {
-  if (hasConsent() || consentGiven) {
+  // Only load if consent was given - don't load automatically
+  if (!hasConsent()) {
+    return;
+  }
+
+  if (consentGiven) {
     loadAnalytics();
     return;
   }
 
+  // Load after user interaction (only if consent given)
   let interacted = false;
   const loadOnInteraction = () => {
-    if (!interacted) {
+    if (!interacted && hasConsent()) {
       interacted = true;
       loadAnalytics();
       // Remove listeners after first interaction
@@ -144,13 +150,6 @@ export function loadAnalyticsOnInteraction() {
       window.removeEventListener('touchstart', loadOnInteraction, { capture: true } as any);
     }
   };
-
-  // Load after 2 seconds OR on first user interaction
-  setTimeout(() => {
-    if (!hasConsent() && !interacted) {
-      loadAnalytics();
-    }
-  }, 2000);
 
   window.addEventListener('scroll', loadOnInteraction, { once: true, passive: true, capture: true });
   window.addEventListener('click', loadOnInteraction, { once: true, capture: true });

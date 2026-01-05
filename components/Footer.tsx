@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-slate-900 text-slate-300 min-h-[400px]">
+    <footer className="bg-slate-900 text-slate-300" style={{ minHeight: '450px' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           
@@ -75,30 +75,31 @@ const Footer: React.FC = () => {
             </div>
 
             {/* Social Icons - min 44x44px touch targets for accessibility */}
-            <div className="flex md:justify-end gap-2">
+            {/* Fixed height to prevent layout shift - 9 icons × 44px = 396px min */}
+            <div className="flex md:justify-end gap-2 min-h-[44px] flex-wrap">
                <a href="https://gifteddreamers.substack.com" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Substack" className="flex items-center justify-center w-11 h-11 hover:opacity-80 transition-opacity transform hover:scale-110">
-                 <img src={`${import.meta.env.BASE_URL}images/substack.png`} alt="Substack" width="24" height="24" className="h-6 w-6 object-contain" />
+                 <img src={`${import.meta.env.BASE_URL}images/substack.png`} alt="Substack" width="24" height="24" className="h-6 w-6 object-contain" loading="lazy" />
                </a>
                <a href="https://linkedin.com/company/gifteddreamers" target="_blank" rel="noopener noreferrer" aria-label="Follow us on LinkedIn" className="flex items-center justify-center w-11 h-11 hover:opacity-80 transition-opacity transform hover:scale-110">
-                 <img src={`${import.meta.env.BASE_URL}images/linkedin.svg`} alt="LinkedIn" width="24" height="24" className="h-6 w-6" />
+                 <img src={`${import.meta.env.BASE_URL}images/linkedin.svg`} alt="LinkedIn" width="24" height="24" className="h-6 w-6" loading="lazy" />
                </a>
                <a href="https://facebook.com/gifteddreamers" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook" className="flex items-center justify-center w-11 h-11 hover:opacity-80 transition-opacity transform hover:scale-110">
-                 <img src={`${import.meta.env.BASE_URL}images/facebook.svg`} alt="Facebook" width="24" height="24" className="h-6 w-6" />
+                 <img src={`${import.meta.env.BASE_URL}images/facebook.svg`} alt="Facebook" width="24" height="24" className="h-6 w-6" loading="lazy" />
                </a>
                <a href="https://instagram.com/gifted.dreamers" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram" className="flex items-center justify-center w-11 h-11 hover:opacity-80 transition-opacity transform hover:scale-110">
-                 <img src={`${import.meta.env.BASE_URL}images/instagram.svg`} alt="Instagram" width="24" height="24" className="h-6 w-6" />
+                 <img src={`${import.meta.env.BASE_URL}images/instagram.svg`} alt="Instagram" width="24" height="24" className="h-6 w-6" loading="lazy" />
                </a>
                <a href="https://youtube.com/@gifteddreamers" target="_blank" rel="noopener noreferrer" aria-label="Follow us on YouTube" className="flex items-center justify-center w-11 h-11 hover:opacity-80 transition-opacity transform hover:scale-110">
-                 <img src={`${import.meta.env.BASE_URL}images/youtube.svg`} alt="YouTube" width="24" height="24" className="h-6 w-6" />
+                 <img src={`${import.meta.env.BASE_URL}images/youtube.svg`} alt="YouTube" width="24" height="24" className="h-6 w-6" loading="lazy" />
                </a>
                <a href="http://tiktok.com/@gifteddreamers" target="_blank" rel="noopener noreferrer" aria-label="Follow us on TikTok" className="flex items-center justify-center w-11 h-11 hover:opacity-80 transition-opacity transform hover:scale-110">
-                 <img src={`${import.meta.env.BASE_URL}images/tiktok.svg`} alt="TikTok" width="24" height="24" className="h-6 w-6" />
+                 <img src={`${import.meta.env.BASE_URL}images/tiktok.svg`} alt="TikTok" width="24" height="24" className="h-6 w-6" loading="lazy" />
                </a>
                <a href="https://www.x.com/gifteddreamers" target="_blank" rel="noopener noreferrer" aria-label="Follow us on X (Twitter)" className="flex items-center justify-center w-11 h-11 hover:opacity-80 transition-opacity transform hover:scale-110">
-                 <img src={`${import.meta.env.BASE_URL}images/X.svg`} alt="X (Twitter)" width="24" height="24" className="h-6 w-6" />
+                 <img src={`${import.meta.env.BASE_URL}images/X.svg`} alt="X (Twitter)" width="24" height="24" className="h-6 w-6" loading="lazy" />
                </a>
                <a href="https://pinterest.com/@gifteddreamers" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Pinterest" className="flex items-center justify-center w-11 h-11 hover:opacity-80 transition-opacity transform hover:scale-110">
-                 <img src={`${import.meta.env.BASE_URL}images/pinterest.svg`} alt="Pinterest" width="24" height="24" className="h-6 w-6" />
+                 <img src={`${import.meta.env.BASE_URL}images/pinterest.svg`} alt="Pinterest" width="24" height="24" className="h-6 w-6" loading="lazy" />
                </a>
             </div>
           </div>

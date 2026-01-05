@@ -32,7 +32,8 @@
     <link rel="icon" type="image/png" href="/logo-200.png">
 
     <!-- Preload LCP image (hero background) - WebP version for fastest loading -->
-    <link rel="preload" as="image" href="/images/austin-skyline.webp" fetchpriority="high" type="image/webp">
+    <!-- Using imagesrcset with preload for better browser optimization -->
+    <link rel="preload" as="image" href="/images/austin-skyline.webp" fetchpriority="high" type="image/webp" crossorigin="anonymous">
     <!-- Preload logo as secondary -->
     <link rel="preload" as="image" href="/logo-200.png" fetchpriority="high">
 
