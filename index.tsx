@@ -2,7 +2,7 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import './src/index.css';
 import App from './App';
-import { loadAnalytics, hasConsent } from './lib/analytics-loader';
+import { loadAnalytics, loadGivebutter } from './lib/analytics-loader';
 
 const rootElement = document.getElementById('root');
 if (!rootElement) {
@@ -15,6 +15,9 @@ root.render(
     <App />
   </React.StrictMode>
 );
+
+// Load Givebutter immediately - required for donation widgets (not analytics)
+loadGivebutter();
 
 // DO NOT load analytics automatically - wait for explicit user consent
 // Analytics will only load when user clicks "Accept" in cookie banner
