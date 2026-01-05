@@ -4,9 +4,7 @@ import { CheckCircle, Zap, Shield } from 'lucide-react';
 import Button from '../components/Button';
 import Reveal from '../components/Reveal';
 import OptimizedImage from '../components/OptimizedImage';
-import { getHeroImageProps } from '../lib/image-utils';
-
-const heroImageProps = getHeroImageProps('/images/services-hero.jpg');
+// Note: Hero images use direct WebP (not srcSet) to avoid LCP delay
 
 // Brandfetch Logo API - compliant hotlinking (no attribution required)
 // Client ID from 1Password: Engineering/BrandFetch - Brand and Transaction API
@@ -87,9 +85,6 @@ const Services: React.FC = () => {
             height={1080}
             isPriority={true}
             loading="eager"
-            srcSet={heroImageProps.srcSet}
-            srcSetWebP={heroImageProps.srcSetWebP}
-            sizes={heroImageProps.sizes}
           />
           <div className="absolute inset-0 bg-gradient-to-r from-slate-900/80 via-slate-900/60 to-transparent"></div>
         </div>

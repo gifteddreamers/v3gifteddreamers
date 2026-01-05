@@ -213,9 +213,6 @@ const FAQ: React.FC = () => {
           height={1080}
           isPriority={true}
           loading="eager"
-          srcSet={heroImageProps.srcSet}
-          srcSetWebP={heroImageProps.srcSetWebP}
-          sizes={heroImageProps.sizes}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-slate-900/85 via-slate-900/70 to-slate-900/60"></div>
         <div className="relative z-10 w-full px-4 sm:px-6 lg:px-16 py-16">

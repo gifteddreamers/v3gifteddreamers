@@ -11,8 +11,8 @@ import { getHeroImageProps } from '../lib/image-utils';
 const heroImage = '/images/austin-skyline.jpg';
 const profileImage = '/kristine-socall.jpg';
 
-// Generate responsive image props for hero
-const heroImageProps = getHeroImageProps(heroImage);
+// Note: For hero/LCP images, we use direct WebP instead of srcSet to avoid delay
+// Responsive images add overhead for LCP elements - browser has to evaluate which size to load
 
 const Home: React.FC = () => {
   return (
@@ -20,7 +20,8 @@ const Home: React.FC = () => {
 
       {/* Hero Section */}
       <section className="relative text-white overflow-hidden min-h-[85vh] flex items-center bg-slate-900">
-        {/* Optimized hero background image - LCP element with high priority and responsive sizes */}
+        {/* Optimized hero background image - LCP element with high priority */}
+        {/* Using direct WebP (not srcSet) to avoid browser evaluation delay for LCP */}
         <OptimizedImage
           src={heroImage}
           alt="Austin skyline"
@@ -29,9 +30,6 @@ const Home: React.FC = () => {
           loading="eager"
           width={1920}
           height={1080}
-          srcSet={heroImageProps.srcSet}
-          srcSetWebP={heroImageProps.srcSetWebP}
-          sizes={heroImageProps.sizes}
         />
         
         {/* Gradient box on left for text */}

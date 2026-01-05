@@ -21,9 +21,6 @@ const Gruhp: React.FC = () => {
             height={1080}
             isPriority={true}
             loading="eager"
-            srcSet={heroImageProps.srcSet}
-            srcSetWebP={heroImageProps.srcSetWebP}
-            sizes={heroImageProps.sizes}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-white via-white/80 to-white/40"></div>
         </div>

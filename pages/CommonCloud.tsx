@@ -21,9 +21,6 @@ const CommonCloud: React.FC = () => {
           height={1080}
           isPriority={true}
           loading="eager"
-          srcSet={heroImageProps.srcSet}
-          srcSetWebP={heroImageProps.srcSetWebP}
-          sizes={heroImageProps.sizes}
         />
         <OptimizedImage 
           src="/images/network-mesh.jpg" 
