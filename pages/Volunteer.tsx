@@ -2,7 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../components/Button';
 import Reveal from '../components/Reveal';
+import OptimizedImage from '../components/OptimizedImage';
+import { getHeroImageProps } from '../lib/image-utils';
 import { Briefcase, Video, FileText, PenTool, Users, CheckCircle, AlertCircle } from 'lucide-react';
+
+const heroImageProps = getHeroImageProps('/images/volunteer-hero.jpg');
 
 // Double the Donation plugin configuration
 const DTD_API_KEY = '6HMm5sEaYqgnLZmU';
@@ -132,15 +136,19 @@ const Volunteer: React.FC = () => {
   return (
     <div className="pb-20">
        {/* Enhanced Hero with Impact Stats */}
-       <section
-        className="relative text-white overflow-hidden min-h-[60vh] flex items-center bg-slate-900"
-        style={{
-          backgroundImage: 'url(/images/volunteer-hero.jpg)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-        }}
-      >
+       <section className="relative text-white overflow-hidden min-h-[60vh] flex items-center bg-slate-900">
+        <OptimizedImage
+          src="/images/volunteer-hero.jpg"
+          alt="Volunteer with Gifted Dreamers"
+          className="absolute inset-0 w-full h-full object-cover"
+          width={1920}
+          height={1080}
+          isPriority={true}
+          loading="eager"
+          srcSet={heroImageProps.srcSet}
+          srcSetWebP={heroImageProps.srcSetWebP}
+          sizes={heroImageProps.sizes}
+        />
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900/70 via-slate-900/80 to-slate-900/70"></div>
         <Reveal className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="inline-block px-4 py-1 backdrop-blur rounded-full text-sm font-medium mb-6 text-white" style={{ backgroundColor: 'rgba(162, 33, 49, 0.4)' }}>

@@ -1,23 +1,32 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Breadcrumbs from './components/Breadcrumbs';
+import CookieConsent from './components/CookieConsent';
 import { trackPageView } from './lib/analytics';
+import { loadAnalytics, hasConsent } from './lib/analytics-loader';
 
-// Pages
-import Home from './pages/Home';
-import Services from './pages/Services';
-import Volunteer from './pages/Volunteer';
-import Gruhp from './pages/Gruhp';
-import Partners from './pages/Partners';
-import CommonCloud from './pages/CommonCloud';
-import About from './pages/About';
-import MatchingGifts from './pages/MatchingGifts';
-import FAQ from './pages/FAQ';
-import Contact from './pages/Contact';
-import Privacy from './pages/Privacy';
-import Terms from './pages/Terms';
+// Lazy load all pages for code splitting
+const Home = lazy(() => import('./pages/Home'));
+const Services = lazy(() => import('./pages/Services'));
+const Volunteer = lazy(() => import('./pages/Volunteer'));
+const Gruhp = lazy(() => import('./pages/Gruhp'));
+const Partners = lazy(() => import('./pages/Partners'));
+const CommonCloud = lazy(() => import('./pages/CommonCloud'));
+const About = lazy(() => import('./pages/About'));
+const MatchingGifts = lazy(() => import('./pages/MatchingGifts'));
+const FAQ = lazy(() => import('./pages/FAQ'));
+const Contact = lazy(() => import('./pages/Contact'));
+const Privacy = lazy(() => import('./pages/Privacy'));
+const Terms = lazy(() => import('./pages/Terms'));
+
+// Loading component
+const PageLoader = () => (
+  <div className="flex items-center justify-center min-h-[400px]">
+    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+  </div>
+);
 
 // Page title mapping for analytics
 const pageTitles: Record<string, string> = {
@@ -47,6 +56,13 @@ const ScrollToTop = () => {
 };
 
 const App: React.FC = () => {
+  // Check if user already consented and load analytics immediately
+  React.useEffect(() => {
+    if (hasConsent()) {
+      loadAnalytics();
+    }
+  }, []);
+
   return (
     <Router>
       <ScrollToTop />
@@ -67,24 +83,33 @@ const App: React.FC = () => {
         <Breadcrumbs />
 
         <main id="main-content" className="flex-grow">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/volunteer" element={<Volunteer />} />
-            <Route path="/gruhp" element={<Gruhp />} />
-            <Route path="/corporate-partners" element={<Partners />} />
-            <Route path="/common-cloud" element={<CommonCloud />} />
-            
-            {/* Compliance & Footer Pages */}
-            <Route path="/about" element={<About />} />
-            <Route path="/matching-gifts" element={<MatchingGifts />} />
-            <Route path="/faq" element={<FAQ />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/privacy" element={<Privacy />} />
-            <Route path="/terms" element={<Terms />} />
-          </Routes>
+          <Suspense fallback={<PageLoader />}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/volunteer" element={<Volunteer />} />
+              <Route path="/gruhp" element={<Gruhp />} />
+              <Route path="/corporate-partners" element={<Partners />} />
+              <Route path="/common-cloud" element={<CommonCloud />} />
+              
+              {/* Compliance & Footer Pages */}
+              <Route path="/about" element={<About />} />
+              <Route path="/matching-gifts" element={<MatchingGifts />} />
+              <Route path="/faq" element={<FAQ />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/privacy" element={<Privacy />} />
+              <Route path="/terms" element={<Terms />} />
+            </Routes>
+          </Suspense>
         </main>
         <Footer />
+        <CookieConsent 
+          onAccept={loadAnalytics}
+          onDecline={() => {
+            // User declined - analytics won't load
+            // This is handled by the analytics-loader not loading scripts
+          }}
+        />
       </div>
     </Router>
   );

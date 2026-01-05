@@ -4,25 +4,35 @@ import { ArrowRight, TrendingUp, AlertTriangle, ShieldCheck } from 'lucide-react
 import Button from '../components/Button';
 import Reveal from '../components/Reveal';
 import LogoCloud from '../components/LogoCloud';
+import OptimizedImage from '../components/OptimizedImage';
+import { getHeroImageProps } from '../lib/image-utils';
 
 // Images from public folder - hardcoded paths for reliability
 const heroImage = '/images/austin-skyline.jpg';
 const profileImage = '/kristine-socall.jpg';
+
+// Generate responsive image props for hero
+const heroImageProps = getHeroImageProps(heroImage);
 
 const Home: React.FC = () => {
   return (
     <div className="flex flex-col min-h-screen">
 
       {/* Hero Section */}
-      <section
-        className="relative text-white overflow-hidden min-h-[85vh] flex items-center bg-slate-900"
-        style={{
-          backgroundImage: `url(${heroImage})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-        }}
-      >
+      <section className="relative text-white overflow-hidden min-h-[85vh] flex items-center bg-slate-900">
+        {/* Optimized hero background image - LCP element with high priority and responsive sizes */}
+        <OptimizedImage
+          src={heroImage}
+          alt="Austin skyline"
+          className="absolute inset-0 w-full h-full object-cover"
+          isPriority={true}
+          loading="eager"
+          width={1920}
+          height={1080}
+          srcSet={heroImageProps.srcSet}
+          srcSetWebP={heroImageProps.srcSetWebP}
+          sizes={heroImageProps.sizes}
+        />
         
         {/* Gradient box on left for text */}
         <div className="absolute left-0 top-0 bottom-0 w-full lg:w-3/5 bg-gradient-to-r from-slate-900/95 via-slate-900/85 to-transparent z-[2]"></div>
@@ -123,7 +133,14 @@ const Home: React.FC = () => {
             {/* Tech Perks */}
             <Reveal className="flex flex-col h-full group">
               <div className="aspect-video bg-slate-200 rounded-lg overflow-hidden mb-6 relative shadow-lg">
-                <img src="/images/faq-hero.jpg" alt="Dashboard showing tech perks analytics" width="800" height="570" className="w-full h-full object-cover transition-transform group-hover:scale-105" />
+                <OptimizedImage 
+                  src="/images/faq-hero.jpg" 
+                  alt="Dashboard showing tech perks analytics" 
+                  width={800} 
+                  height={570} 
+                  className="w-full h-full object-cover transition-transform group-hover:scale-105"
+                  loading="lazy"
+                />
                 <div className="absolute top-4 left-4 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full">Perks Audit</div>
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-4">Tech Perks Audit</h3>
@@ -148,7 +165,14 @@ const Home: React.FC = () => {
             {/* Accounting */}
             <Reveal className="flex flex-col h-full group" delay={150}>
               <div className="aspect-video bg-slate-200 rounded-lg overflow-hidden mb-6 relative shadow-lg">
-                <img src="/images/accounting-cleanup.jpg" alt="Accounting documents and financial papers" width="800" height="459" className="w-full h-full object-cover transition-transform group-hover:scale-105" />
+                <OptimizedImage 
+                  src="/images/accounting-cleanup.jpg" 
+                  alt="Accounting documents and financial papers" 
+                  width={800} 
+                  height={459} 
+                  className="w-full h-full object-cover transition-transform group-hover:scale-105"
+                  loading="lazy"
+                />
                 <div className="absolute top-4 left-4 bg-accent text-white text-xs font-bold px-3 py-1 rounded-full">Accounting</div>
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-4">Accounting Cleanup</h3>
@@ -200,7 +224,14 @@ const Home: React.FC = () => {
           <div className="flex flex-col md:flex-row items-center gap-10">
             <Reveal className="w-full md:w-2/5">
               <div className="aspect-square rounded-2xl overflow-hidden border-8 border-slate-50 shadow-2xl rotate-2">
-                <img src={profileImage} alt="Kristine Socall, Founder of Gifted Dreamers" width="600" height="599" className="w-full h-full object-cover" />
+                <OptimizedImage 
+                  src={profileImage} 
+                  alt="Kristine Socall, Founder of Gifted Dreamers" 
+                  width={600} 
+                  height={599} 
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
               </div>
             </Reveal>
             <Reveal className="w-full md:w-3/5" delay={200}>

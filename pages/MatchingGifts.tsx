@@ -1,5 +1,9 @@
 import React, { useEffect } from 'react';
 import Reveal from '../components/Reveal';
+import OptimizedImage from '../components/OptimizedImage';
+import { getHeroImageProps } from '../lib/image-utils';
+
+const heroImageProps = getHeroImageProps('/images/matching-gifts-hero.jpg');
 
 // Double the Donation API key
 const DTD_API_KEY = '6HMm5sEaYqgnLZmU';
@@ -64,14 +68,19 @@ const MatchingGifts: React.FC = () => {
   return (
     <div className="pb-20">
       {/* Hero Section */}
-      <section
-        className="relative text-white overflow-hidden min-h-[60vh] flex items-center"
-        style={{
-          backgroundImage: 'url(/images/matching-gifts-hero.jpg)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      >
+      <section className="relative text-white overflow-hidden min-h-[60vh] flex items-center">
+        <OptimizedImage
+          src="/images/matching-gifts-hero.jpg"
+          alt="Matching Gifts"
+          className="absolute inset-0 w-full h-full object-cover"
+          width={1920}
+          height={1080}
+          isPriority={true}
+          loading="eager"
+          srcSet={heroImageProps.srcSet}
+          srcSetWebP={heroImageProps.srcSetWebP}
+          sizes={heroImageProps.sizes}
+        />
         <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/75 to-slate-900/60"></div>
         <div className="relative z-10 w-full px-4 sm:px-6 lg:px-16 py-24">
           <Reveal className="max-w-4xl mx-auto text-center">

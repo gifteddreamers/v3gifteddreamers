@@ -7,3 +7,20 @@ interface ImportMetaEnv {
 interface ImportMeta {
   readonly env: ImportMetaEnv;
 }
+
+// Extend Window interface for third-party scripts
+declare global {
+  interface Window {
+    dataLayer?: any[];
+    gtag?: (...args: any[]) => void;
+    Givebutter?: {
+      q?: any[];
+      (...args: any[]): void;
+    };
+    DDCONF?: {
+      API_KEY: string;
+    };
+    doublethedonation?: any;
+    clarity?: (...args: any[]) => void;
+  }
+}

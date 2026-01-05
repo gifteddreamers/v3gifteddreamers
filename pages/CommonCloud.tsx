@@ -2,25 +2,37 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../components/Button';
 import Reveal from '../components/Reveal';
+import OptimizedImage from '../components/OptimizedImage';
+import { getHeroImageProps } from '../lib/image-utils';
 import { Video, MessageCircle, FileText, Calendar } from 'lucide-react';
+
+const heroImageProps = getHeroImageProps('/images/common-cloud-hero-bg.jpg');
 
 const CommonCloud: React.FC = () => {
   return (
     <div className="pb-20">
       {/* Hero Section */}
-      <section
-        className="relative text-white overflow-hidden min-h-[60vh] flex items-center bg-slate-900"
-        style={{
-          backgroundImage: 'url(/images/common-cloud-hero-bg.jpg)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-        }}
-      >
-        <img 
+      <section className="relative text-white overflow-hidden min-h-[60vh] flex items-center bg-slate-900">
+        <OptimizedImage
+          src="/images/common-cloud-hero-bg.jpg"
+          alt="Common Cloud Learning Community"
+          className="absolute inset-0 w-full h-full object-cover z-0"
+          width={1920}
+          height={1080}
+          isPriority={true}
+          loading="eager"
+          srcSet={heroImageProps.srcSet}
+          srcSetWebP={heroImageProps.srcSetWebP}
+          sizes={heroImageProps.sizes}
+        />
+        <OptimizedImage 
           src="/images/network-mesh.jpg" 
           alt="" 
           className="absolute inset-0 w-full h-full object-cover opacity-60 z-0"
+          width={1920}
+          height={1080}
+          isPriority={false}
+          loading="lazy"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900/60 via-transparent to-slate-900/80"></div>
         <div className="relative z-10 w-full px-4 sm:px-6 lg:px-16 py-24">
@@ -42,14 +54,28 @@ const CommonCloud: React.FC = () => {
              <Calendar className="h-10 w-10 mb-4" style={{ color: '#A22131' }} />
              <h3 className="text-xl font-bold mb-2">Weekly Calls</h3>
              <p className="text-slate-600 mb-4">Open office hours. Bring your questions about nonprofit tech perks, automation, and AI tools.</p>
-             <img src="/images/jitsi-demo.jpg" alt="Security and trust" className="w-full h-48 object-cover rounded-lg mb-4" />
+             <OptimizedImage 
+               src="/images/jitsi-demo.jpg" 
+               alt="Security and trust" 
+               className="w-full h-48 object-cover rounded-lg mb-4"
+               width={800}
+               height={450}
+               loading="lazy"
+             />
              <p className="text-sm font-medium text-slate-500">(Coming Q1 2026)</p>
           </Reveal>
           <Reveal delay={100} className="bg-white p-8 rounded-xl shadow-sm border border-slate-200">
              <FileText className="h-10 w-10 mb-4" style={{ color: '#A22131' }} />
              <h3 className="text-xl font-bold mb-2">Blog / Substack</h3>
              <p className="text-slate-600 mb-4">Resources for resilience. Deep dives on perks, automation templates, AI experiments. Subscribe for free.</p>
-             <img src="/images/blog-substack.jpg" alt="Blog and Substack content" className="w-full h-48 object-cover rounded-lg mb-4" />
+             <OptimizedImage 
+               src="/images/blog-substack.jpg" 
+               alt="Blog and Substack content" 
+               className="w-full h-48 object-cover rounded-lg mb-4"
+               width={800}
+               height={450}
+               loading="lazy"
+             />
              <a href="https://gifteddreamers.substack.com" target="_blank" rel="noopener noreferrer">
                <Button variant="outline" size="sm">Subscribe</Button>
              </a>
@@ -58,14 +84,28 @@ const CommonCloud: React.FC = () => {
              <Video className="h-10 w-10 mb-4" style={{ color: '#A22131' }} />
              <h3 className="text-xl font-bold mb-2">Video Library</h3>
              <p className="text-slate-600 mb-4">Recorded walkthroughs of automation templates, perks applications, webapp builds, AI prompts and tips.</p>
-             <img src="/images/security-shield.jpg" alt="Security and trust" className="w-full h-48 object-cover rounded-lg mb-4" />
+             <OptimizedImage 
+               src="/images/security-shield.jpg" 
+               alt="Security and trust" 
+               className="w-full h-48 object-cover rounded-lg mb-4"
+               width={800}
+               height={450}
+               loading="lazy"
+             />
              <p className="text-sm font-medium text-slate-500">(Coming Q1 2026)</p>
           </Reveal>
           <Reveal delay={300} className="bg-white p-8 rounded-xl shadow-sm border border-slate-200">
              <MessageCircle className="h-10 w-10 mb-4" style={{ color: '#A22131' }} />
              <h3 className="text-xl font-bold mb-2">Community Chat</h3>
              <p className="text-slate-600 mb-4">Matrix/Element room for async questions. Help when you need it. No salespeople.</p>
-             <img src="/images/community-connect.jpg" alt="Community connection" className="w-full h-48 object-cover rounded-lg mb-4" />
+             <OptimizedImage 
+               src="/images/community-connect.jpg" 
+               alt="Community connection" 
+               className="w-full h-48 object-cover rounded-lg mb-4"
+               width={800}
+               height={450}
+               loading="lazy"
+             />
              <p className="text-sm text-slate-500">(Coming Q1 2026)</p>
           </Reveal>
         </div>

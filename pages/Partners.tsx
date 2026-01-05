@@ -2,20 +2,29 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../components/Button';
 import Reveal from '../components/Reveal';
+import OptimizedImage from '../components/OptimizedImage';
+import { getHeroImageProps } from '../lib/image-utils';
+
+const heroImageProps = getHeroImageProps('/images/partners-hero.jpg');
 
 const Partners: React.FC = () => {
 
   return (
     <div className="pb-20">
       {/* Hero Section */}
-      <section
-        className="relative text-white overflow-hidden min-h-[60vh] flex items-center"
-        style={{
-          backgroundImage: 'url(/images/partners-hero.jpg)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      >
+      <section className="relative text-white overflow-hidden min-h-[60vh] flex items-center">
+        <OptimizedImage
+          src="/images/partners-hero.jpg"
+          alt="Partner with Gifted Dreamers"
+          className="absolute inset-0 w-full h-full object-cover"
+          width={1920}
+          height={1080}
+          isPriority={true}
+          loading="eager"
+          srcSet={heroImageProps.srcSet}
+          srcSetWebP={heroImageProps.srcSetWebP}
+          sizes={heroImageProps.sizes}
+        />
         <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/75 to-slate-900/60"></div>
         <div className="relative z-10 w-full px-4 sm:px-6 lg:px-16 py-24">
           <Reveal className="max-w-4xl mx-auto text-center">

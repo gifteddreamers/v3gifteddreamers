@@ -3,7 +3,11 @@ import { Link } from 'react-router-dom';
 import { Search, ChevronDown, HelpCircle } from 'lucide-react';
 import Button from '../components/Button';
 import Reveal from '../components/Reveal';
+import OptimizedImage from '../components/OptimizedImage';
+import { getHeroImageProps } from '../lib/image-utils';
 import { FAQItem } from '../types';
+
+const heroImageProps = getHeroImageProps('/images/faq-hero.jpg');
 
 const faqData: FAQItem[] = [
   // About Gifted Dreamers
@@ -200,14 +204,19 @@ const FAQ: React.FC = () => {
   return (
     <div className="pb-20">
       {/* Hero Section */}
-      <section
-        className="relative text-white overflow-hidden min-h-[50vh] flex items-center"
-        style={{
-          backgroundImage: 'url(/images/faq-hero.jpg)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      >
+      <section className="relative text-white overflow-hidden min-h-[50vh] flex items-center">
+        <OptimizedImage
+          src="/images/faq-hero.jpg"
+          alt="FAQ Help Center"
+          className="absolute inset-0 w-full h-full object-cover"
+          width={1920}
+          height={1080}
+          isPriority={true}
+          loading="eager"
+          srcSet={heroImageProps.srcSet}
+          srcSetWebP={heroImageProps.srcSetWebP}
+          sizes={heroImageProps.sizes}
+        />
         <div className="absolute inset-0 bg-gradient-to-r from-slate-900/85 via-slate-900/70 to-slate-900/60"></div>
         <div className="relative z-10 w-full px-4 sm:px-6 lg:px-16 py-16">
           <Reveal className="max-w-4xl mx-auto text-center">

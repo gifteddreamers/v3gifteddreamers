@@ -2,19 +2,28 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../components/Button';
 import Reveal from '../components/Reveal';
+import OptimizedImage from '../components/OptimizedImage';
+import { getHeroImageProps } from '../lib/image-utils';
+
+const heroImageProps = getHeroImageProps('/images/about-hero.jpg');
 
 const About: React.FC = () => {
   return (
     <div className="pb-20">
       {/* Hero Section */}
-      <section
-        className="relative text-white overflow-hidden min-h-[60vh] flex items-center"
-        style={{
-          backgroundImage: 'url(/images/about-hero.jpg)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      >
+      <section className="relative text-white overflow-hidden min-h-[60vh] flex items-center">
+        <OptimizedImage
+          src="/images/about-hero.jpg"
+          alt="About Gifted Dreamers"
+          className="absolute inset-0 w-full h-full object-cover"
+          width={1920}
+          height={1080}
+          isPriority={true}
+          loading="eager"
+          srcSet={heroImageProps.srcSet}
+          srcSetWebP={heroImageProps.srcSetWebP}
+          sizes={heroImageProps.sizes}
+        />
         <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/70 to-slate-900/50"></div>
         <div className="relative z-10 w-full px-4 sm:px-6 lg:px-16 py-24">
           <Reveal className="max-w-3xl">
@@ -32,10 +41,13 @@ const About: React.FC = () => {
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Profile Section */}
         <Reveal className="flex flex-col md:flex-row gap-8 items-center mb-12">
-          <img 
+          <OptimizedImage 
             src="/kristine-socall.jpg" 
             alt="Kristine Socall, Founder of Gifted Dreamers" 
             className="w-48 h-48 rounded-full object-cover shadow-lg border-4 border-primary"
+            width={600}
+            height={599}
+            loading="lazy"
           />
           <div>
             <h2 className="text-2xl font-bold text-slate-900 mb-2">Kristine Socall</h2>

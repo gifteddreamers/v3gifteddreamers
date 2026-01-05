@@ -3,6 +3,10 @@ import { Link } from 'react-router-dom';
 import { CheckCircle, Zap, Shield } from 'lucide-react';
 import Button from '../components/Button';
 import Reveal from '../components/Reveal';
+import OptimizedImage from '../components/OptimizedImage';
+import { getHeroImageProps } from '../lib/image-utils';
+
+const heroImageProps = getHeroImageProps('/images/services-hero.jpg');
 
 // Brandfetch Logo API - compliant hotlinking (no attribution required)
 // Client ID from 1Password: Engineering/BrandFetch - Brand and Transaction API
@@ -75,7 +79,18 @@ const Services: React.FC = () => {
       {/* Hero with image background */}
       <div className="bg-gradient-to-br from-primary via-[#0353A4] to-primary text-white py-24 relative overflow-hidden">
         <div className="absolute inset-0">
-          <img src="/images/services-hero.jpg" alt="Technology network" className="w-full h-full object-cover opacity-60" />
+          <OptimizedImage 
+            src="/images/services-hero.jpg" 
+            alt="Technology network" 
+            className="w-full h-full object-cover opacity-60"
+            width={1920}
+            height={1080}
+            isPriority={true}
+            loading="eager"
+            srcSet={heroImageProps.srcSet}
+            srcSetWebP={heroImageProps.srcSetWebP}
+            sizes={heroImageProps.sizes}
+          />
           <div className="absolute inset-0 bg-gradient-to-r from-slate-900/80 via-slate-900/60 to-transparent"></div>
         </div>
         <Reveal className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">

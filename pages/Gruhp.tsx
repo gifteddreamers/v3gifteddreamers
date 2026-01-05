@@ -1,7 +1,11 @@
 import React from 'react';
 import Button from '../components/Button';
 import Reveal from '../components/Reveal';
+import OptimizedImage from '../components/OptimizedImage';
+import { getHeroImageProps } from '../lib/image-utils';
 import { ShoppingCart, Home, Zap, Stethoscope, PawPrint, DollarSign, Globe } from 'lucide-react';
+
+const heroImageProps = getHeroImageProps('/images/partners-hero.jpg');
 
 const Gruhp: React.FC = () => {
   return (
@@ -9,7 +13,18 @@ const Gruhp: React.FC = () => {
       {/* Hero with community image */}
       <div className="bg-white py-24 relative overflow-hidden pb-12">
         <div className="absolute inset-0">
-          <img src="/images/partners-hero.jpg" alt="Diverse community" className="w-full h-full object-cover object-center" />
+          <OptimizedImage 
+            src="/images/partners-hero.jpg" 
+            alt="Diverse community" 
+            className="w-full h-full object-cover object-center"
+            width={1920}
+            height={1080}
+            isPriority={true}
+            loading="eager"
+            srcSet={heroImageProps.srcSet}
+            srcSetWebP={heroImageProps.srcSetWebP}
+            sizes={heroImageProps.sizes}
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-white via-white/80 to-white/40"></div>
         </div>
         <Reveal className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
