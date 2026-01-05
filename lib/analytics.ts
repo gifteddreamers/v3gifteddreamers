@@ -16,6 +16,14 @@ declare global {
   }
 }
 
+// Only log in development mode
+const isDev = import.meta.env?.DEV ?? false;
+const log = (message: string, ...args: unknown[]) => {
+  if (isDev) {
+    console.log(message, ...args);
+  }
+};
+
 /**
  * Track a contact form submission (primary conversion)
  * @param formType - Type of form submitted (contact, booking, etc.)
@@ -30,7 +38,7 @@ export function trackFormSubmission(formType: string = 'contact', organization?:
       organization: organization || 'not_provided',
     });
 
-    console.log(`[Analytics] Form submission tracked: ${formType}`);
+    log(`[Analytics] Form submission tracked: ${formType}`);
   }
 }
 
@@ -48,7 +56,7 @@ export function trackDonationClick(amount: number, location: string = 'unknown')
       currency: 'USD',
     });
 
-    console.log(`[Analytics] Donation click tracked: $${amount} from ${location}`);
+    log(`[Analytics] Donation click tracked: $${amount} from ${location}`);
   }
 }
 
@@ -64,7 +72,7 @@ export function trackVolunteerSubmission(skills: string[]) {
       value: 1,
     });
 
-    console.log(`[Analytics] Volunteer signup tracked: ${skills.join(', ')}`);
+    log(`[Analytics] Volunteer signup tracked: ${skills.join(', ')}`);
   }
 }
 
@@ -82,7 +90,7 @@ export function trackOutboundLink(url: string, label: string = 'unknown') {
       link_url: url,
     });
 
-    console.log(`[Analytics] Outbound link tracked: ${url} (${label})`);
+    log(`[Analytics] Outbound link tracked: ${url} (${label}`);
   }
 }
 
@@ -98,7 +106,7 @@ export function trackPageView(pagePath: string, pageTitle: string) {
       page_title: pageTitle,
     });
 
-    console.log(`[Analytics] Page view tracked: ${pagePath}`);
+    log(`[Analytics] Page view tracked: ${pagePath}`);
   }
 }
 
@@ -113,7 +121,7 @@ export function trackSectionView(sectionName: string) {
       event_label: sectionName,
     });
 
-    console.log(`[Analytics] Section view tracked: ${sectionName}`);
+    log(`[Analytics] Section view tracked: ${sectionName}`);
   }
 }
 
@@ -129,7 +137,7 @@ export function trackServiceInterest(serviceName: string) {
       items: [{ item_name: serviceName }],
     });
 
-    console.log(`[Analytics] Service interest tracked: ${serviceName}`);
+    log(`[Analytics] Service interest tracked: ${serviceName}`);
   }
 }
 
@@ -146,7 +154,7 @@ export function trackCTAClick(ctaName: string, location: string) {
       location: location,
     });
 
-    console.log(`[Analytics] CTA click tracked: ${ctaName} on ${location}`);
+    log(`[Analytics] CTA click tracked: ${ctaName} on ${location}`);
   }
 }
 
@@ -159,6 +167,6 @@ export function trackEvent(eventName: string, params: Record<string, unknown> = 
   if (typeof window !== 'undefined' && window.gtag) {
     window.gtag('event', eventName, params);
 
-    console.log(`[Analytics] Event tracked: ${eventName}`, params);
+    log(`[Analytics] Event tracked: ${eventName}`, params);
   }
 }
