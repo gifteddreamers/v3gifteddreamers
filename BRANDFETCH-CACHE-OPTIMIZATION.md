@@ -16,34 +16,34 @@ Brandfetch.io serves icons with a 1-day cache lifetime (`Cache-Control: max-age=
 - Reduces DNS lookup and connection time
 - Improves first-time load performance
 
-### 2. Service Worker Caching (`public/sw.js`)
-- Intercepts brandfetch icon requests
-- Caches them locally with 1-year TTL (31536000000ms)
-- Serves cached versions on repeat visits
-- Automatically updates cache when expired
-
-### 3. Image Optimization (`components/LogoCloud.tsx`)
+### 2. Image Optimization (`components/LogoCloud.tsx`)
 - Added `decoding="async"` for non-blocking decode
 - Added `fetchPriority="low"` since logos are below-the-fold
 - Maintains `loading="lazy"` for deferred loading
+
+### 3. Service Worker (Removed)
+- **Status**: Removed due to console errors
+- **Reason**: Service worker was causing 30+ console errors for brandfetch requests
+- **Alternative**: Preconnect provides sufficient performance benefits without the complexity
 
 ## How It Works
 
 1. **First Visit**: 
    - Preconnect establishes connection early
    - Icons load from brandfetch.io (1-day cache from server)
-   - Service worker caches them locally with 1-year TTL
+   - Browser caches them according to server headers
 
 2. **Repeat Visits**:
-   - Service worker serves cached icons immediately
-   - No network request needed (if within 1 year)
-   - Much faster loading
+   - Browser serves cached icons from HTTP cache
+   - Preconnect speeds up connection if cache expired
+   - Faster loading than without preconnect
 
 ## Limitations
 
 - **Lighthouse Audit**: Still shows 1-day cache because that's what brandfetch.io serves
-- **First Visit**: Still uses brandfetch.io's 1-day cache headers
-- **Service Worker**: Only helps with repeat visits (local caching)
+- **First Visit**: Uses brandfetch.io's 1-day cache headers
+- **Third-Party Control**: Cannot control cache headers for third-party resources
+- **Service Worker**: Removed due to console errors - preconnect provides sufficient benefits
 
 ## Alternative Solutions (Not Implemented)
 
@@ -71,9 +71,9 @@ Brandfetch.io serves icons with a 1-day cache lifetime (`Cache-Control: max-age=
 ## Files Modified
 
 1. ✅ `index.html` - Added preconnect to brandfetch CDN
-2. ✅ `public/sw.js` - Service worker for caching brandfetch icons
-3. ✅ `index.tsx` - Service worker registration
-4. ✅ `components/LogoCloud.tsx` - Added image optimization attributes
+2. ✅ `components/LogoCloud.tsx` - Added image optimization attributes
+3. ❌ `public/sw.js` - Removed (was causing console errors)
+4. ❌ `index.tsx` - Removed service worker registration
 
 ## Testing
 
