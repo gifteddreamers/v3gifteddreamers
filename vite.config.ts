@@ -4,32 +4,47 @@ import react from '@vitejs/plugin-react';
 import type { Plugin } from 'vite';
 
 // Plugin to inject CSS preload links to break critical request chain
+// This allows CSS to download in parallel with HTML parsing, not sequentially
 function cssPreloadPlugin(): Plugin {
+  let cssFileName: string | null = null;
+  
   return {
     name: 'css-preload',
+    generateBundle(options, bundle) {
+      // Find CSS file in bundle during build
+      const cssFiles = Object.keys(bundle).filter((fileName) => 
+        fileName.endsWith('.css')
+      );
+      if (cssFiles.length > 0) {
+        const cssAsset = bundle[cssFiles[0]] as any;
+        cssFileName = cssAsset.fileName || cssFiles[0];
+      }
+    },
     transformIndexHtml: {
       enforce: 'post',
-      transform(html, ctx) {
-        // Find CSS files in the build output
-        const cssFiles = ctx.bundle 
-          ? Object.keys(ctx.bundle).filter((fileName) => 
-              fileName.endsWith('.css') && ctx.bundle[fileName].type === 'asset'
-            )
-          : [];
-        
-        if (cssFiles.length === 0) return html;
-        
-        // Add preload links for CSS files before </head>
-        // This allows CSS to download in parallel with HTML parsing
-        const preloadLinks = cssFiles
-          .map((file) => {
-            const asset = ctx.bundle![file] as any;
-            const href = asset.fileName || `/${file}`;
-            return `    <link rel="preload" as="style" href="${href}">`;
-          })
-          .join('\n');
-        
-        return html.replace('</head>', `${preloadLinks}\n  </head>`);
+      transform(html) {
+        // Add preload link for CSS BEFORE the stylesheet link
+        // Must match exact path format that Vite uses (absolute path with /)
+        // Include crossorigin to match Vite's stylesheet link
+        if (cssFileName) {
+          // Ensure absolute path (starts with /)
+          const href = cssFileName.startsWith('/') ? cssFileName : `/${cssFileName}`;
+          const preloadLink = `    <link rel="preload" as="style" href="${href}" crossorigin>`;
+          
+          // Find where Vite injects the stylesheet link and insert preload BEFORE it
+          // This ensures the preload is used immediately when stylesheet link is found
+          const stylesheetPattern = /<link[^>]*rel=["']stylesheet["'][^>]*href=["']([^"']*\/assets\/css\/[^"']*\.css)["'][^>]*>/i;
+          const match = html.match(stylesheetPattern);
+          
+          if (match) {
+            // Insert preload link right BEFORE the stylesheet link
+            return html.replace(match[0], `${preloadLink}\n${match[0]}`);
+          }
+          
+          // Fallback: insert before </head>
+          return html.replace('</head>', `${preloadLink}\n  </head>`);
+        }
+        return html;
       },
     },
   };
