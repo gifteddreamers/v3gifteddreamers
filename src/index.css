@@ -47,19 +47,28 @@ body {
 footer.bg-slate-900 {
   min-height: 1067px !important;
   height: 1067px !important;
-  contain: layout style !important;
+  contain: layout style paint !important;
   position: relative !important;
   z-index: 1 !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
 }
 
 /* Prevent root div from shifting - critical for CLS */
 #root {
   min-height: 100vh !important;
   contain: layout style !important;
+  display: block !important;
 }
 
 /* Reserve space in flex container for footer */
 body > #root > div.flex {
   padding-bottom: 1067px !important;
   min-height: 100vh !important;
+  contain: layout style !important;
+}
+
+/* Ensure body has proper layout containment */
+body {
+  contain: layout style !important;
 }

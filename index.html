@@ -106,19 +106,27 @@
       footer.bg-slate-900 {
         min-height: 1067px !important;
         height: 1067px !important;
-        contain: layout style !important;
+        contain: layout style paint !important;
         display: block !important;
         position: relative !important;
         z-index: 1 !important;
+        overflow: hidden !important;
+        box-sizing: border-box !important;
       }
       /* Reserve space in flex container for footer before React renders */
       body > #root > div.flex {
         padding-bottom: 1067px !important;
         min-height: 100vh !important;
+        contain: layout style !important;
       }
       /* Prevent root div from shifting */
       #root {
         min-height: 100vh !important;
+        contain: layout style !important;
+        display: block !important;
+      }
+      /* Ensure body has proper layout containment */
+      body {
         contain: layout style !important;
       }
     </style>
