@@ -93,6 +93,8 @@ const LogoCloud: React.FC<LogoCloudProps> = ({
               <img
                 src={logo.url}
                 alt={logo.name}
+                width="32"
+                height="32"
                 className="h-8 md:h-10 object-contain w-auto"
                 loading="lazy"
               />

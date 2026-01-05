@@ -60,14 +60,14 @@ const Footer: React.FC = () => {
                   height="32"
                   className="w-8 h-8 object-contain"
                 />
-                <span className="font-bold tracking-tight text-lg"><span style={{ color: '#A22131' }}>Gifted</span> <span style={{ color: '#0D729C' }}>Dreamers</span></span>
+                <span className="font-bold tracking-tight text-lg"><span style={{ color: '#E8505B' }}>Gifted</span> <span style={{ color: '#38BDF8' }}>Dreamers</span></span>
               </div>
               <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm mb-4">
                 <Link to="/about" className="hover:text-white transition-colors">About</Link>
                 <Link to="/contact" className="hover:text-white transition-colors">Contact</Link>
                 <Link to="/faq" className="hover:text-white transition-colors">FAQ</Link>
               </div>
-              <p className="text-xs text-slate-500 leading-relaxed">
+              <p className="text-xs text-slate-400 leading-relaxed">
                 Gifted Dreamers, Inc. is a 501(c)(3) nonprofit organization.<br/>
                 EIN: 39-3863796 | All donations are tax-deductible.<br/>
                 © 2025 Gifted Dreamers, Inc. All rights reserved.
@@ -77,28 +77,28 @@ const Footer: React.FC = () => {
             {/* Social Icons - min 44x44px touch targets for accessibility */}
             <div className="flex md:justify-end gap-2">
                <a href="https://gifteddreamers.substack.com" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Substack" className="flex items-center justify-center w-11 h-11 hover:opacity-80 transition-opacity transform hover:scale-110">
-                 <img src={`${import.meta.env.BASE_URL}images/substack.png`} alt="Substack" className="h-6 w-6" />
+                 <img src={`${import.meta.env.BASE_URL}images/substack.png`} alt="Substack" width="24" height="24" className="h-6 w-6 object-contain" />
                </a>
                <a href="https://linkedin.com/company/gifteddreamers" target="_blank" rel="noopener noreferrer" aria-label="Follow us on LinkedIn" className="flex items-center justify-center w-11 h-11 hover:opacity-80 transition-opacity transform hover:scale-110">
-                 <img src={`${import.meta.env.BASE_URL}images/linkedin.svg`} alt="LinkedIn" className="h-6 w-6" />
+                 <img src={`${import.meta.env.BASE_URL}images/linkedin.svg`} alt="LinkedIn" width="24" height="24" className="h-6 w-6" />
                </a>
                <a href="https://facebook.com/gifteddreamers" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook" className="flex items-center justify-center w-11 h-11 hover:opacity-80 transition-opacity transform hover:scale-110">
-                 <img src={`${import.meta.env.BASE_URL}images/facebook.svg`} alt="Facebook" className="h-6 w-6" />
+                 <img src={`${import.meta.env.BASE_URL}images/facebook.svg`} alt="Facebook" width="24" height="24" className="h-6 w-6" />
                </a>
                <a href="https://instagram.com/gifted.dreamers" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram" className="flex items-center justify-center w-11 h-11 hover:opacity-80 transition-opacity transform hover:scale-110">
-                 <img src={`${import.meta.env.BASE_URL}images/instagram.svg`} alt="Instagram" className="h-6 w-6" />
+                 <img src={`${import.meta.env.BASE_URL}images/instagram.svg`} alt="Instagram" width="24" height="24" className="h-6 w-6" />
                </a>
                <a href="https://youtube.com/@gifteddreamers" target="_blank" rel="noopener noreferrer" aria-label="Follow us on YouTube" className="flex items-center justify-center w-11 h-11 hover:opacity-80 transition-opacity transform hover:scale-110">
-                 <img src={`${import.meta.env.BASE_URL}images/youtube.svg`} alt="YouTube" className="h-6 w-6" />
+                 <img src={`${import.meta.env.BASE_URL}images/youtube.svg`} alt="YouTube" width="24" height="24" className="h-6 w-6" />
                </a>
                <a href="http://tiktok.com/@gifteddreamers" target="_blank" rel="noopener noreferrer" aria-label="Follow us on TikTok" className="flex items-center justify-center w-11 h-11 hover:opacity-80 transition-opacity transform hover:scale-110">
-                 <img src={`${import.meta.env.BASE_URL}images/tiktok.svg`} alt="TikTok" className="h-6 w-6" />
+                 <img src={`${import.meta.env.BASE_URL}images/tiktok.svg`} alt="TikTok" width="24" height="24" className="h-6 w-6" />
                </a>
                <a href="https://www.x.com/gifteddreamers" target="_blank" rel="noopener noreferrer" aria-label="Follow us on X (Twitter)" className="flex items-center justify-center w-11 h-11 hover:opacity-80 transition-opacity transform hover:scale-110">
-                 <img src={`${import.meta.env.BASE_URL}images/X.svg`} alt="X (Twitter)" className="h-6 w-6" />
+                 <img src={`${import.meta.env.BASE_URL}images/X.svg`} alt="X (Twitter)" width="24" height="24" className="h-6 w-6" />
                </a>
                <a href="https://pinterest.com/@gifteddreamers" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Pinterest" className="flex items-center justify-center w-11 h-11 hover:opacity-80 transition-opacity transform hover:scale-110">
-                 <img src={`${import.meta.env.BASE_URL}images/pinterest.svg`} alt="Pinterest" className="h-6 w-6" />
+                 <img src={`${import.meta.env.BASE_URL}images/pinterest.svg`} alt="Pinterest" width="24" height="24" className="h-6 w-6" />
                </a>
             </div>
           </div>

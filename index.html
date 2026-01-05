@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gifted Dreamers | $380K in Free Nonprofit Tech Tools</title>
 
     <!-- SEO Meta Tags -->
@@ -96,11 +96,12 @@
     </script>
 
     <!-- Givebutter Widget Script -->
-    <script src="https://js.givebutter.com/elements/latest.js"></script>
-    <script
-      async
-      src="https://widgets.givebutter.com/latest.umd.cjs?acct=PWF9tXFflbTG12rU&p=other"
-    ></script>
+    <script>
+      window.Givebutter = window.Givebutter || function() { (Givebutter.q = Givebutter.q || []).push(arguments); };
+      Givebutter('setOptions', { accountId: 'PWF9tXFflbTG12rU' });
+    </script>
+    <script async src="https://js.givebutter.com/elements/latest.js"></script>
+    <script async src="https://widgets.givebutter.com/latest.umd.cjs?acct=PWF9tXFflbTG12rU&p=other"></script>
 
     <!-- Double the Donation Widget Script (Matching Gifts) -->
     <script>
