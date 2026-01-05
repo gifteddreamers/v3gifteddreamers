@@ -97,6 +97,8 @@ const LogoCloud: React.FC<LogoCloudProps> = ({
                 height="32"
                 className="h-8 md:h-10 object-contain w-auto"
                 loading="lazy"
+                decoding="async"
+                fetchPriority="low"
               />
             </div>
           ))}

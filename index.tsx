@@ -16,6 +16,19 @@ root.render(
   </React.StrictMode>
 );
 
+// Register service worker for caching brandfetch icons with longer TTL
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then((registration) => {
+        console.log('Service Worker registered:', registration.scope);
+      })
+      .catch((error) => {
+        console.log('Service Worker registration failed:', error);
+      });
+  });
+}
+
 // Load functional widgets immediately - required for site functionality (not analytics)
 loadGivebutter(); // Required for donation widgets
 loadDoubleDonation(); // Required for matching gifts plugin
