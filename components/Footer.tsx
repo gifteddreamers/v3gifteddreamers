@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 // Social media icons are now using custom SVG files in /public/images/
 
 const Footer: React.FC = () => {
+  // Remove footer skeleton when component mounts (Priority 1)
+  useEffect(() => {
+    const skeleton = document.getElementById('footer-skeleton');
+    if (skeleton) {
+      skeleton.remove();
+    }
+  }, []);
+
   return (
     <footer className="bg-slate-900 text-slate-300" style={{ minHeight: '1067px', height: '1067px', overflow: 'hidden', contain: 'layout style paint', position: 'relative', zIndex: 1, boxSizing: 'border-box' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
