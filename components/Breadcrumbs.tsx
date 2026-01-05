@@ -23,7 +23,7 @@ const Breadcrumbs: React.FC = () => {
   if (pathnames.length === 0) return null;
 
   return (
-    <nav className="bg-slate-50 border-b border-slate-200 py-3 px-4 sm:px-6 lg:px-8" aria-label="Breadcrumb">
+    <nav className="sticky top-20 z-40 bg-slate-50 border-b border-slate-200 py-3 px-4 sm:px-6 lg:px-8" aria-label="Breadcrumb">
       <div className="max-w-7xl mx-auto flex items-center space-x-2 text-sm">
         <Link to="/" className="text-slate-500 hover:text-primary hover:underline">
           Home
