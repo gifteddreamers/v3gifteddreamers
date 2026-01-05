@@ -96,9 +96,22 @@
       
       This improves initial page load performance and respects user privacy.
     -->
+    <!-- Reserve footer space immediately to prevent CLS -->
+    <style>
+      /* Reserve footer space before React loads - critical for CLS */
+      footer.bg-slate-900 {
+        min-height: 1067px !important;
+        height: 1067px !important;
+        contain: layout style !important;
+        display: block !important;
+      }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!-- Footer spacer to prevent CLS - reserves space before React renders -->
+      <div style="height: 1067px; width: 100%; position: absolute; bottom: 0; pointer-events: none; visibility: hidden;" aria-hidden="true"></div>
+    </div>
     <script type="module" src="./index.tsx"></script>
   </body>
 </html>
