@@ -44,6 +44,7 @@ body {
 }
 
 /* Prevent footer layout shift - reserve space immediately */
+/* CRITICAL: Footer must have fixed height BEFORE React renders */
 footer.bg-slate-900 {
   min-height: 1067px !important;
   height: 1067px !important;
@@ -52,23 +53,31 @@ footer.bg-slate-900 {
   z-index: 1 !important;
   overflow: hidden !important;
   box-sizing: border-box !important;
+  display: block !important;
+  visibility: visible !important;
 }
 
 /* Prevent root div from shifting - critical for CLS */
 #root {
   min-height: 100vh !important;
   contain: layout style !important;
-  display: block !important;
+  display: flex !important;
+  flex-direction: column !important;
 }
 
-/* Reserve space in flex container for footer */
+/* Reserve space in flex container for footer BEFORE React renders */
+/* This ensures footer space is reserved immediately */
 body > #root > div.flex {
   padding-bottom: 1067px !important;
-  min-height: 100vh !important;
+  min-height: calc(100vh + 1067px) !important;
   contain: layout style !important;
+  display: flex !important;
+  flex-direction: column !important;
 }
 
 /* Ensure body has proper layout containment */
 body {
   contain: layout style !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }

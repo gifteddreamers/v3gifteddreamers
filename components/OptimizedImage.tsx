@@ -36,9 +36,12 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
   srcSetWebP,
 }) => {
   // Convert .jpg/.jpeg to .webp if available
+  // Only convert if WebP file actually exists (check by avoiding 404s)
   const webpSrc = src.replace(/\.(jpg|jpeg)$/i, '.webp');
   const fallbackSrc = src;
   const isWebP = src.match(/\.(jpg|jpeg)$/i);
+  // Don't use WebP for images that don't have WebP versions (prevents 404s)
+  const shouldUseWebP = isWebP && !src.includes('kristine-socall'); // kristine-socall.jpg doesn't have WebP version
 
   // For hero/LCP images, use eager loading with high priority
   const imageLoading = isPriority ? 'eager' : loading;
@@ -75,7 +78,7 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
 
   // If WebP is available and this is a priority image, use direct WebP for fastest LCP
   // For priority images, skip picture element to avoid any overhead
-  if (isWebP && isPriority) {
+  if (shouldUseWebP && isPriority) {
     return (
       <img
         src={webpSrc}
@@ -99,7 +102,7 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
   }
 
   // If WebP is available (non-priority), use picture element with source
-  if (isWebP) {
+  if (shouldUseWebP) {
     return (
       <picture>
         <source srcSet={webpSrc} type="image/webp" sizes={sizes} />

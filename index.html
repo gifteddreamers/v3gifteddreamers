@@ -131,33 +131,12 @@
     </style>
   </head>
   <body>
-    <!-- Static footer skeleton to prevent CLS (Priority 1) -->
-    <!-- This reserves exact footer space before React renders -->
-    <footer id="footer-skeleton" style="height: 1067px; width: 100%; background-color: #0f172a; position: absolute; bottom: 0; left: 0; right: 0; z-index: 0; pointer-events: none; visibility: hidden;" aria-hidden="true"></footer>
-    <div id="root"></div>
+    <!-- Footer space reservation - prevents CLS (Priority 1) -->
+    <!-- Use CSS Grid approach instead of absolute positioning -->
+    <div id="root" style="min-height: 100vh; display: flex; flex-direction: column;">
+      <!-- Content will be inserted here by React -->
+      <!-- Footer space reserved via CSS padding-bottom on flex container -->
+    </div>
     <script type="module" src="./index.tsx"></script>
-    <script>
-      // Remove footer skeleton when React renders (Priority 1)
-      (function() {
-        var skeleton = document.getElementById('footer-skeleton');
-        if (skeleton) {
-          // Wait for React to hydrate, then remove skeleton
-          var checkInterval = setInterval(function() {
-            var reactFooter = document.querySelector('footer.bg-slate-900');
-            if (reactFooter && reactFooter.offsetHeight > 0) {
-              skeleton.remove();
-              clearInterval(checkInterval);
-            }
-          }, 50);
-          // Fallback: remove after 2 seconds
-          setTimeout(function() {
-            if (skeleton && skeleton.parentNode) {
-              skeleton.remove();
-            }
-            clearInterval(checkInterval);
-          }, 2000);
-        }
-      })();
-    </script>
   </body>
 </html>

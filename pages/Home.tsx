@@ -234,7 +234,7 @@ const Home: React.FC = () => {
               </div>
             </Reveal>
             <Reveal className="w-full md:w-3/5" delay={200}>
-              <div className="inline-block px-3 py-1 bg-primary/10 text-primary text-xs font-bold rounded-full mb-4 uppercase tracking-widest">About the Founder</div>
+              <div className="inline-block px-3 py-1 bg-primary/20 text-primary-dark text-xs font-bold rounded-full mb-4 uppercase tracking-widest" style={{ backgroundColor: 'rgba(13, 114, 156, 0.2)', color: '#0A5A7D' }}>About the Founder</div>
               <h2 className="text-3xl font-bold text-slate-900 mb-6 leading-tight">25 Years as a Crisis Translator</h2>
               <p className="text-slate-700 italic mb-6 text-xl border-l-4 border-accent pl-6 bg-slate-50 py-4 rounded-r-lg">
                 "I untangle complexity for a living. I fix what others broke."
