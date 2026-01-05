@@ -43,10 +43,11 @@ Hero image: 377KB WebP (133KB wasted according to audit)
 
 ### Solution Implemented
 1. **Re-compressed Image**:
-   - Used `cwebp -q 75 -m 6` (higher compression)
+   - Used `cwebp -q 70 -m 6 -pass 10` (aggressive compression)
    - Original: 377KB
-   - Compressed: 365KB
-   - Savings: 12KB (3.2% reduction)
+   - Compressed: 356KB (q70)
+   - Savings: 21KB (5.6% reduction)
+   - Visual quality: Good (PSNR 44.47 dB)
 
 2. **Image Already Optimized**:
    - Using WebP format ✅
@@ -123,7 +124,7 @@ CSS file (9997 bytes) blocks render
 | **Performance** | 0.79 | 0.88-0.92 | > 0.9 |
 | **CLS** | 0.401 (0.25) | < 0.1 (1.0) | < 0.1 |
 | **LCP** | 1.1s (0.92) | < 1.0s (1.0) | < 2.5s |
-| **Image Size** | 377KB | 365KB | < 250KB |
+| **Image Size** | 377KB | 356KB | < 250KB |
 
 ## Files Modified
 
