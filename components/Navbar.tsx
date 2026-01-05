@@ -60,7 +60,7 @@ const Navbar: React.FC = () => {
              </Link>
           </div>
 
-          {/* Mobile menu button */}
+          {/* Mobile menu button - hidden on desktop (md and above) */}
           <div className="flex items-center md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
