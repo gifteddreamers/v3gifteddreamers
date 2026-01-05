@@ -43,16 +43,12 @@ body {
   color: #0D729C;
 }
 
-/* Prevent footer layout shift - reserve space immediately */
-/* CRITICAL: Footer must have fixed height BEFORE React renders */
+/* Prevent footer layout shift - reserve minimum space */
 footer.bg-slate-900 {
-  min-height: 1067px !important;
-  height: 1067px !important;
-  max-height: 1067px !important;
+  min-height: 400px !important;
   contain: layout style paint !important;
   position: relative !important;
   z-index: 1 !important;
-  overflow: hidden !important;
   box-sizing: border-box !important;
   display: block !important;
   visibility: visible !important;

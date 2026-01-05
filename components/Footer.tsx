@@ -7,10 +7,7 @@ const Footer: React.FC = () => {
     <footer 
       className="bg-slate-900 text-slate-300" 
       style={{ 
-        minHeight: '1067px', 
-        height: '1067px', 
-        maxHeight: '1067px',
-        overflow: 'hidden', 
+        minHeight: '400px',
         contain: 'layout style paint', 
         position: 'relative', 
         zIndex: 1, 
