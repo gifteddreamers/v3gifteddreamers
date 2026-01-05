@@ -16,9 +16,7 @@ root.render(
   </React.StrictMode>
 );
 
-// Load analytics on user interaction ONLY if consent was given
-// Don't load analytics automatically - wait for consent
+// DO NOT load analytics automatically - wait for explicit user consent
+// Analytics will only load when user clicks "Accept" in cookie banner
 // This prevents third-party cookies from being set without consent
-if (hasConsent()) {
-  loadAnalytics();
-}
+// Removed automatic loading to ensure privacy compliance
