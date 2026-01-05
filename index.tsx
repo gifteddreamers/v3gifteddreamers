@@ -2,7 +2,7 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import './src/index.css';
 import App from './App';
-import { loadAnalytics, loadGivebutter } from './lib/analytics-loader';
+import { loadAnalytics, loadGivebutter, loadDoubleDonation } from './lib/analytics-loader';
 
 const rootElement = document.getElementById('root');
 if (!rootElement) {
@@ -16,8 +16,9 @@ root.render(
   </React.StrictMode>
 );
 
-// Load Givebutter immediately - required for donation widgets (not analytics)
-loadGivebutter();
+// Load functional widgets immediately - required for site functionality (not analytics)
+loadGivebutter(); // Required for donation widgets
+loadDoubleDonation(); // Required for matching gifts plugin
 
 // DO NOT load analytics automatically - wait for explicit user consent
 // Analytics will only load when user clicks "Accept" in cookie banner

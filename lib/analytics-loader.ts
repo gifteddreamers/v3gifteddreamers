@@ -1,6 +1,6 @@
 /**
  * Analytics Loader - Loads analytics scripts only after user consent
- * Note: Givebutter is loaded immediately as it's required for donation widgets (not analytics)
+ * Note: Givebutter and Double the Donation load immediately as they're required for widgets (not analytics)
  */
 
 let analyticsLoaded = false;
@@ -77,8 +77,10 @@ export function loadGivebutter() {
 
 /**
  * Load Double the Donation widget
+ * IMPORTANT: This is NOT analytics - it's required for matching gifts plugin functionality
+ * Loads immediately without consent requirement
  */
-function loadDoubleDonation() {
+export function loadDoubleDonation() {
   if (document.querySelector('script[src*="doublethedonation.com"]')) return;
 
   (window as any).DDCONF = { API_KEY: '6HMm5sEaYqgnLZmU' };
@@ -91,7 +93,7 @@ function loadDoubleDonation() {
 /**
  * Load all analytics scripts
  * IMPORTANT: Only call this after user has explicitly consented
- * Note: Givebutter is NOT included here - it loads immediately as it's required for donation widgets
+ * Note: Givebutter and Double the Donation are NOT included here - they load immediately as they're required for widgets
  */
 export function loadAnalytics() {
   // Double-check consent before loading
@@ -104,9 +106,8 @@ export function loadAnalytics() {
   consentGiven = true;
 
   loadGoogleAnalytics();
-  loadDoubleDonation();
   // Clarity tracking removed - was causing third-party cookie issues
-  // Givebutter loads immediately (not analytics - required for donation widgets)
+  // Givebutter and Double the Donation load immediately (not analytics - required for widgets)
 }
 
 /**
