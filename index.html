@@ -139,9 +139,6 @@
     <div id="root" style="min-height: 100vh; display: flex; flex-direction: column;">
       <!-- Content will be inserted here by React -->
     </div>
-    <!-- Static footer placeholder to prevent CLS - reserves space before React renders -->
-    <!-- This ensures footer space exists immediately, preventing layout shift -->
-    <footer id="footer-placeholder" style="height: 1067px; width: 100%; background-color: #0f172a; display: block; position: relative; z-index: 0; pointer-events: none; visibility: visible; flex-shrink: 0;" aria-hidden="true"></footer>
     <!-- Load main bundle -->
     <script type="module" src="./index.tsx"></script>
     <script>

@@ -86,8 +86,6 @@ footer.bg-slate-900 {
 /* Reserve space in flex container for footer BEFORE React renders */
 /* This ensures footer space is reserved immediately */
 body > #root > div.flex {
-  padding-bottom: 1067px !important;
-  min-height: calc(100vh + 1067px) !important;
   contain: layout style !important;
   display: flex !important;
   flex-direction: column !important;

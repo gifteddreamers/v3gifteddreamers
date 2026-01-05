@@ -3,14 +3,6 @@ import { Link } from 'react-router-dom';
 // Social media icons are now using custom SVG files in /public/images/
 
 const Footer: React.FC = () => {
-  // Remove footer placeholder when component mounts
-  useEffect(() => {
-    const placeholder = document.getElementById('footer-placeholder');
-    if (placeholder && placeholder.parentNode) {
-      placeholder.remove();
-    }
-  }, []);
-
   return (
     <footer 
       className="bg-slate-900 text-slate-300" 
