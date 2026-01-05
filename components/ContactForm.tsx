@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Button from './Button';
-import { Mail, User, Building, MessageSquare, CheckCircle, AlertCircle } from 'lucide-react';
+import { Mail, User, Building, MessageSquare, CheckCircle, AlertCircle, Phone, Linkedin, Calendar, Briefcase, Globe } from 'lucide-react';
 import { trackFormSubmission } from '../lib/analytics';
 
 interface ContactFormProps {
@@ -10,7 +10,7 @@ interface ContactFormProps {
   subtitle?: string;
 }
 
-const ContactForm: React.FC<ContactFormProps> = ({ 
+const ContactForm: React.FC<ContactFormProps> = ({
   formType = 'contact',
   title = 'Get in Touch',
   subtitle = 'Fill out the form below and we\'ll get back to you within 24 hours.'
@@ -18,7 +18,13 @@ const ContactForm: React.FC<ContactFormProps> = ({
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    organization: '',
+    company: '',
+    phone: '',
+    linkedin: '',
+    meetingPreference: '',
+    title: '',
+    department: '',
+    companyUrl: '',
     message: '',
     formType: formType
   });
@@ -26,7 +32,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
@@ -59,13 +65,19 @@ const ContactForm: React.FC<ContactFormProps> = ({
       }
 
       // Track conversion for Google Ad Grants
-      trackFormSubmission(formType, formData.organization);
+      trackFormSubmission(formType, formData.company);
 
       setStatus('success');
       setFormData({
         name: '',
         email: '',
-        organization: '',
+        company: '',
+        phone: '',
+        linkedin: '',
+        meetingPreference: '',
+        title: '',
+        department: '',
+        companyUrl: '',
         message: '',
         formType: formType
       });
@@ -111,56 +123,173 @@ const ContactForm: React.FC<ContactFormProps> = ({
       )}
 
       <form onSubmit={handleSubmit} className="space-y-6">
+        {/* Row 1: Name and Email */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label htmlFor="name" className="block text-sm font-semibold text-slate-700 mb-2">
+              <User className="inline h-4 w-4 mr-1" />
+              Full Name *
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              value={formData.name}
+              onChange={handleChange}
+              className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+              placeholder="Jane Smith"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="email" className="block text-sm font-semibold text-slate-700 mb-2">
+              <Mail className="inline h-4 w-4 mr-1" />
+              Email Address *
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              value={formData.email}
+              onChange={handleChange}
+              className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+              placeholder="jane@example.org"
+            />
+          </div>
+        </div>
+
+        {/* Row 2: Company and Phone */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label htmlFor="company" className="block text-sm font-semibold text-slate-700 mb-2">
+              <Building className="inline h-4 w-4 mr-1" />
+              Company / Organization *
+            </label>
+            <input
+              type="text"
+              id="company"
+              name="company"
+              required
+              value={formData.company}
+              onChange={handleChange}
+              className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+              placeholder="Your Organization Name"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="phone" className="block text-sm font-semibold text-slate-700 mb-2">
+              <Phone className="inline h-4 w-4 mr-1" />
+              Phone Number
+            </label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+              className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+              placeholder="+1 (555) 123-4567"
+            />
+          </div>
+        </div>
+
+        {/* Row 3: LinkedIn and Meeting Preference */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label htmlFor="linkedin" className="block text-sm font-semibold text-slate-700 mb-2">
+              <Linkedin className="inline h-4 w-4 mr-1" />
+              LinkedIn Profile
+            </label>
+            <input
+              type="url"
+              id="linkedin"
+              name="linkedin"
+              value={formData.linkedin}
+              onChange={handleChange}
+              className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+              placeholder="https://linkedin.com/in/yourprofile"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="meetingPreference" className="block text-sm font-semibold text-slate-700 mb-2">
+              <Calendar className="inline h-4 w-4 mr-1" />
+              Preferred Meeting Type
+            </label>
+            <select
+              id="meetingPreference"
+              name="meetingPreference"
+              value={formData.meetingPreference}
+              onChange={handleChange}
+              className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all bg-white"
+            >
+              <option value="">Select preference...</option>
+              <option value="video">Video Call (Zoom/Meet)</option>
+              <option value="phone">Phone Call</option>
+              <option value="email">Email Only</option>
+            </select>
+          </div>
+        </div>
+
+        {/* Row 4: Title and Department (Optional) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label htmlFor="title" className="block text-sm font-semibold text-slate-700 mb-2">
+              <Briefcase className="inline h-4 w-4 mr-1" />
+              Job Title
+              <span className="text-slate-400 font-normal ml-1">(optional)</span>
+            </label>
+            <input
+              type="text"
+              id="title"
+              name="title"
+              value={formData.title}
+              onChange={handleChange}
+              className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+              placeholder="Executive Director"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="department" className="block text-sm font-semibold text-slate-700 mb-2">
+              <Building className="inline h-4 w-4 mr-1" />
+              Department
+              <span className="text-slate-400 font-normal ml-1">(optional)</span>
+            </label>
+            <input
+              type="text"
+              id="department"
+              name="department"
+              value={formData.department}
+              onChange={handleChange}
+              className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+              placeholder="Operations"
+            />
+          </div>
+        </div>
+
+        {/* Row 5: Company URL (Optional) */}
         <div>
-          <label htmlFor="name" className="block text-sm font-semibold text-slate-700 mb-2">
-            <User className="inline h-4 w-4 mr-1" />
-            Full Name *
+          <label htmlFor="companyUrl" className="block text-sm font-semibold text-slate-700 mb-2">
+            <Globe className="inline h-4 w-4 mr-1" />
+            Organization Website
+            <span className="text-slate-400 font-normal ml-1">(optional)</span>
           </label>
           <input
-            type="text"
-            id="name"
-            name="name"
-            required
-            value={formData.name}
+            type="url"
+            id="companyUrl"
+            name="companyUrl"
+            value={formData.companyUrl}
             onChange={handleChange}
             className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
-            placeholder="Jane Smith"
+            placeholder="https://yourorganization.org"
           />
         </div>
 
-        <div>
-          <label htmlFor="email" className="block text-sm font-semibold text-slate-700 mb-2">
-            <Mail className="inline h-4 w-4 mr-1" />
-            Email Address *
-          </label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            required
-            value={formData.email}
-            onChange={handleChange}
-            className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
-            placeholder="jane@example.org"
-          />
-        </div>
-
-        <div>
-          <label htmlFor="organization" className="block text-sm font-semibold text-slate-700 mb-2">
-            <Building className="inline h-4 w-4 mr-1" />
-            Organization
-          </label>
-          <input
-            type="text"
-            id="organization"
-            name="organization"
-            value={formData.organization}
-            onChange={handleChange}
-            className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
-            placeholder="Your Nonprofit Name"
-          />
-        </div>
-
+        {/* Message */}
         <div>
           <label htmlFor="message" className="block text-sm font-semibold text-slate-700 mb-2">
             <MessageSquare className="inline h-4 w-4 mr-1" />
@@ -170,7 +299,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
             id="message"
             name="message"
             required
-            rows={5}
+            rows={4}
             value={formData.message}
             onChange={handleChange}
             className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all resize-none"
