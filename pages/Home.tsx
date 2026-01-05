@@ -28,8 +28,8 @@ const Home: React.FC = () => {
           className="absolute inset-0 w-full h-full object-cover"
           isPriority={true}
           loading="eager"
-          width={1920}
-          height={1080}
+          width={2560}
+          height={1440}
         />
         
         {/* Gradient box on left for text */}
