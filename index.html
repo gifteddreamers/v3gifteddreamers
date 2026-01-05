@@ -46,7 +46,9 @@
     <!-- Preconnect to fonts (critical) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Load fonts asynchronously to avoid render blocking -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
 
     <!-- Structured Data (JSON-LD) for Google Ad Grants -->
     <script type="application/ld+json">
@@ -105,13 +107,32 @@
         contain: layout style !important;
         display: block !important;
       }
+      /* Reserve space in flex container for footer before React renders */
+      body > #root > div.flex {
+        padding-bottom: 1067px !important;
+      }
+      /* Static footer placeholder - gets replaced by React */
+      #footer-placeholder {
+        height: 1067px;
+        width: 100%;
+        background-color: #0f172a;
+        display: block;
+      }
     </style>
   </head>
   <body>
-    <div id="root">
-      <!-- Footer spacer to prevent CLS - reserves space before React renders -->
-      <div style="height: 1067px; width: 100%; position: absolute; bottom: 0; pointer-events: none; visibility: hidden;" aria-hidden="true"></div>
-    </div>
+    <!-- Static footer placeholder to prevent CLS - removed when React renders -->
+    <footer id="footer-placeholder" aria-hidden="true"></footer>
+    <div id="root"></div>
     <script type="module" src="./index.tsx"></script>
+    <script>
+      // Remove placeholder footer when React renders
+      document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(function() {
+          const placeholder = document.getElementById('footer-placeholder');
+          if (placeholder) placeholder.remove();
+        }, 100);
+      });
+    </script>
   </body>
 </html>
