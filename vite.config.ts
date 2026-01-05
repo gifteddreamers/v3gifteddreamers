@@ -19,12 +19,18 @@ export default defineConfig(({ mode }) => {
         }
       },
       build: {
+        // Target modern browsers (ES2020+) to avoid legacy JavaScript
+        target: 'es2020',
         // Enable minification
         minify: 'terser',
         terserOptions: {
           compress: {
             drop_console: isProduction, // Remove console.log in production
             drop_debugger: isProduction,
+          },
+          format: {
+            // Remove comments and unnecessary whitespace
+            comments: false,
           },
         },
         // Code splitting configuration

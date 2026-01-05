@@ -8,7 +8,8 @@ import OptimizedImage from '../components/OptimizedImage';
 import { getHeroImageProps } from '../lib/image-utils';
 
 // Images from public folder - hardcoded paths for reliability
-const heroImage = '/images/austin-skyline.jpg';
+// Using WebP directly for best performance
+const heroImage = '/images/austin-skyline.webp';
 const profileImage = '/kristine-socall.jpg';
 
 // Note: For hero/LCP images, we use direct WebP instead of srcSet to avoid delay
