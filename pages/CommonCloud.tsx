@@ -113,14 +113,14 @@ const CommonCloud: React.FC = () => {
              Most knowledge is locked behind $500/month coaching programs or enterprise software training. We think that's backwards. The playbooks exist. The tools are free or discounted. We just share them.
            </p>
            <div className="bg-slate-50 p-8 rounded-xl">
-             <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-8 mb-6">
+             <div className="flex flex-row items-center justify-center gap-4 sm:gap-6 md:gap-8 mb-6 flex-wrap">
                {/* Learn It */}
                <div className="flex flex-col items-center">
                  <img src="/images/learnit.svg" alt="Learn" className="w-20 h-20 mb-3" />
                  <p className="font-bold text-primary text-lg">LEARN IT</p>
                </div>
                
-               <div className="text-3xl text-slate-400 hidden md:block">→</div>
+               <div className="text-2xl sm:text-3xl text-slate-400">→</div>
                
                {/* Document It */}
                <div className="flex flex-col items-center">
@@ -128,7 +128,7 @@ const CommonCloud: React.FC = () => {
                  <p className="font-bold text-accent text-lg">DOCUMENT IT</p>
                </div>
                
-               <div className="text-3xl text-slate-400 hidden md:block">→</div>
+               <div className="text-2xl sm:text-3xl text-slate-400">→</div>
                
                {/* Teach It */}
                <div className="flex flex-col items-center">
@@ -136,7 +136,7 @@ const CommonCloud: React.FC = () => {
                  <p className="font-bold text-primary text-lg">TEACH IT</p>
                </div>
                
-               <div className="text-3xl text-slate-400 hidden md:block">→</div>
+               <div className="text-2xl sm:text-3xl text-slate-400">→</div>
                
                {/* Get Paid */}
                <div className="flex flex-col items-center">
@@ -146,7 +146,7 @@ const CommonCloud: React.FC = () => {
                  <p className="font-bold text-accent text-lg">PAY US*</p>
                </div>
                
-               <div className="text-3xl text-slate-400 hidden md:block">→</div>
+               <div className="text-2xl sm:text-3xl text-slate-400">→</div>
                
                {/* Fund GRUHP */}
                <div className="flex flex-col items-center">
