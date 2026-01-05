@@ -34,26 +34,3 @@ jobs:
           source: "dist/*"
           target: "/home/admin/commoncloud/sites/gifteddreamers.org"
           strip_components: 1
-
-      - name: Deploy nginx config
-        uses: appleboy/scp-action@v0.1.7
-        with:
-          host: ${{ secrets.AWS_HOST }}
-          username: ${{ secrets.AWS_USER }}
-          key: ${{ secrets.AWS_SSH_KEY }}
-          source: "nginx.conf"
-          target: "/home/admin/commoncloud/config"
-
-      - name: Reload nginx
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.AWS_HOST }}
-          username: ${{ secrets.AWS_USER }}
-          key: ${{ secrets.AWS_SSH_KEY }}
-          script: |
-            # Copy nginx config if changed and reload
-            if ! diff -q /home/admin/commoncloud/config/nginx.conf /etc/nginx/sites-available/gifteddreamers.org 2>/dev/null; then
-              sudo cp /home/admin/commoncloud/config/nginx.conf /etc/nginx/sites-available/gifteddreamers.org
-              sudo ln -sf /etc/nginx/sites-available/gifteddreamers.org /etc/nginx/sites-enabled/
-              sudo nginx -t && sudo systemctl reload nginx
-            fi
