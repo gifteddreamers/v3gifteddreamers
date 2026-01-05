@@ -27,11 +27,14 @@ function loadGoogleAnalytics() {
   document.head.appendChild(script);
 
   // Initialize GA4
-  window.dataLayer = window.dataLayer || [];
-  function gtag(...args: any[]) {
-    window.dataLayer.push(args);
+  const win = window as any;
+  if (!win.dataLayer) {
+    win.dataLayer = [];
   }
-  (window as any).gtag = gtag;
+  function gtag(...args: any[]) {
+    win.dataLayer.push(args);
+  }
+  win.gtag = gtag;
   
   gtag('js', new Date());
   gtag('config', 'G-6X01DRJBC0');
@@ -47,10 +50,16 @@ function loadGoogleAnalytics() {
 function loadGivebutter() {
   if (document.querySelector('script[src*="js.givebutter.com"]')) return;
 
-  window.Givebutter = window.Givebutter || function(...args: any[]) {
-    (window.Givebutter.q = window.Givebutter.q || []).push(args);
-  };
-  (window.Givebutter as any)('setOptions', { accountId: 'PWF9tXFflbTG12rU' });
+  const win = window as any;
+  if (!win.Givebutter) {
+    win.Givebutter = function(...args: any[]) {
+      if (!win.Givebutter.q) {
+        win.Givebutter.q = [];
+      }
+      win.Givebutter.q.push(args);
+    };
+  }
+  win.Givebutter('setOptions', { accountId: 'PWF9tXFflbTG12rU' });
 
   const script1 = document.createElement('script');
   script1.async = true;
@@ -82,15 +91,22 @@ function loadDoubleDonation() {
 function loadClarity() {
   if (document.querySelector('script[src*="clarity.ms"]')) return;
 
-  (function(c: any, l: Document, a: string, r: string, i: string, t: any, y: any) {
+  (function(c: any, l: Document, a: string, r: string, i: string) {
     c[a] = c[a] || function(...args: any[]) {
-      (c[a].q = c[a].q || []).push(args);
+      if (!c[a].q) {
+        c[a].q = [];
+      }
+      c[a].q.push(args);
     };
-    t = l.createElement(r);
-    t.async = 1;
+    const t = l.createElement(r) as HTMLScriptElement;
+    t.async = true;
     t.src = 'https://www.clarity.ms/tag/' + i;
-    y = l.getElementsByTagName(r)[0];
-    y.parentNode.insertBefore(t, y);
+    const y = l.getElementsByTagName(r)[0];
+    if (y && y.parentNode) {
+      y.parentNode.insertBefore(t, y);
+    } else {
+      l.head.appendChild(t);
+    }
   })(window, document, 'clarity', 'script', 'uk53w4bsjz');
 }
 
