@@ -86,45 +86,6 @@ function loadDoubleDonation() {
 }
 
 /**
- * Load Microsoft Clarity Analytics
- * IMPORTANT: Only call this after explicit user consent
- */
-function loadClarity() {
-  // Double-check consent before loading Clarity (it sets cookies)
-  if (!hasConsent()) {
-    console.warn('Clarity load attempted without consent - blocking');
-    return;
-  }
-
-  if (document.querySelector('script[src*="clarity.ms"]')) return;
-
-  // Add DNS prefetch now that we have consent
-  const dnsPrefetch = document.createElement('link');
-  dnsPrefetch.rel = 'dns-prefetch';
-  dnsPrefetch.href = 'https://www.clarity.ms';
-  document.head.appendChild(dnsPrefetch);
-
-  // Load Clarity script
-  (function(c: any, l: Document, a: string, r: string, i: string) {
-    c[a] = c[a] || function(...args: any[]) {
-      if (!c[a].q) {
-        c[a].q = [];
-      }
-      c[a].q.push(args);
-    };
-    const t = l.createElement(r) as HTMLScriptElement;
-    t.async = true;
-    t.src = 'https://www.clarity.ms/tag/' + i;
-    const y = l.getElementsByTagName(r)[0];
-    if (y && y.parentNode) {
-      y.parentNode.insertBefore(t, y);
-    } else {
-      l.head.appendChild(t);
-    }
-  })(window, document, 'clarity', 'script', 'uk53w4bsjz');
-}
-
-/**
  * Load all analytics scripts
  * IMPORTANT: Only call this after user has explicitly consented
  */
@@ -141,7 +102,7 @@ export function loadAnalytics() {
   loadGoogleAnalytics();
   loadGivebutter();
   loadDoubleDonation();
-  loadClarity();
+  // Clarity tracking removed - was causing third-party cookie issues
 }
 
 /**
