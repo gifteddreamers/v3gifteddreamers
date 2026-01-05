@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-slate-900 text-slate-300" style={{ height: '1067px', overflow: 'hidden' }}>
+    <footer className="bg-slate-900 text-slate-300" style={{ minHeight: '1067px', height: '1067px', overflow: 'hidden', contain: 'layout style' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           

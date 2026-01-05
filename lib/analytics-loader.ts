@@ -104,6 +104,7 @@ function loadClarity() {
   dnsPrefetch.href = 'https://www.clarity.ms';
   document.head.appendChild(dnsPrefetch);
 
+  // Load Clarity script
   (function(c: any, l: Document, a: string, r: string, i: string) {
     c[a] = c[a] || function(...args: any[]) {
       if (!c[a].q) {

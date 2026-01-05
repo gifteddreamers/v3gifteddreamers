@@ -42,3 +42,10 @@ body {
 .text-accent {
   color: #0D729C;
 }
+
+/* Prevent footer layout shift - reserve space immediately */
+footer.bg-slate-900 {
+  min-height: 1067px !important;
+  height: 1067px !important;
+  contain: layout style;
+}
