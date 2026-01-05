@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Button from './Button';
 import { Mail, User, Building, MessageSquare, CheckCircle, AlertCircle } from 'lucide-react';
+import { trackFormSubmission } from '../lib/analytics';
 
 interface ContactFormProps {
   formType?: 'contact' | 'booking';
@@ -56,6 +58,9 @@ const ContactForm: React.FC<ContactFormProps> = ({
         throw new Error('Failed to submit form');
       }
 
+      // Track conversion for Google Ad Grants
+      trackFormSubmission(formType, formData.organization);
+
       setStatus('success');
       setFormData({
         name: '',
@@ -70,7 +75,11 @@ const ContactForm: React.FC<ContactFormProps> = ({
     } catch (error) {
       setStatus('error');
       setErrorMessage('Something went wrong. Please try again or email us directly at services@gifteddreamers.org');
-      console.error('Form submission error:', error);
+      // Log error for debugging in development
+      if (process.env.NODE_ENV === 'development') {
+        // eslint-disable-next-line no-console
+        console.error('Form submission error:', error);
+      }
     }
   };
 
@@ -181,7 +190,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
 
         <p className="text-xs text-slate-500 text-center">
           By submitting this form, you agree to our{' '}
-          <a href="/privacy" className="text-primary hover:underline">Privacy Policy</a>.
+          <Link to="/privacy" className="text-primary hover:underline">Privacy Policy</Link>.
         </p>
       </form>
     </div>

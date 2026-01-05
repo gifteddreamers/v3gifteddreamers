@@ -1,8 +1,9 @@
 import React from 'react';
-import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Breadcrumbs from './components/Breadcrumbs';
+import { trackPageView } from './lib/analytics';
 
 // Pages
 import Home from './pages/Home';
@@ -15,11 +16,32 @@ import About from './pages/About';
 import MatchingGifts from './pages/MatchingGifts';
 import FAQ from './pages/FAQ';
 import Contact from './pages/Contact';
+import Privacy from './pages/Privacy';
+import Terms from './pages/Terms';
+
+// Page title mapping for analytics
+const pageTitles: Record<string, string> = {
+  '/': 'Home',
+  '/services': 'Services',
+  '/volunteer': 'Volunteer',
+  '/gruhp': 'GRUHP Fund',
+  '/corporate-partners': 'Corporate Partners',
+  '/common-cloud': 'Common Cloud',
+  '/about': 'About',
+  '/matching-gifts': 'Matching Gifts',
+  '/faq': 'FAQ',
+  '/contact': 'Contact',
+  '/privacy': 'Privacy Policy',
+  '/terms': 'Terms of Service',
+};
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
   React.useEffect(() => {
     window.scrollTo(0, 0);
+    // Track page view for GA4
+    const pageTitle = pageTitles[pathname] || 'Gifted Dreamers';
+    trackPageView(pathname, pageTitle);
   }, [pathname]);
   return null;
 };
@@ -58,8 +80,8 @@ const App: React.FC = () => {
             <Route path="/matching-gifts" element={<MatchingGifts />} />
             <Route path="/faq" element={<FAQ />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/privacy" element={<div className="p-20 text-center">Privacy Policy placeholder</div>} />
-            <Route path="/terms" element={<div className="p-20 text-center">Terms of Service placeholder</div>} />
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/terms" element={<Terms />} />
           </Routes>
         </main>
         <Footer />

@@ -1,6 +1,7 @@
 import React from 'react';
-import { MapPin } from 'lucide-react';
+import { MapPin, Mail, Calendar, Clock } from 'lucide-react';
 import Reveal from '../components/Reveal';
+import ContactForm from '../components/ContactForm';
 
 const Contact: React.FC = () => {
   return (
@@ -20,43 +21,77 @@ const Contact: React.FC = () => {
       {/* Contact Options */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            
-            {/* Contact Form - Airtable Embed */}
-            <Reveal>
-              <div className="lg:col-span-2">
-                <div className="bg-white p-8 rounded-xl shadow-lg border border-slate-100">
-                  <h2 className="text-2xl font-bold text-slate-900 mb-4">Send Us a Message</h2>
-                  <p className="text-slate-600 mb-6">Fill out the form below and we'll get back to you within 24 hours.</p>
-                  <iframe 
-                    className="airtable-embed" 
-                    src="https://airtable.com/embed/appVDA5VzzPotA1N6/pagVoc7CkkvE7wjHy/form" 
-                    frameBorder="0" 
-                    width="100%" 
-                    height="533" 
-                    style={{ background: 'transparent', border: '1px solid #ccc' }}
-                    title="Contact Form"
-                  />
-                </div>
-              </div>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+            {/* Contact Form - Native with Analytics */}
+            <Reveal className="lg:col-span-2">
+              <ContactForm
+                title="Send Us a Message"
+                subtitle="Fill out the form below and we'll get back to you within 24 hours."
+              />
             </Reveal>
 
-            {/* Location */}
-            <Reveal delay={200}>
-              <div className="bg-white p-8 rounded-xl shadow-lg border border-slate-100 hover:shadow-xl transition-shadow">
-                <div className="flex items-center justify-center w-16 h-16 rounded-full mb-6" style={{ backgroundColor: 'rgba(162, 33, 49, 0.1)', color: '#A22131' }}>
-                  <MapPin className="h-8 w-8" />
+            {/* Sidebar */}
+            <div className="space-y-6">
+              {/* Location */}
+              <Reveal delay={100}>
+                <div className="bg-white p-6 rounded-xl shadow-lg border border-slate-100 hover:shadow-xl transition-shadow">
+                  <div className="flex items-center justify-center w-12 h-12 rounded-full mb-4" style={{ backgroundColor: 'rgba(162, 33, 49, 0.1)', color: '#A22131' }}>
+                    <MapPin className="h-6 w-6" />
+                  </div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">Location</h3>
+                  <p className="text-slate-600 mb-2">
+                    <strong>Gifted Dreamers, Inc.</strong><br/>
+                    501(c)(3) EIN 39-3863796
+                  </p>
+                  <p className="text-slate-600 text-sm">
+                    Serving global startups and nonprofits remotely
+                  </p>
                 </div>
-                <h3 className="text-2xl font-bold text-slate-900 mb-4">Location</h3>
-                <p className="text-slate-600 mb-2">
-                  <strong>Gifted Dreamers, Inc.</strong><br/>
-                  501(c)(3) EIN 39-3863796
-                </p>
-                <p className="text-slate-600">
-                  Serving global startups and nonprofits
-                </p>
-              </div>
-            </Reveal>
+              </Reveal>
+
+              {/* Email */}
+              <Reveal delay={150}>
+                <div className="bg-white p-6 rounded-xl shadow-lg border border-slate-100 hover:shadow-xl transition-shadow">
+                  <div className="flex items-center justify-center w-12 h-12 rounded-full mb-4" style={{ backgroundColor: 'rgba(13, 114, 156, 0.1)', color: '#0D729C' }}>
+                    <Mail className="h-6 w-6" />
+                  </div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">Email</h3>
+                  <a href="mailto:services@gifteddreamers.org" className="text-primary hover:underline font-medium">
+                    services@gifteddreamers.org
+                  </a>
+                </div>
+              </Reveal>
+
+              {/* Response Time */}
+              <Reveal delay={200}>
+                <div className="bg-white p-6 rounded-xl shadow-lg border border-slate-100 hover:shadow-xl transition-shadow">
+                  <div className="flex items-center justify-center w-12 h-12 rounded-full mb-4" style={{ backgroundColor: 'rgba(13, 114, 156, 0.1)', color: '#0D729C' }}>
+                    <Clock className="h-6 w-6" />
+                  </div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">Response Time</h3>
+                  <p className="text-slate-600 text-sm">
+                    We respond to all inquiries within 24 hours during business days.
+                  </p>
+                </div>
+              </Reveal>
+
+              {/* Free Consultation */}
+              <Reveal delay={250}>
+                <div className="bg-gradient-to-br from-primary/5 to-primary/10 p-6 rounded-xl border border-primary/20">
+                  <div className="flex items-center justify-center w-12 h-12 rounded-full mb-4 bg-primary/10">
+                    <Calendar className="h-6 w-6 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">Free Discovery Call</h3>
+                  <p className="text-slate-600 text-sm mb-4">
+                    Book a free 60-minute call to discuss your accounting needs and get a fixed-price quote.
+                  </p>
+                  <p className="text-xs text-slate-500">
+                    Mention "Free Discovery Call" in your message.
+                  </p>
+                </div>
+              </Reveal>
+            </div>
           </div>
 
           {/* Additional Info */}
