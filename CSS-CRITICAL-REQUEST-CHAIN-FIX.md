@@ -33,7 +33,7 @@ function cssPreloadPlugin(): Plugin {
   return {
     name: 'css-preload',
     generateBundle(options, bundle) {
-      // Find CSS file in bundle
+      // Find CSS file in bundle during build
       const cssFiles = Object.keys(bundle).filter((fileName) => 
         fileName.endsWith('.css')
       );
@@ -45,9 +45,25 @@ function cssPreloadPlugin(): Plugin {
     transformIndexHtml: {
       enforce: 'post',
       transform(html) {
-        // Add preload link for CSS
+        // Add preload link for CSS BEFORE the stylesheet link
+        // Must match exact path format that Vite uses (absolute path with /)
+        // Include crossorigin to match Vite's stylesheet link
         if (cssFileName) {
-          const preloadLink = `<link rel="preload" as="style" href="/${cssFileName}">`;
+          // Ensure absolute path (starts with /)
+          const href = cssFileName.startsWith('/') ? cssFileName : `/${cssFileName}`;
+          const preloadLink = `    <link rel="preload" as="style" href="${href}" crossorigin>`;
+          
+          // Find where Vite injects the stylesheet link and insert preload BEFORE it
+          // This ensures the preload is used immediately when stylesheet link is found
+          const stylesheetPattern = /<link[^>]*rel=["']stylesheet["'][^>]*href=["']([^"']*\/assets\/css\/[^"']*\.css)["'][^>]*>/i;
+          const match = html.match(stylesheetPattern);
+          
+          if (match) {
+            // Insert preload link right BEFORE the stylesheet link
+            return html.replace(match[0], `${preloadLink}\n${match[0]}`);
+          }
+          
+          // Fallback: insert before </head>
           return html.replace('</head>', `${preloadLink}\n  </head>`);
         }
         return html;
@@ -56,6 +72,12 @@ function cssPreloadPlugin(): Plugin {
   };
 }
 ```
+
+**Key Points**:
+- Preload link MUST come BEFORE stylesheet link (browser won't use it if it comes after)
+- Path must match exactly (absolute path with `/`)
+- Must include `crossorigin` attribute to match Vite's stylesheet link
+- Uses regex to find stylesheet link and insert preload immediately before it
 
 ### How It Works
 
@@ -122,8 +144,29 @@ Time: 0ms    155ms    403ms
 
 1. Build the project: `npm run build`
 2. Check `dist/index.html` for `<link rel="preload" as="style">` tag
-3. Verify CSS file is preloaded before stylesheet link
-4. Run Lighthouse audit - should show reduced request chain length
+3. Verify CSS file is preloaded **BEFORE** stylesheet link (critical!)
+4. Verify preload link has `crossorigin` attribute matching stylesheet
+5. Run Lighthouse audit - should show:
+   - Reduced request chain length
+   - No "preload not used" warning
+   - Faster CSS loading
+
+## Fix History
+
+### Issue: Preload Not Used Warning
+**Problem**: Browser warning: "The resource was preloaded using link preload but not used within a few seconds"
+
+**Root Cause**: 
+- Preload link was appearing AFTER stylesheet link
+- Browser doesn't use preload if it comes after the actual resource
+- Path format didn't match (relative vs absolute)
+- Missing `crossorigin` attribute
+
+**Solution**:
+- Find stylesheet link using regex pattern
+- Insert preload link immediately BEFORE stylesheet link
+- Use absolute path format (`/assets/css/...`)
+- Include `crossorigin` attribute to match stylesheet
 
 ## Browser Support
 
