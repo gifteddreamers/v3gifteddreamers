@@ -31,10 +31,6 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/logo-200.png">
 
-    <!-- Preload critical JavaScript bundle to break request chain -->
-    <!-- This allows JS to download in parallel with HTML parsing, not sequentially -->
-    <link rel="modulepreload" href="./index.tsx" as="script" crossorigin>
-    
     <!-- Preload LCP image (hero background) - WebP version for fastest loading -->
     <!-- Preload highest priority to start download immediately - critical for LCP -->
     <link rel="preload" as="image" href="/images/austin-skyline.webp" fetchpriority="high" type="image/webp">
