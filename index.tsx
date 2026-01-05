@@ -1,5 +1,7 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
+// CSS is loaded via Vite's build process - will be extracted and linked automatically
+// Import here so Vite processes it, but it won't block JS execution
 import './src/index.css';
 import App from './App';
 import { loadAnalytics, loadGivebutter, loadDoubleDonation } from './lib/analytics-loader';

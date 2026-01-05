@@ -1,6 +1,39 @@
 import path from 'path';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import type { Plugin } from 'vite';
+
+// Plugin to inject CSS preload links to break critical request chain
+function cssPreloadPlugin(): Plugin {
+  return {
+    name: 'css-preload',
+    transformIndexHtml: {
+      enforce: 'post',
+      transform(html, ctx) {
+        // Find CSS files in the build output
+        const cssFiles = ctx.bundle 
+          ? Object.keys(ctx.bundle).filter((fileName) => 
+              fileName.endsWith('.css') && ctx.bundle[fileName].type === 'asset'
+            )
+          : [];
+        
+        if (cssFiles.length === 0) return html;
+        
+        // Add preload links for CSS files before </head>
+        // This allows CSS to download in parallel with HTML parsing
+        const preloadLinks = cssFiles
+          .map((file) => {
+            const asset = ctx.bundle![file] as any;
+            const href = asset.fileName || `/${file}`;
+            return `    <link rel="preload" as="style" href="${href}">`;
+          })
+          .join('\n');
+        
+        return html.replace('</head>', `${preloadLinks}\n  </head>`);
+      },
+    },
+  };
+}
 
 export default defineConfig(({ mode }) => {
     const isProduction = mode === 'production';
@@ -12,7 +45,7 @@ export default defineConfig(({ mode }) => {
         host: '0.0.0.0',
         allowedHosts: ['3000-icy05hrjm3itezj3j337a-94580408.sg1.manus.computer'],
       },
-      plugins: [react()],
+      plugins: [react(), cssPreloadPlugin()],
       resolve: {
         alias: {
           '@': path.resolve(__dirname, '.'),
@@ -50,10 +83,6 @@ export default defineConfig(({ mode }) => {
                 }
                 return 'vendor';
               }
-              // Keep critical CSS with main bundle for faster initial render
-              if (id.includes('index.css')) {
-                return undefined; // Inline with main bundle
-              }
             },
             // Optimize chunk file names
             chunkFileNames: 'assets/js/[name]-[hash].js',
@@ -61,6 +90,10 @@ export default defineConfig(({ mode }) => {
             assetFileNames: 'assets/[ext]/[name]-[hash].[ext]',
           },
         },
+        // CSS code splitting - extract CSS into separate file
+        cssCodeSplit: true,
+        // Minify CSS
+        cssMinify: isProduction,
         // Increase chunk size warning limit
         chunkSizeWarningLimit: 1000,
         // Disable source maps in production for smaller bundles
