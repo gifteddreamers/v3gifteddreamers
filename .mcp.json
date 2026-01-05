@@ -4,7 +4,7 @@
       "command": "/opt/homebrew/bin/npx",
       "args": [
         "-y",
-        "mcp-remote",
+        "mcp-remote@^0.1.16",
         "https://gitlab.com/api/v4/mcp"
       ]
     },
@@ -13,21 +13,6 @@
       "args": [
         "-c",
         "GITHUB_PERSONAL_ACCESS_TOKEN=$(/opt/homebrew/bin/op read 'op://Engineering/3wawtjaiumpz54thmqqsfvqafq/credential' --account gifteddreamers) /opt/homebrew/bin/npx -y @modelcontextprotocol/server-github"
-      ]
-    },
-    "slack": {
-      "command": "/bin/sh",
-      "args": [
-        "-c",
-        "SLACK_BOT_TOKEN=$(/opt/homebrew/bin/op read 'op://Engineering/xxxeehxoyahmdykyluqmg6q3xy/credential' --account gifteddreamers) SLACK_TEAM_ID=T09HK3F2256 /opt/homebrew/bin/npx -y @modelcontextprotocol/server-slack"
-      ]
-    },
-    "notion": {
-      "command": "/opt/homebrew/bin/npx",
-      "args": [
-        "-y",
-        "mcp-remote",
-        "https://mcp.notion.com/mcp"
       ]
     },
     "n8n": {
@@ -42,25 +27,11 @@
         "LOG_LEVEL": "error"
       }
     },
-    "linear": {
-      "command": "/bin/sh",
-      "args": [
-        "-c",
-        "/opt/homebrew/bin/npx -y mcp-remote https://mcp.linear.app/mcp --header \"Authorization: Bearer $(/opt/homebrew/bin/op read 'op://Engineering/mdgw6y5mkp53z5jryepobfpmvi/credential' --account gifteddreamers)\""
-      ]
-    },
-    "google-maps": {
-      "command": "/bin/sh",
-      "args": [
-        "-c",
-        "GOOGLE_MAPS_API_KEY=$(/opt/homebrew/bin/op read 'op://Engineering/j2qoyeig2uki5iqqavverfidlu/credential' --account gifteddreamers) docker run -i --rm -e GOOGLE_MAPS_API_KEY mcp/google-maps"
-      ]
-    },
     "n8n-instance": {
       "command": "/bin/sh",
       "args": [
         "-c",
-        "/opt/homebrew/bin/npx -y mcp-remote https://n8n.cloudpublica.org/mcp-server/http --header \"Authorization: Bearer $(/opt/homebrew/bin/op read 'op://Engineering/luooictav42nw563febxtes7my/credential' --account gifteddreamers)\""
+        "/opt/homebrew/bin/npx -y mcp-remote@^0.1.16 https://n8n.cloudpublica.org/mcp-server/http --header \"Authorization: Bearer $(/opt/homebrew/bin/op read 'op://Engineering/luooictav42nw563febxtes7my/credential' --account gifteddreamers)\""
       ]
     },
     "MCP_DOCKER": {
@@ -90,37 +61,6 @@
         "FASTMCP_LOG_LEVEL": "ERROR"
       }
     },
-    "awslabs.cdk-mcp-server": {
-      "command": "/opt/homebrew/bin/uvx",
-      "args": [
-        "awslabs.cdk-mcp-server@latest"
-      ],
-      "env": {
-        "FASTMCP_LOG_LEVEL": "ERROR"
-      }
-    },
-    "awslabs.cloudwatch-mcp-server": {
-      "command": "/opt/homebrew/bin/uvx",
-      "args": [
-        "awslabs.cloudwatch-mcp-server@latest"
-      ],
-      "env": {
-        "AWS_PROFILE": "default",
-        "AWS_REGION": "us-east-1",
-        "FASTMCP_LOG_LEVEL": "ERROR"
-      }
-    },
-    "awslabs.cost-explorer-mcp-server": {
-      "command": "/opt/homebrew/bin/uvx",
-      "args": [
-        "awslabs.cost-explorer-mcp-server@latest"
-      ],
-      "env": {
-        "AWS_PROFILE": "default",
-        "AWS_REGION": "us-east-1",
-        "FASTMCP_LOG_LEVEL": "ERROR"
-      }
-    },
     "airtable": {
       "command": "/bin/sh",
       "args": [
@@ -128,20 +68,11 @@
         "AIRTABLE_API_KEY=$(/opt/homebrew/bin/op read 'op://Engineering/jgwgyimza4rxuv65vgdem3qncm/credential' --account gifteddreamers) /opt/homebrew/bin/npx -y airtable-mcp-server"
       ]
     },
-    "icons8mcp": {
-      "command": "/opt/homebrew/bin/npx",
+    "datadog": {
+      "command": "/bin/sh",
       "args": [
-        "-y",
-        "mcp-remote",
-        "https://mcp.icons8.com/mcp/"
-      ]
-    },
-    "webflow": {
-      "command": "/opt/homebrew/bin/npx",
-      "args": [
-        "-y",
-        "mcp-remote",
-        "https://mcp.webflow.com/sse"
+        "-c",
+        "/opt/homebrew/bin/npx -y datadog-mcp-server --apiKey $(/opt/homebrew/bin/op read 'op://Engineering/uz6h66b7bdr4agonobs3go647i/credential' --account gifteddreamers) --appKey $(/opt/homebrew/bin/op read 'op://Engineering/pn34fczjce5egcru2wqcc4eksy/credential' --account gifteddreamers) --site us5.datadoghq.com"
       ]
     }
   }
