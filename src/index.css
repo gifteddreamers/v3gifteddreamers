@@ -58,6 +58,21 @@ footer.bg-slate-900 {
   visibility: visible !important;
   will-change: auto !important;
   transform: translateZ(0) !important; /* Force GPU layer to prevent shifts */
+  flex-shrink: 0 !important; /* Prevent footer from shrinking */
+}
+
+/* Static footer placeholder - reserves space before React renders */
+#footer-placeholder {
+  height: 1067px !important;
+  width: 100% !important;
+  background-color: #0f172a !important;
+  display: block !important;
+  position: relative !important;
+  z-index: 0 !important;
+  pointer-events: none !important;
+  visibility: visible !important;
+  flex-shrink: 0 !important;
+  contain: layout style paint !important;
 }
 
 /* Prevent root div from shifting - critical for CLS */
