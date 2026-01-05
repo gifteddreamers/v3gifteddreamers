@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-slate-900 text-slate-300" style={{ minHeight: '450px' }}>
+    <footer className="bg-slate-900 text-slate-300" style={{ minHeight: '1012px', contain: 'layout' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           
@@ -75,8 +75,8 @@ const Footer: React.FC = () => {
             </div>
 
             {/* Social Icons - min 44x44px touch targets for accessibility */}
-            {/* Fixed height to prevent layout shift - 9 icons × 44px = 396px min */}
-            <div className="flex md:justify-end gap-2 min-h-[44px] flex-wrap">
+            {/* Fixed height to prevent layout shift - reserve space for 9 icons */}
+            <div className="flex md:justify-end gap-2 min-h-[44px] flex-wrap" style={{ minHeight: '99px' }}>
                <a href="https://gifteddreamers.substack.com" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Substack" className="flex items-center justify-center w-11 h-11 hover:opacity-80 transition-opacity transform hover:scale-110">
                  <img src={`${import.meta.env.BASE_URL}images/substack.png`} alt="Substack" width="24" height="24" className="h-6 w-6 object-contain" loading="lazy" />
                </a>

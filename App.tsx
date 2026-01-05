@@ -57,10 +57,13 @@ const ScrollToTop = () => {
 
 const App: React.FC = () => {
   // Check if user already consented and load analytics immediately
+  // Only load if consent was explicitly given (not on first visit)
   React.useEffect(() => {
-    if (hasConsent()) {
+    const consent = localStorage.getItem('cookie-consent');
+    if (consent === 'accepted') {
       loadAnalytics();
     }
+    // If no consent or declined, do nothing - wait for user to accept
   }, []);
 
   return (

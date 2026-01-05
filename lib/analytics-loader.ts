@@ -87,9 +87,22 @@ function loadDoubleDonation() {
 
 /**
  * Load Microsoft Clarity Analytics
+ * IMPORTANT: Only call this after explicit user consent
  */
 function loadClarity() {
+  // Double-check consent before loading Clarity (it sets cookies)
+  if (!hasConsent()) {
+    console.warn('Clarity load attempted without consent - blocking');
+    return;
+  }
+
   if (document.querySelector('script[src*="clarity.ms"]')) return;
+
+  // Add DNS prefetch now that we have consent
+  const dnsPrefetch = document.createElement('link');
+  dnsPrefetch.rel = 'dns-prefetch';
+  dnsPrefetch.href = 'https://www.clarity.ms';
+  document.head.appendChild(dnsPrefetch);
 
   (function(c: any, l: Document, a: string, r: string, i: string) {
     c[a] = c[a] || function(...args: any[]) {
@@ -112,8 +125,15 @@ function loadClarity() {
 
 /**
  * Load all analytics scripts
+ * IMPORTANT: Only call this after user has explicitly consented
  */
 export function loadAnalytics() {
+  // Double-check consent before loading
+  if (!hasConsent()) {
+    console.warn('Analytics load attempted without consent - blocking');
+    return;
+  }
+
   if (consentGiven) return;
   consentGiven = true;
 
