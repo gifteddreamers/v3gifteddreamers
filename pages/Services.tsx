@@ -79,16 +79,16 @@ const Services: React.FC = () => {
           <div className="absolute inset-0 bg-gradient-to-r from-slate-900/80 via-slate-900/60 to-transparent"></div>
         </div>
         <Reveal className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <div className="inline-block px-4 py-1 bg-white/10 backdrop-blur rounded-full text-sm font-medium mb-6">
+          <div className="inline-block px-4 py-1 backdrop-blur rounded-full text-sm font-medium mb-6" style={{ backgroundColor: 'rgba(162, 33, 49, 0.2)' }}>
             Trusted by 50+ nonprofits
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">Tech Perks Audit + Accounting Cleanup</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">Tech Perks + Accounting Cleanup + Workflow Automation</h1>
           <p className="text-xl text-slate-200 max-w-3xl mx-auto mb-8">
-            We help small nonprofits access enterprise tools and fix messy books. Clear pricing. No hidden fees. No dependency.
+            We help startups and nonprofits access enterprise tools and fix messy books. Clear pricing. No hidden fees. No dependency.
           </p>
           <div className="flex flex-wrap justify-center gap-6 text-sm">
             <div className="flex items-center gap-2"><CheckCircle className="h-5 w-5 text-accent" /> 475+ perks tracked</div>
-            <div className="flex items-center gap-2"><Zap className="h-5 w-5 text-accent" /> Same-week turnaround</div>
+            <div className="flex items-center gap-2"><Zap className="h-5 w-5 text-accent" /> Quick turnaround</div>
             <div className="flex items-center gap-2"><Shield className="h-5 w-5 text-accent" /> 501(c)(3) nonprofit</div>
           </div>
         </Reveal>
@@ -118,23 +118,23 @@ const Services: React.FC = () => {
           {/* Tech Perks Card */}
           <Reveal className="bg-white rounded-xl shadow-lg border border-slate-200 overflow-hidden flex flex-col h-full">
             <div className="h-48 bg-slate-100 relative">
-               <img src="/images/tech-dashboard.jpg" alt="Tech Perks dashboard interface" width="800" height="533" className="w-full h-full object-cover" />
+               <img src="/images/faq-hero.jpg" alt="Tech Perks dashboard interface" width="800" height="533" className="w-full h-full object-cover" />
                <div className="absolute inset-0 bg-primary/10"></div>
             </div>
             <div className="p-8 flex-grow">
               <h2 className="text-2xl font-bold text-slate-900 mb-2">Tech Perks Audit</h2>
-              <p className="text-accent font-semibold mb-6">You're probably leaving $100K+ on the table.</p>
+              <p className="font-semibold mb-6" style={{ color: '#A22131' }}>You're probably leaving $100K+ on the table.</p>
               
               <p className="text-slate-600 mb-6">
-                We maintain a database of 475+ nonprofit perks from companies like:
+                We maintain a database of 475+ perks for startups and nonprofits from companies like:
               </p>
               <ul className="space-y-2 mb-8 text-sm text-slate-600">
-                <li className="flex items-start"><span className="text-accent mr-2">•</span> <strong>Google:</strong> $10K/month in free ads + Workspace</li>
-                <li className="flex items-start"><span className="text-accent mr-2">•</span> <strong>Microsoft:</strong> 365 licenses for your team</li>
-                <li className="flex items-start"><span className="text-accent mr-2">•</span> <strong>Salesforce:</strong> 10 free enterprise licenses</li>
-                <li className="flex items-start"><span className="text-accent mr-2">•</span> <strong>Datadog:</strong> $100K in infrastructure monitoring</li>
-                <li className="flex items-start"><span className="text-accent mr-2">•</span> <strong>GitLab Ultimate:</strong> $14K/year value</li>
-                <li className="flex items-start"><span className="text-accent mr-2">•</span> <strong>Plus:</strong> Canva, Slack, Notion, Zoom, Airtable, and 200+ more</li>
+                <li className="flex items-start"><span className="text-accent mr-2">•</span> <strong>Google</strong>: $10K/month in free ads + Workspace - for nonprofits only</li>
+                <li className="flex items-start"><span className="text-accent mr-2">•</span> <strong>Microsoft</strong>: 365 licenses for your team</li>
+                <li className="flex items-start"><span className="text-accent mr-2">•</span> <strong>Salesforce</strong>: 10 free enterprise licenses - for nonprofits only</li>
+                <li className="flex items-start"><span className="text-accent mr-2">•</span> <strong>Datadog</strong>: $100K in infrastructure monitoring</li>
+                <li className="flex items-start"><span className="text-accent mr-2">•</span> <strong>GitLab Ultimate</strong>: $14K/year value</li>
+                <li className="flex items-start"><span className="text-accent mr-2">•</span> <strong>Plus</strong>: Canva, Slack, Notion, Zoom, Airtable, and 200+ more</li>
               </ul>
 
               <div className="bg-slate-50 p-6 rounded-lg mb-8">
@@ -168,12 +168,12 @@ const Services: React.FC = () => {
           {/* Accounting Card */}
           <Reveal className="bg-white rounded-xl shadow-lg border border-slate-200 overflow-hidden flex flex-col h-full" delay={150}>
             <div className="h-48 bg-slate-100 relative">
-               <img src="/images/accounting-papers.jpg" alt="Accounting documents and ledgers" width="800" height="459" className="w-full h-full object-cover" />
+               <img src="/images/accounting-cleanup.jpg" alt="Accounting and bookkeeping" width="800" height="459" className="w-full h-full object-cover" />
                <div className="absolute inset-0 bg-primary/10"></div>
             </div>
             <div className="p-8 flex-grow">
-              <h2 className="text-2xl font-bold text-slate-900 mb-2">QuickBooks Cleanup</h2>
-              <p className="text-accent font-semibold mb-6">Your books are a disaster. We've seen worse.</p>
+              <h2 className="text-2xl font-bold text-slate-900 mb-2">Accounting Cleanup</h2>
+              <p className="font-semibold mb-6" style={{ color: '#A22131' }}>Your books are a disaster. We've seen worse.</p>
               
               <p className="text-slate-600 mb-6">
                 25 years of experience cleaning up multi-year backlogs, botched categorizations, missing reconciliations, and tax deadline panic.
@@ -182,32 +182,14 @@ const Services: React.FC = () => {
               <div className="bg-slate-50 p-6 rounded-lg mb-8">
                  <h3 className="font-bold text-slate-900 mb-4">What we do:</h3>
                  <ol className="list-decimal list-inside space-y-2 text-sm text-slate-700">
-                    <li>Assess the damage (free 30-minute call)</li>
+                    <li>Assess the damage (free 60-minute call)</li>
                     <li>Quote a fixed price for cleanup</li>
                     <li>Clean it up and document what we did</li>
                     <li>Train you (or your team) to maintain it</li>
-                    <li>Optional: Monthly bookkeeping going forward</li>
+                    <li>Optional: Monthly FLAT-FEE bookkeeping going forward. No surprises.</li>
                  </ol>
               </div>
 
-              <div className="space-y-6 mb-8">
-                <div>
-                   <h4 className="font-bold text-slate-900 mb-2 text-sm uppercase">Cleanup Projects (One-Time)</h4>
-                   <ul className="space-y-2 text-sm">
-                     <li className="flex justify-between"><span>1-3 months backlog</span> <span className="font-bold">$500</span></li>
-                     <li className="flex justify-between"><span>4-12 months backlog</span> <span className="font-bold">$750</span></li>
-                     <li className="flex justify-between"><span>1+ year backlog</span> <span className="font-bold">$1,000 - $1,500</span></li>
-                   </ul>
-                </div>
-                <div>
-                   <h4 className="font-bold text-slate-900 mb-2 text-sm uppercase">Monthly Bookkeeping</h4>
-                   <ul className="space-y-2 text-sm">
-                     <li className="flex justify-between"><span>Starter (&lt; 200 txns)</span> <span className="font-bold">$199/mo</span></li>
-                     <li className="flex justify-between"><span>Growth (200-600 txns)</span> <span className="font-bold">$349/mo</span></li>
-                     <li className="flex justify-between"><span>Scale (600+ txns)</span> <span className="font-bold">$549/mo</span></li>
-                   </ul>
-                </div>
-              </div>
             </div>
             <div className="p-8 pt-0 mt-auto">
               <Link to="/contact">
@@ -224,8 +206,8 @@ const Services: React.FC = () => {
           <h2 className="text-2xl font-bold text-slate-900 mb-6 text-center">How Is This So Affordable?</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
-              <h3 className="font-bold text-slate-900 mb-2">1. We use free tools</h3>
-              <p className="text-sm text-slate-600">We're a nonprofit. We get the same perks we help you activate. Google Workspace, Microsoft 365, Canva Pro, Slack—all free.</p>
+              <h3 className="font-bold text-slate-900 mb-2">We use free and discounted tools</h3>
+              <p className="text-sm text-slate-600">We're a nonprofit. We get the same perks we help you activate. Google Workspace, Microsoft 365, Canva Pro, Slack—all free or discounted.</p>
             </div>
             <div>
               <h3 className="font-bold text-slate-900 mb-2">2. We automate everything</h3>
@@ -233,17 +215,17 @@ const Services: React.FC = () => {
             </div>
             <div>
               <h3 className="font-bold text-slate-900 mb-2">3. Not trying to get rich</h3>
-              <p className="text-sm text-slate-600">We're a 501(c)(3). Profit funds our community projects. Not venture capital. Not shareholders.</p>
+              <p className="text-sm text-slate-600">We're a 501(c)(3). Mission revenue directly funds community projects, like <Link to="/gruhp" className="font-semibold hover:underline" style={{ color: '#A22131' }}>GRUHP Fund</Link> - providing direct assistance for people who need it most.</p>
             </div>
           </div>
           <p className="mt-8 text-center text-slate-500 italic text-sm">
-            Competitors charge $500-$2,000/month for Google Ad Grants alone. We include it in our $199 Starter tier.
+            Competitors charge $500-$2,000/month for Google Ad Grants management alone. We include it in our $199 Starter tier.
           </p>
         </div>
         
         <div className="mt-12 text-center">
           <p className="text-slate-600 mb-4">Questions?</p>
-          <a href="mailto:services@gifteddreamers.org" className="text-primary hover:text-accent font-medium transition-colors">services@gifteddreamers.org</a>
+          <Link to="/contact" className="text-primary hover:text-accent font-medium transition-colors">Contact Us</Link>
         </div>
       </Reveal>
     </div>

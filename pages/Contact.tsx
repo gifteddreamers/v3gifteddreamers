@@ -1,8 +1,6 @@
 import React from 'react';
-import { Mail, MapPin } from 'lucide-react';
-import ContactForm from '../components/ContactForm';
+import { MapPin } from 'lucide-react';
 import Reveal from '../components/Reveal';
-import Button from '../components/Button';
 
 const Contact: React.FC = () => {
   return (
@@ -24,48 +22,38 @@ const Contact: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             
-            {/* Contact Form */}
+            {/* Contact Form - Airtable Embed */}
             <Reveal>
               <div className="lg:col-span-2">
-                <ContactForm 
-                  formType="contact"
-                  title="Send Us a Message"
-                  subtitle="Fill out the form below and we'll get back to you within 24 hours."
-                />
-              </div>
-            </Reveal>
-
-            {/* Email */}
-            <Reveal delay={100}>
-              <div className="bg-white p-8 rounded-xl shadow-lg border border-slate-100 hover:shadow-xl transition-shadow">
-                <div className="flex items-center justify-center w-16 h-16 bg-accent/10 text-accent rounded-full mb-6">
-                  <Mail className="h-8 w-8" />
+                <div className="bg-white p-8 rounded-xl shadow-lg border border-slate-100">
+                  <h2 className="text-2xl font-bold text-slate-900 mb-4">Send Us a Message</h2>
+                  <p className="text-slate-600 mb-6">Fill out the form below and we'll get back to you within 24 hours.</p>
+                  <iframe 
+                    className="airtable-embed" 
+                    src="https://airtable.com/embed/appVDA5VzzPotA1N6/pagVoc7CkkvE7wjHy/form" 
+                    frameBorder="0" 
+                    width="100%" 
+                    height="533" 
+                    style={{ background: 'transparent', border: '1px solid #ccc' }}
+                    title="Contact Form"
+                  />
                 </div>
-                <h3 className="text-2xl font-bold text-slate-900 mb-4">Email Us</h3>
-                <p className="text-slate-600 mb-6">
-                  Send us a message and we'll get back to you within 24 hours.
-                </p>
-                <a href="mailto:services@gifteddreamers.org" className="block">
-                  <Button variant="outline" fullWidth>
-                    services@gifteddreamers.org
-                  </Button>
-                </a>
               </div>
             </Reveal>
 
             {/* Location */}
             <Reveal delay={200}>
               <div className="bg-white p-8 rounded-xl shadow-lg border border-slate-100 hover:shadow-xl transition-shadow">
-                <div className="flex items-center justify-center w-16 h-16 bg-primary/10 text-primary rounded-full mb-6">
+                <div className="flex items-center justify-center w-16 h-16 rounded-full mb-6" style={{ backgroundColor: 'rgba(162, 33, 49, 0.1)', color: '#A22131' }}>
                   <MapPin className="h-8 w-8" />
                 </div>
                 <h3 className="text-2xl font-bold text-slate-900 mb-4">Location</h3>
                 <p className="text-slate-600 mb-2">
-                  <strong>Gifted Dreamers, Inc.</strong>
+                  <strong>Gifted Dreamers, Inc.</strong><br/>
+                  501(c)(3) EIN 39-3863796
                 </p>
                 <p className="text-slate-600">
-                  Austin, Texas<br/>
-                  Serving nonprofits nationwide
+                  Serving global startups and nonprofits
                 </p>
               </div>
             </Reveal>

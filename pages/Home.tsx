@@ -6,7 +6,7 @@ import Reveal from '../components/Reveal';
 import LogoCloud from '../components/LogoCloud';
 
 // Images from public folder - hardcoded paths for reliability
-const heroImage = '/images/services-hero.jpg';
+const heroImage = '/images/austin-skyline.jpg';
 const profileImage = '/kristine-socall.jpg';
 
 const Home: React.FC = () => {
@@ -33,7 +33,7 @@ const Home: React.FC = () => {
             <div>
               <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6 leading-tight">
                 <span className="text-white">$380K in Free & Discounted Tools.</span><br/>
-                <span className="text-accent">We'll Help You Get Them.</span>
+                <span style={{ color: '#A22131' }}>We'll Help You Get Them.</span>
               </h1>
               <p className="text-xl md:text-2xl text-slate-100 mb-6 font-light">
                 Google, Microsoft, Salesforce, Datadog, and 200+ companies give away enterprise tools to nonprofits and startups.
@@ -43,7 +43,7 @@ const Home: React.FC = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link to="/contact">
-                  <Button size="lg" variant="primary" className="px-10">
+                  <Button size="lg" variant="accent" className="px-10">
                     Hire Us <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
                 </Link>
@@ -68,11 +68,11 @@ const Home: React.FC = () => {
             {/* Stat 1 */}
             <Reveal delay={100}>
               <div className="bg-white p-8 rounded-xl shadow-sm border border-slate-100 border-t-4 border-t-primary h-full">
-                <div className="flex items-center justify-center w-12 h-12 bg-primary/10 text-primary rounded-full mb-6">
-                  <TrendingUp className="h-6 w-6" />
+                <div className="flex items-center justify-center w-12 h-12 bg-primary/10 rounded-full mb-6">
+                  <TrendingUp className="h-6 w-6" style={{ color: '#A22131' }} />
                 </div>
                 <div className="text-4xl font-bold text-slate-900 mb-2">$10,000/mo</div>
-                <div className="text-sm font-bold uppercase text-primary mb-4 tracking-wide">Free Google Ads</div>
+                <div className="text-sm font-bold uppercase mb-4 tracking-wide" style={{ color: '#A22131' }}>Free Google Ads</div>
                 <p className="text-slate-600">
                   Google Ad Grants gives nonprofits $10K/month in advertising. 75% never activate it. Of those who do, 60% lose compliance.
                 </p>
@@ -82,11 +82,11 @@ const Home: React.FC = () => {
             {/* Stat 2 */}
             <Reveal delay={200}>
               <div className="bg-white p-8 rounded-xl shadow-sm border border-slate-100 border-t-4 border-t-accent h-full">
-                <div className="flex items-center justify-center w-12 h-12 bg-accent/10 text-accent rounded-full mb-6">
-                  <AlertTriangle className="h-6 w-6" />
+                <div className="flex items-center justify-center w-12 h-12 bg-accent/10 rounded-full mb-6">
+                  <AlertTriangle className="h-6 w-6" style={{ color: '#A22131' }} />
                 </div>
                 <div className="text-4xl font-bold text-slate-900 mb-2">$380,000/yr</div>
-                <div className="text-sm font-bold uppercase text-accent mb-4 tracking-wide">Wasted Per Org</div>
+                <div className="text-sm font-bold uppercase mb-4 tracking-wide" style={{ color: '#A22131' }}>Wasted Per Org</div>
                 <p className="text-slate-600">
                   That's what we tracked in our own perks database. Google, Datadog, Salesforce, GitLab, Canva—475+ programs.
                 </p>
@@ -96,11 +96,11 @@ const Home: React.FC = () => {
             {/* Stat 3 */}
             <Reveal delay={300}>
               <div className="bg-white p-8 rounded-xl shadow-sm border border-slate-100 border-t-4 border-t-primary h-full">
-                <div className="flex items-center justify-center w-12 h-12 bg-primary/10 text-primary rounded-full mb-6">
-                  <ShieldCheck className="h-6 w-6" />
+                <div className="flex items-center justify-center w-12 h-12 bg-primary/10 rounded-full mb-6">
+                  <ShieldCheck className="h-6 w-6" style={{ color: '#A22131' }} />
                 </div>
                 <div className="text-4xl font-bold text-slate-900 mb-2">25 Years</div>
-                <div className="text-sm font-bold uppercase text-primary mb-4 tracking-wide">Crisis Cleanup</div>
+                <div className="text-sm font-bold uppercase mb-4 tracking-wide" style={{ color: '#A22131' }}>Crisis Cleanup</div>
                 <p className="text-slate-600">
                   Multi-year retroactive corrections. 350+ bank accounts. 15 currencies. When your books are a mess, we've seen worse.
                 </p>
@@ -123,12 +123,12 @@ const Home: React.FC = () => {
             {/* Tech Perks */}
             <Reveal className="flex flex-col h-full group">
               <div className="aspect-video bg-slate-200 rounded-lg overflow-hidden mb-6 relative shadow-lg">
-                <img src="/images/dashboard-analytics.jpg" alt="Dashboard showing tech perks analytics" width="800" height="570" className="w-full h-full object-cover transition-transform group-hover:scale-105" />
+                <img src="/images/faq-hero.jpg" alt="Dashboard showing tech perks analytics" width="800" height="570" className="w-full h-full object-cover transition-transform group-hover:scale-105" />
                 <div className="absolute top-4 left-4 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full">Perks Audit</div>
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-4">Tech Perks Audit</h3>
               <p className="text-slate-600 mb-6 flex-grow">
-                We know every nonprofit perk program. Google, Microsoft, Salesforce, Canva, Slack, Notion, Zoom, Datadog, GitLab, and 200+ more. We'll review what you qualify for, help you apply, and build automations so you never lose access.
+                We know every startup and nonprofit perk program. Google, Microsoft, AWS, Salesforce, Slack, Notion, Datadog, GitLab and 200+ more. We'll review what you qualify for, help you apply, and build automations so you never lose access.
               </p>
               <div className="bg-slate-50 p-6 rounded-lg border border-slate-100 mb-6">
                 <div className="flex justify-between items-center mb-2">
@@ -148,12 +148,12 @@ const Home: React.FC = () => {
             {/* Accounting */}
             <Reveal className="flex flex-col h-full group" delay={150}>
               <div className="aspect-video bg-slate-200 rounded-lg overflow-hidden mb-6 relative shadow-lg">
-                <img src="/images/accounting-papers.jpg" alt="Accounting documents and financial papers" width="800" height="459" className="w-full h-full object-cover transition-transform group-hover:scale-105" />
+                <img src="/images/accounting-cleanup.jpg" alt="Accounting documents and financial papers" width="800" height="459" className="w-full h-full object-cover transition-transform group-hover:scale-105" />
                 <div className="absolute top-4 left-4 bg-accent text-white text-xs font-bold px-3 py-1 rounded-full">Accounting</div>
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-4">Accounting Cleanup</h3>
               <p className="text-slate-600 mb-6 flex-grow">
-                Your books are behind. Your categories are wrong. Tax time is panic time. We clean up the mess, set up QuickBooks properly, and train you (or your staff) to maintain it going forward.
+                Your books are behind. Your categories are wrong. Tax time is panic time. We clean up the mess, set up QuickBooks properly, and train you (or your staff) to maintain it going forward. Optionally, hire us to maintain it for you with FLAT-FEE monthly pricing.
               </p>
               <div className="bg-slate-50 p-6 rounded-lg border border-slate-100 mb-6">
                  <div className="flex justify-between items-center mb-2">
@@ -162,7 +162,7 @@ const Home: React.FC = () => {
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="font-semibold text-slate-700">Cleanup Projects</span>
-                  <span className="text-slate-600">$500 - $1,500</span>
+                  <span className="text-slate-600">$500+</span>
                 </div>
               </div>
               <Link to="/services" className="text-accent font-bold hover:text-accent-hover flex items-center group">

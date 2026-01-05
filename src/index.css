@@ -3,13 +3,13 @@
 @theme {
   --font-family-sans: 'Inter', sans-serif;
 
-  --color-primary: #0077B6;
-  --color-primary-light: #0096C7;
-  --color-primary-dark: #023E8A;
+  --color-primary: #0D729C;
+  --color-primary-light: #108BC7;
+  --color-primary-dark: #0A5A7D;
 
-  --color-accent: #00B4D8;
-  --color-accent-hover: #48CAE4;
-  --color-accent-light: #ADE8F4;
+  --color-accent: #0D729C;
+  --color-accent-hover: #108BC7;
+  --color-accent-light: #0A5A7D;
 
   --color-brand-dark: #0077B6;
   --color-brand-light: #00B4D8;
@@ -29,4 +29,16 @@ body {
   opacity: 1;
   transform: translateY(0);
   transition: all 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.text-brand-red {
+  color: rgba(162, 33, 49, 1);
+}
+
+.text-brand-blue {
+  color: rgba(13, 114, 156, 1);
+}
+
+.text-accent {
+  color: #0D729C;
 }

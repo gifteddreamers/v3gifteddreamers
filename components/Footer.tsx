@@ -14,7 +14,7 @@ const Footer: React.FC = () => {
             <ul className="space-y-3">
               <li><Link to="/services" className="hover:text-primary transition-colors">Tech Perks Audit</Link></li>
               <li><Link to="/services" className="hover:text-primary transition-colors">Accounting Cleanup</Link></li>
-              <li><a href="mailto:services@gifteddreamers.org" className="hover:text-primary transition-colors">Book a Session</a></li>
+              <li><Link to="/contact" className="hover:text-primary transition-colors">Book a Session</Link></li>
             </ul>
           </div>
 
@@ -32,9 +32,7 @@ const Footer: React.FC = () => {
             <h3 className="text-white text-sm font-semibold uppercase tracking-wider mb-4 border-b border-primary pb-2 inline-block">Give Back</h3>
             <ul className="space-y-3">
               <li><Link to="/gruhp" className="hover:text-primary transition-colors">GRUHP Fund</Link></li>
-              <li><Link to="/gruhp" className="hover:text-primary transition-colors">Donate Now</Link></li>
               <li><Link to="/matching-gifts" className="hover:text-primary transition-colors">Matching Gifts</Link></li>
-              <li><Link to="/faq" className="hover:text-primary transition-colors">FAQ</Link></li>
             </ul>
           </div>
 
@@ -62,13 +60,12 @@ const Footer: React.FC = () => {
                   height="32"
                   className="w-8 h-8 object-contain"
                 />
-                <span className="font-bold tracking-tight text-lg"><span className="text-primary">Gifted</span> <span className="text-accent">Dreamers</span></span>
+                <span className="font-bold tracking-tight text-lg"><span style={{ color: '#A22131' }}>Gifted</span> <span style={{ color: '#0D729C' }}>Dreamers</span></span>
               </div>
               <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm mb-4">
                 <Link to="/about" className="hover:text-white transition-colors">About</Link>
                 <Link to="/contact" className="hover:text-white transition-colors">Contact</Link>
-                <Link to="/privacy" className="hover:text-white transition-colors">Privacy</Link>
-                <Link to="/terms" className="hover:text-white transition-colors">Terms</Link>
+                <Link to="/faq" className="hover:text-white transition-colors">FAQ</Link>
               </div>
               <p className="text-xs text-slate-500 leading-relaxed">
                 Gifted Dreamers, Inc. is a 501(c)(3) nonprofit organization.<br/>
@@ -99,6 +96,9 @@ const Footer: React.FC = () => {
                </a>
                <a href="https://www.x.com/gifteddreamers" target="_blank" rel="noopener noreferrer" aria-label="Follow us on X (Twitter)" className="flex items-center justify-center w-11 h-11 hover:opacity-80 transition-opacity transform hover:scale-110">
                  <img src={`${import.meta.env.BASE_URL}images/X.svg`} alt="X (Twitter)" className="h-6 w-6" />
+               </a>
+               <a href="https://pinterest.com/@gifteddreamers" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Pinterest" className="flex items-center justify-center w-11 h-11 hover:opacity-80 transition-opacity transform hover:scale-110">
+                 <img src={`${import.meta.env.BASE_URL}images/pinterest.svg`} alt="Pinterest" className="h-6 w-6" />
                </a>
             </div>
           </div>

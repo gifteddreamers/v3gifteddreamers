@@ -14,6 +14,7 @@ import CommonCloud from './pages/CommonCloud';
 import About from './pages/About';
 import MatchingGifts from './pages/MatchingGifts';
 import FAQ from './pages/FAQ';
+import Contact from './pages/Contact';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -56,7 +57,7 @@ const App: React.FC = () => {
             <Route path="/about" element={<About />} />
             <Route path="/matching-gifts" element={<MatchingGifts />} />
             <Route path="/faq" element={<FAQ />} />
-            <Route path="/contact" element={<div className="p-20 text-center">Contact page placeholder</div>} />
+            <Route path="/contact" element={<Contact />} />
             <Route path="/privacy" element={<div className="p-20 text-center">Privacy Policy placeholder</div>} />
             <Route path="/terms" element={<div className="p-20 text-center">Terms of Service placeholder</div>} />
           </Routes>

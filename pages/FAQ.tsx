@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Button from '../components/Button';
 import Reveal from '../components/Reveal';
 import { Search } from 'lucide-react';
@@ -10,7 +11,7 @@ const faqData: FAQItem[] = [
   { category: 'Matching Gifts', question: 'What are matching gifts?', answer: 'Matching gifts are charitable donations that employers match for their employees.' },
   { category: 'Volunteering', question: 'What are volunteer grants?', answer: 'Corporate giving programs where companies donate to nonprofits based on employee volunteer hours.' },
   { category: 'Technical', question: 'Is your work open source?', answer: 'Yes, we document our processes openly. Learn it → Document it → Teach it → Get paid.' },
-  { category: 'Contact', question: 'How can I contact Gifted Dreamers?', answer: 'Email services@gifteddreamers.org or connect with Kristine Socall on LinkedIn.' },
+  { category: 'Contact', question: 'How can I contact Gifted Dreamers?', answer: 'contact-form-link' },
   // Add more as needed based on the prompt content
 ];
 
@@ -79,7 +80,13 @@ const FAQ: React.FC = () => {
             <Reveal key={idx} className="bg-white border border-slate-200 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
               <span className="text-xs font-semibold text-accent uppercase tracking-wider mb-2 block">{faq.category}</span>
               <h3 className="text-lg font-bold text-slate-900 mb-2">{faq.question}</h3>
-              <p className="text-slate-600">{faq.answer}</p>
+              {faq.answer === 'contact-form-link' ? (
+                <p className="text-slate-600">
+                  <Link to="/contact" className="text-primary font-medium hover:underline">Contact us through our contact form</Link> or connect with Kristine Socall on LinkedIn.
+                </p>
+              ) : (
+                <p className="text-slate-600">{faq.answer}</p>
+              )}
             </Reveal>
           ))}
           {filteredFAQs.length === 0 && (

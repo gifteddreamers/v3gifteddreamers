@@ -7,49 +7,59 @@ const DTD_API_KEY = '6HMm5sEaYqgnLZmU';
 const MatchingGifts: React.FC = () => {
   // Load Double the Donation plugin and Givebutter widget
   useEffect(() => {
-    // Set global config for DTD
-    (window as any).DDCONF = { API_KEY: DTD_API_KEY };
+    const initDTD = () => {
+      // Wait for DOM element to be ready
+      const container = document.getElementById('dd-container');
+      if (!container) {
+        // Retry after a short delay if element not ready
+        setTimeout(initDTD, 100);
+        return;
+      }
 
-    // Load the DTD script
-    const dtdScript = document.createElement('script');
-    dtdScript.src = 'https://doublethedonation.com/api/js/ddplugin.js';
-    dtdScript.async = true;
-    dtdScript.onload = () => {
-      // Initialize the plugin after script loads
-      if ((window as any).DD && (window as any).DD.plugin) {
+      // Use v2 API if available (preferred method)
+      if ((window as any).doublethedonation?.plugin?.v2?.load_plugin) {
+        const config = { sections: ['match', 'volunteer', 'payroll-giving'] };
+        (window as any).doublethedonation.plugin.v2.load_plugin(container, DTD_API_KEY, config);
+      } else if ((window as any).DD && (window as any).DD.plugin) {
+        // Fallback to old API
+        (window as any).DDCONF = { API_KEY: DTD_API_KEY };
         (window as any).DD.plugin.init();
       }
     };
-    document.head.appendChild(dtdScript);
 
-    // Load Givebutter elements script (required for widget)
-    const gbElementsScript = document.createElement('script');
-    gbElementsScript.src = 'https://js.givebutter.com/elements/latest.js';
-    document.head.appendChild(gbElementsScript);
+    // Check if DTD script already exists (from previous navigation)
+    const existingDtdScript = document.querySelector('script[src="https://doublethedonation.com/api/js/ddplugin.js"]');
+    if (existingDtdScript) {
+      // Script already loaded, wait for DOM and initialize
+      setTimeout(initDTD, 100);
+    } else {
+      // Load the DTD script
+      const dtdScript = document.createElement('script');
+      dtdScript.src = 'https://doublethedonation.com/api/js/ddplugin.js';
+      dtdScript.async = true;
+      dtdScript.onload = () => {
+        // Wait for script to fully initialize and DOM to be ready
+        setTimeout(initDTD, 200);
+      };
+      document.head.appendChild(dtdScript);
+    }
 
-    // Load Givebutter widget library script
-    const gbScript = document.createElement('script');
-    gbScript.src = 'https://widgets.givebutter.com/latest.umd.cjs?acct=PWF9tXFflbTG12rU&p=other';
-    gbScript.async = true;
-    document.head.appendChild(gbScript);
+    // Check if Givebutter elements script already exists
+    if (!document.querySelector('script[src*="js.givebutter.com"]')) {
+      const gbElementsScript = document.createElement('script');
+      gbElementsScript.src = 'https://js.givebutter.com/elements/latest.js';
+      document.head.appendChild(gbElementsScript);
+    }
 
-    return () => {
-      // Cleanup DTD
-      const existingDtdScript = document.querySelector('script[src="https://doublethedonation.com/api/js/ddplugin.js"]');
-      if (existingDtdScript) {
-        existingDtdScript.remove();
-      }
-      delete (window as any).DDCONF;
-      // Cleanup Givebutter scripts
-      const existingGbElementsScript = document.querySelector('script[src*="js.givebutter.com"]');
-      if (existingGbElementsScript) {
-        existingGbElementsScript.remove();
-      }
-      const existingGbScript = document.querySelector('script[src*="widgets.givebutter.com"]');
-      if (existingGbScript) {
-        existingGbScript.remove();
-      }
-    };
+    // Check if Givebutter widget script already exists
+    if (!document.querySelector('script[src*="widgets.givebutter.com"]')) {
+      const gbScript = document.createElement('script');
+      gbScript.src = 'https://widgets.givebutter.com/latest.umd.cjs?acct=PWF9tXFflbTG12rU&p=other';
+      gbScript.async = true;
+      document.head.appendChild(gbScript);
+    }
+
+    // No cleanup - keep scripts loaded for faster subsequent visits
   }, []);
   return (
     <div className="pb-20">
