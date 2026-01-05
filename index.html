@@ -140,32 +140,5 @@
     </div>
     <!-- Load main bundle -->
     <script type="module" src="./index.tsx"></script>
-    <script>
-      // Remove footer placeholder when React footer renders
-      (function() {
-        var placeholder = document.getElementById('footer-placeholder');
-        if (!placeholder) return;
-        
-        // Check for React footer periodically
-        var checkInterval = setInterval(function() {
-          var reactFooter = document.querySelector('footer.bg-slate-900');
-          if (reactFooter && reactFooter.offsetParent !== null) {
-            // React footer is visible, remove placeholder
-            if (placeholder.parentNode) {
-              placeholder.remove();
-            }
-            clearInterval(checkInterval);
-          }
-        }, 16); // Check every frame (~60fps)
-        
-        // Fallback: remove after 3 seconds max
-        setTimeout(function() {
-          if (placeholder && placeholder.parentNode) {
-            placeholder.remove();
-          }
-          clearInterval(checkInterval);
-        }, 3000);
-      })();
-    </script>
   </body>
 </html>
