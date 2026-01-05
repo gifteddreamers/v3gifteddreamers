@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapPin, Mail, Calendar, Clock } from 'lucide-react';
+import { MapPin, Calendar, Clock } from 'lucide-react';
 import Reveal from '../components/Reveal';
 import ContactForm from '../components/ContactForm';
 
@@ -12,7 +12,7 @@ const Contact: React.FC = () => {
           <Reveal>
             <h1 className="text-4xl md:text-5xl font-bold mb-6">Get in Touch</h1>
             <p className="text-xl text-slate-100 max-w-3xl">
-              Ready to unlock free & discounted enterprise tools for your nonprofit? Let's talk about how we can help.
+              Ready to unlock free & discounted enterprise tools? Ready to cleanup your accounting books? Let's talk about how we can help.
             </p>
           </Reveal>
         </div>
@@ -42,6 +42,7 @@ const Contact: React.FC = () => {
                   <h3 className="text-xl font-bold text-slate-900 mb-3">Location</h3>
                   <p className="text-slate-600 mb-2">
                     <strong>Gifted Dreamers, Inc.</strong><br/>
+                    Based in Austin, TX<br/>
                     501(c)(3) EIN 39-3863796
                   </p>
                   <p className="text-slate-600 text-sm">
@@ -50,21 +51,8 @@ const Contact: React.FC = () => {
                 </div>
               </Reveal>
 
-              {/* Email */}
-              <Reveal delay={150}>
-                <div className="bg-white p-6 rounded-xl shadow-lg border border-slate-100 hover:shadow-xl transition-shadow">
-                  <div className="flex items-center justify-center w-12 h-12 rounded-full mb-4" style={{ backgroundColor: 'rgba(13, 114, 156, 0.1)', color: '#0D729C' }}>
-                    <Mail className="h-6 w-6" />
-                  </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-3">Email</h3>
-                  <a href="mailto:services@gifteddreamers.org" className="text-primary hover:underline font-medium">
-                    services@gifteddreamers.org
-                  </a>
-                </div>
-              </Reveal>
-
               {/* Response Time */}
-              <Reveal delay={200}>
+              <Reveal delay={150}>
                 <div className="bg-white p-6 rounded-xl shadow-lg border border-slate-100 hover:shadow-xl transition-shadow">
                   <div className="flex items-center justify-center w-12 h-12 rounded-full mb-4" style={{ backgroundColor: 'rgba(13, 114, 156, 0.1)', color: '#0D729C' }}>
                     <Clock className="h-6 w-6" />
@@ -77,7 +65,7 @@ const Contact: React.FC = () => {
               </Reveal>
 
               {/* Free Consultation */}
-              <Reveal delay={250}>
+              <Reveal delay={200}>
                 <div className="bg-gradient-to-br from-primary/5 to-primary/10 p-6 rounded-xl border border-primary/20">
                   <div className="flex items-center justify-center w-12 h-12 rounded-full mb-4 bg-primary/10">
                     <Calendar className="h-6 w-6 text-primary" />
