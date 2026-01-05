@@ -20,9 +20,11 @@ const Home: React.FC = () => {
     <div className="flex flex-col min-h-screen">
 
       {/* Hero Section */}
-      <section className="relative text-white overflow-hidden min-h-[85vh] flex items-center bg-slate-900">
+      {/* Reserve space for hero image to prevent CLS - aspect ratio 2560:1440 = 16:9 */}
+      <section className="relative text-white overflow-hidden min-h-[85vh] flex items-center bg-slate-900" style={{ aspectRatio: '16 / 9', minHeight: '85vh' }}>
         {/* Optimized hero background image - LCP element with high priority */}
         {/* Using direct WebP (not srcSet) to avoid browser evaluation delay for LCP */}
+        {/* Explicit dimensions and aspect ratio prevent layout shift */}
         <OptimizedImage
           src={heroImage}
           alt="Austin skyline"
@@ -31,6 +33,7 @@ const Home: React.FC = () => {
           loading="eager"
           width={2560}
           height={1440}
+          style={{ aspectRatio: '16 / 9', width: '100%', height: '100%', objectFit: 'cover' }}
         />
         
         {/* Gradient box on left for text */}

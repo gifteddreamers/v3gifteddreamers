@@ -79,6 +79,19 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
   // If WebP is available and this is a priority image, use direct WebP for fastest LCP
   // For priority images, skip picture element to avoid any overhead
   if (shouldUseWebP && isPriority) {
+    // Calculate aspect ratio for absolute positioned images to prevent CLS
+    const aspectRatio = width && height ? height / width : undefined;
+    const imageStyle = {
+      ...style,
+      // For absolute positioned images, ensure dimensions prevent layout shift
+      ...(className?.includes('absolute') && width && height ? {
+        aspectRatio: `${width} / ${height}`,
+        width: '100%',
+        height: '100%',
+        objectFit: 'cover',
+      } : {}),
+    };
+    
     return (
       <img
         src={webpSrc}
@@ -89,7 +102,7 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
         loading={imageLoading}
         fetchPriority={fetchPriority}
         decoding="sync"
-        style={style}
+        style={imageStyle}
         onError={(e) => {
           // Fallback to JPG if WebP fails to load
           const target = e.target as HTMLImageElement;

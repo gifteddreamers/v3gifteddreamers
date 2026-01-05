@@ -48,6 +48,7 @@ body {
 footer.bg-slate-900 {
   min-height: 1067px !important;
   height: 1067px !important;
+  max-height: 1067px !important;
   contain: layout style paint !important;
   position: relative !important;
   z-index: 1 !important;
@@ -55,6 +56,8 @@ footer.bg-slate-900 {
   box-sizing: border-box !important;
   display: block !important;
   visibility: visible !important;
+  will-change: auto !important;
+  transform: translateZ(0) !important; /* Force GPU layer to prevent shifts */
 }
 
 /* Prevent root div from shifting - critical for CLS */
