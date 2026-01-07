@@ -12,6 +12,7 @@ interface OptimizedImageProps {
   style?: React.CSSProperties;
   srcSet?: string; // For responsive images
   srcSetWebP?: string; // WebP version of srcSet
+  disableWebP?: boolean; // Force disable WebP conversion (useful if WebP version doesn't exist)
 }
 
 /**
@@ -34,6 +35,7 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
   style,
   srcSet,
   srcSetWebP,
+  disableWebP = false,
 }) => {
   // Convert .jpg/.jpeg to .webp if available
   // Only convert if WebP file actually exists (check by avoiding 404s)
@@ -41,7 +43,7 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
   const fallbackSrc = src;
   const isWebP = src.match(/\.(jpg|jpeg)$/i);
   // Don't use WebP for images that don't have WebP versions (prevents 404s)
-  const shouldUseWebP = isWebP && !src.includes('kristine-socall'); // kristine-socall.jpg doesn't have WebP version
+  const shouldUseWebP = isWebP && !disableWebP;
 
   // For hero/LCP images, use eager loading with high priority
   const imageLoading = isPriority ? 'eager' : loading;
