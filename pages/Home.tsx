@@ -233,6 +233,7 @@ const Home: React.FC = () => {
                   height={599} 
                   className="w-full h-full object-cover"
                   loading="lazy"
+                  disableWebP={true}
                 />
               </div>
             </Reveal>

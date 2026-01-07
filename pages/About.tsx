@@ -43,6 +43,7 @@ const About: React.FC = () => {
             width={600}
             height={599}
             loading="lazy"
+            disableWebP={true}
           />
           <div>
             <h2 className="text-2xl font-bold text-slate-900 mb-2">Kristine Socall</h2>
