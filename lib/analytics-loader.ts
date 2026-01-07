@@ -106,7 +106,6 @@ export function loadAnalytics() {
   consentGiven = true;
 
   loadGoogleAnalytics();
-  // Clarity tracking removed - was causing third-party cookie issues
   // Givebutter and Double the Donation load immediately (not analytics - required for widgets)
 }
 

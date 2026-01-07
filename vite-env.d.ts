@@ -21,6 +21,5 @@ declare global {
       API_KEY: string;
     };
     doublethedonation?: any;
-    clarity?: (...args: any[]) => void;
   }
 }

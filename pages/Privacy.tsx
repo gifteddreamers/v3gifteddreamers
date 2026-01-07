@@ -96,9 +96,6 @@ const Privacy: React.FC = () => {
                     <strong>Google Analytics:</strong> Website analytics to improve user experience. We use IP anonymization.
                   </li>
                   <li>
-                    <strong>Microsoft Clarity:</strong> Website behavior analytics for improving user experience.
-                  </li>
-                  <li>
                     <strong>Double the Donation:</strong> Matching gift and volunteer grant lookup. See{' '}
                     <a href="https://doublethedonation.com/privacy" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">
                       Double the Donation's Privacy Policy
