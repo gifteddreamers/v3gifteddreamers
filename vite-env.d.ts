@@ -23,4 +23,12 @@ declare global {
     doublethedonation?: any;
     clarity?: (...args: any[]) => void;
   }
+
+  namespace JSX {
+    interface IntrinsicElements {
+      'givebutter-widget': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
+        id?: string;
+      };
+    }
+  }
 }
