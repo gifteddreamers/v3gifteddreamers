@@ -24,3 +24,12 @@ declare global {
     clarity?: (...args: any[]) => void;
   }
 }
+
+declare namespace JSX {
+  interface IntrinsicElements {
+    'givebutter-widget': {
+      id?: string;
+      [key: string]: any;
+    };
+  }
+}
