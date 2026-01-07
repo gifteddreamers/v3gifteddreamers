@@ -21,6 +21,30 @@ declare global {
       API_KEY: string;
     };
     doublethedonation?: any;
-    clarity?: (...args: any[]) => void;
+  }
+}
+
+declare namespace JSX {
+  interface IntrinsicElements {
+    'givebutter-widget': {
+      id?: string;
+      [key: string]: any;
+    };
+  }
+
+  namespace JSX {
+    interface IntrinsicElements {
+      'givebutter-widget': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
+        id?: string;
+      };
+    }
+  }
+}
+
+declare namespace JSX {
+  interface IntrinsicElements {
+    'givebutter-widget': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
+      id?: string;
+    };
   }
 }

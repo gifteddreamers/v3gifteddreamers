@@ -146,7 +146,6 @@ const Gruhp: React.FC = () => {
         <Reveal className="mt-8" delay={300}>
           <div className="max-w-3xl mx-auto">
             <div className="bg-slate-50 rounded-xl p-8 flex justify-center">
-              {/* @ts-ignore - Givebutter custom element */}
               <givebutter-widget id="pnqxbg"></givebutter-widget>
             </div>
             <div className="text-center mt-8 text-slate-500 text-sm">

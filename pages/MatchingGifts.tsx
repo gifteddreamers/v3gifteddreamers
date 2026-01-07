@@ -84,7 +84,6 @@ const MatchingGifts: React.FC = () => {
               Many employers match charitable donations made by their employees. This means your contribution to Gifted Dreamers could be doubled or even tripled at no extra cost to you.
             </p>
             <div className="flex justify-center">
-              {/* @ts-expect-error Givebutter custom element */}
               <givebutter-widget id="jNybPp"></givebutter-widget>
             </div>
           </Reveal>
@@ -234,7 +233,6 @@ const MatchingGifts: React.FC = () => {
         <Reveal delay={600} className="text-center">
            <h2 className="text-2xl font-bold text-slate-900 mb-6">Ready to Make a Difference?</h2>
            <div className="flex justify-center gap-4">
-             {/* @ts-expect-error Givebutter custom element */}
              <givebutter-widget id="jNybPp"></givebutter-widget>
            </div>
            <p className="mt-4 text-xs text-slate-500">Gifted Dreamers is a 501(c)(3) nonprofit. All donations are tax-deductible.</p>
