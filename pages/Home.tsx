@@ -222,10 +222,11 @@ const Home: React.FC = () => {
 
       {/* Credibility */}
       <section className="py-20 bg-white">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row items-center gap-10">
-            <Reveal className="w-full md:w-2/5">
-              <div className="aspect-square rounded-2xl overflow-hidden border-8 border-slate-50 shadow-2xl rotate-2">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            {/* Column 1: Profile Image */}
+            <Reveal className="flex justify-center md:justify-start">
+              <div className="aspect-square rounded-2xl overflow-hidden border-8 border-slate-50 shadow-2xl rotate-2 max-w-[280px] w-full">
                 <OptimizedImage 
                   src={profileImage} 
                   alt="Kristine Socall, Founder of Gifted Dreamers" 
@@ -237,24 +238,28 @@ const Home: React.FC = () => {
                 />
               </div>
             </Reveal>
-            <Reveal className="w-full md:w-3/5" delay={200}>
-              <div className="inline-block px-3 py-1 bg-primary/20 text-primary-dark text-xs font-bold rounded-full mb-4 uppercase tracking-widest" style={{ backgroundColor: 'rgba(13, 114, 156, 0.2)', color: '#0A5A7D' }}>About the Founder</div>
-              <h2 className="text-3xl font-bold text-slate-900 mb-6 leading-tight">25 Years as a Crisis Translator</h2>
-              <p className="text-slate-700 italic mb-6 text-xl border-l-4 border-accent pl-6 bg-slate-50 py-4 rounded-r-lg">
-                "I untangle complexity for a living. I fix what others broke."
-              </p>
-              <div className="space-y-4 text-slate-600">
-                <p>
-                  Futures clearing firms. SaaS startups. Nonprofits of every size. 350+ bank accounts. 15 currencies. $2.8B in client assets. Multi-year retroactive corrections when the previous accountant made a mess.
+            
+            {/* Column 2: About the Founder */}
+            <Reveal delay={200}>
+              <div className="space-y-6">
+                <div className="inline-block px-3 py-1 bg-primary/20 text-primary-dark text-xs font-bold rounded-full uppercase tracking-widest" style={{ backgroundColor: 'rgba(13, 114, 156, 0.2)', color: '#0A5A7D' }}>About the Founder</div>
+                <h2 className="text-3xl font-bold text-slate-900 leading-tight">25 Years as a Crisis Translator</h2>
+                <p className="text-slate-700 italic text-xl border-l-4 border-accent pl-6 bg-slate-50 py-4 rounded-r-lg">
+                  "I untangle complexity for a living. I fix what others broke."
                 </p>
-                <p>
-                  The tech is new. The skill is the same. 6 months ago I'd never used AI. Now I'm running a full-stack app and documenting what AI experts with paid Substacks haven't figured out yet.
-                </p>
-              </div>
-              <div className="mt-8 pt-8 border-t border-slate-100">
-                <div className="font-bold text-slate-900 text-lg">Kristine Socall, MBA</div>
-                <div className="text-primary font-bold">Founder & Executive Director</div>
-                <div className="text-slate-500 text-sm">QuickBooks Online ProAdvisor</div>
+                <div className="space-y-4 text-slate-600">
+                  <p>
+                    Futures clearing firms. SaaS startups. Nonprofits of every size. 350+ bank accounts. 15 currencies. $2.8B in client assets. Multi-year retroactive corrections when the previous accountant made a mess.
+                  </p>
+                  <p>
+                    The tech is new. The skill is the same. 6 months ago I'd never used AI. Now I'm running a full-stack app and documenting what AI experts with paid Substacks haven't figured out yet.
+                  </p>
+                </div>
+                <div className="pt-8 border-t border-slate-100">
+                  <div className="font-bold text-slate-900 text-lg">Kristine Socall, MBA</div>
+                  <div className="text-primary font-bold">Founder & Executive Director</div>
+                  <div className="text-slate-500 text-sm">QuickBooks Online ProAdvisor</div>
+                </div>
               </div>
             </Reveal>
           </div>
