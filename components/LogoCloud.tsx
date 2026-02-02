@@ -75,10 +75,11 @@ interface LogoCloudProps {
 const LogoCloud: React.FC<LogoCloudProps> = ({
   title = "Powered By Enterprise Tools",
   subtitle = "We leverage $380K+ in free & discounted nonprofit technology",
-  className = ""
+  className
 }) => {
+  const sectionClassName = className ?? 'py-16 bg-white';
   return (
-    <section className={`py-16 bg-white ${className}`}>
+    <section className={sectionClassName}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10">
           <h3 className="text-sm font-bold uppercase tracking-widest text-primary mb-2">{title}</h3>
