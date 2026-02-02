@@ -1,7 +1,10 @@
 import React, { useEffect } from 'react';
 import Reveal from '../components/Reveal';
 import OptimizedImage from '../components/OptimizedImage';
-// Note: Hero images use direct WebP (not srcSet) to avoid LCP delay
+import { getHeroImageProps } from '../lib/image-utils';
+import { loadGivebutter } from '../lib/analytics-loader';
+
+const heroImageProps = getHeroImageProps('/images/matching-gifts-hero.jpg');
 
 // Double the Donation API key
 const DTD_API_KEY = '6HMm5sEaYqgnLZmU';
@@ -46,20 +49,8 @@ const MatchingGifts: React.FC = () => {
       document.head.appendChild(dtdScript);
     }
 
-    // Check if Givebutter elements script already exists
-    if (!document.querySelector('script[src*="js.givebutter.com"]')) {
-      const gbElementsScript = document.createElement('script');
-      gbElementsScript.src = 'https://js.givebutter.com/elements/latest.js';
-      document.head.appendChild(gbElementsScript);
-    }
-
-    // Check if Givebutter widget script already exists
-    if (!document.querySelector('script[src*="widgets.givebutter.com"]')) {
-      const gbScript = document.createElement('script');
-      gbScript.src = 'https://widgets.givebutter.com/latest.umd.cjs?acct=PWF9tXFflbTG12rU&p=other';
-      gbScript.async = true;
-      document.head.appendChild(gbScript);
-    }
+    // Load Givebutter only on this page (improves homepage Lighthouse best-practices / third-party cookies)
+    loadGivebutter();
 
     // No cleanup - keep scripts loaded for faster subsequent visits
   }, []);
@@ -75,6 +66,7 @@ const MatchingGifts: React.FC = () => {
           height={1080}
           isPriority={true}
           loading="eager"
+          {...heroImageProps}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/75 to-slate-900/60"></div>
         <div className="relative z-10 w-full px-4 sm:px-6 lg:px-16 py-24">
@@ -100,7 +92,7 @@ const MatchingGifts: React.FC = () => {
                <a href="https://doublethedonation.com/matching-grant-resources/volunteer-grant-basics/">Volunteer Grant</a> information provided by
                <br />
                <a href="https://doublethedonation.com">
-                 <img alt="Powered by Double the Donation" src="https://doublethedonation.com/api/img/powered-by.png" />
+                 <img alt="Powered by Double the Donation" src="https://doublethedonation.com/api/img/powered-by.png" width={200} height={32} loading="lazy" decoding="async" />
                </a>
              </div>
              <p className="text-sm text-slate-500 mt-4">

@@ -1,13 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Button from '../components/Button';
 import Reveal from '../components/Reveal';
 import OptimizedImage from '../components/OptimizedImage';
 import { getHeroImageProps } from '../lib/image-utils';
+import { loadGivebutter } from '../lib/analytics-loader';
 import { ShoppingCart, Home, Zap, Stethoscope, PawPrint, DollarSign, Globe } from 'lucide-react';
 
 const heroImageProps = getHeroImageProps('/images/partners-hero.jpg');
 
 const Gruhp: React.FC = () => {
+  useEffect(() => {
+    loadGivebutter(); // Required for givebutter-widget on this page
+  }, []);
+
   return (
     <div className="pb-20">
       {/* Hero with community image */}
@@ -21,6 +26,7 @@ const Gruhp: React.FC = () => {
             height={1080}
             isPriority={true}
             loading="eager"
+            {...heroImageProps}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-white via-white/80 to-white/40"></div>
         </div>
@@ -42,7 +48,7 @@ const Gruhp: React.FC = () => {
       <Reveal className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 pb-2">
         <div className="flex justify-center">
           <div className="bg-primary/10 backdrop-blur p-5 rounded-full animate-pulse">
-            <img src="/images/gruhp.svg" alt="GRUHP" className="h-12 w-12" />
+            <img src="/images/gruhp.svg" alt="GRUHP" width={48} height={48} className="h-12 w-12" loading="lazy" decoding="async" />
           </div>
         </div>
       </Reveal>
@@ -95,7 +101,7 @@ const Gruhp: React.FC = () => {
             </p>
           </Reveal>
           <Reveal delay={200}>
-            <img src="/images/gruhp-hero.png" alt="Diverse community" className="w-full mb-6 rounded-lg -mt-8" />
+            <img src="/images/gruhp-hero.png" alt="Diverse community" width={800} height={450} className="w-full mb-6 rounded-lg -mt-8" loading="lazy" decoding="async" />
             <h2 className="text-3xl font-bold text-slate-900 mb-6">Transparency</h2>
             <p className="text-slate-600 mb-6">
               We're building a real-time transparency dashboard:
@@ -103,35 +109,35 @@ const Gruhp: React.FC = () => {
             <div className="flex items-center justify-center gap-4 bg-slate-100 p-6 rounded-md mb-6 overflow-x-auto">
               <div className="flex flex-col items-center gap-2">
                 <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center shadow-sm">
-                  <img src="/logos/payment.svg" alt="Donations" className="h-6 w-6" />
+                  <img src="/logos/payment.svg" alt="Donations" width={24} height={24} className="h-6 w-6" loading="lazy" decoding="async" />
                 </div>
                 <span className="text-xs font-semibold text-slate-700">Donations</span>
               </div>
               <span className="text-slate-400">→</span>
               <div className="flex flex-col items-center gap-2">
                 <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center shadow-sm p-2">
-                  <img src="/logos/givebutter.svg" alt="Givebutter" className="w-full h-full object-contain" />
+                  <img src="/logos/givebutter.svg" alt="Givebutter" width={48} height={48} className="w-full h-full object-contain" loading="lazy" decoding="async" />
                 </div>
                 <span className="text-xs font-semibold text-slate-700">Givebutter</span>
               </div>
               <span className="text-slate-400">→</span>
               <div className="flex flex-col items-center gap-2">
                 <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center shadow-sm p-2">
-                  <img src="/logos/quickbooks.svg" alt="QuickBooks" className="w-full h-full object-contain" />
+                  <img src="/logos/quickbooks.svg" alt="QuickBooks" width={48} height={48} className="w-full h-full object-contain" loading="lazy" decoding="async" />
                 </div>
                 <span className="text-xs font-semibold text-slate-700">QuickBooks</span>
               </div>
               <span className="text-slate-400">→</span>
               <div className="flex flex-col items-center gap-2">
                 <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center shadow-sm p-2">
-                  <img src="/logos/airtable.svg" alt="Airtable" className="w-full h-full object-contain" />
+                  <img src="/logos/airtable.svg" alt="Airtable" width={48} height={48} className="w-full h-full object-contain" loading="lazy" decoding="async" />
                 </div>
                 <span className="text-xs font-semibold text-slate-700">Airtable</span>
               </div>
               <span className="text-slate-400">→</span>
               <div className="flex flex-col items-center gap-2">
                 <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center shadow-sm p-2">
-                  <img src="/images/logo.png" alt="Our Website" className="w-full h-full object-contain" />
+                  <img src="/images/logo.png" alt="Our Website" width={48} height={48} className="w-full h-full object-contain" loading="lazy" decoding="async" />
                 </div>
                 <span className="text-xs font-semibold text-slate-700">Our Website</span>
               </div>

@@ -145,6 +145,7 @@ const Volunteer: React.FC = () => {
           height={1080}
           isPriority={true}
           loading="eager"
+          {...heroImageProps}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900/70 via-slate-900/80 to-slate-900/70"></div>
         <Reveal className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

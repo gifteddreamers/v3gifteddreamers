@@ -4,7 +4,7 @@ import { createRoot } from 'react-dom/client';
 // Import here so Vite processes it, but it won't block JS execution
 import './src/index.css';
 import App from './App';
-import { loadAnalytics, loadGivebutter, loadDoubleDonation } from './lib/analytics-loader';
+import { loadAnalytics } from './lib/analytics-loader';
 
 const rootElement = document.getElementById('root');
 if (!rootElement) {
@@ -18,9 +18,8 @@ root.render(
   </React.StrictMode>
 );
 
-// Load functional widgets immediately - required for site functionality (not analytics)
-loadGivebutter(); // Required for donation widgets
-loadDoubleDonation(); // Required for matching gifts plugin
+// Givebutter and Double the Donation load only on pages that need them (MatchingGifts, Gruhp, Volunteer)
+// This avoids third-party cookies on homepage and improves Lighthouse best-practices score
 
 // DO NOT load analytics automatically - wait for explicit user consent
 // Analytics will only load when user clicks "Accept" in cookie banner

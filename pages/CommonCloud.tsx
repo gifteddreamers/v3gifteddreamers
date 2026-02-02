@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Button from '../components/Button';
 import Reveal from '../components/Reveal';
 import OptimizedImage from '../components/OptimizedImage';
-import { getHeroImageProps } from '../lib/image-utils';
+import { getHeroImageProps, getResponsiveImageProps } from '../lib/image-utils';
 import { Video, MessageCircle, FileText, Calendar } from 'lucide-react';
 
 const heroImageProps = getHeroImageProps('/images/common-cloud-hero-bg.jpg');
@@ -21,6 +21,7 @@ const CommonCloud: React.FC = () => {
           height={1080}
           isPriority={true}
           loading="eager"
+          {...heroImageProps}
         />
         <OptimizedImage 
           src="/images/network-mesh.jpg" 
@@ -30,6 +31,7 @@ const CommonCloud: React.FC = () => {
           height={1080}
           isPriority={false}
           loading="lazy"
+          {...getResponsiveImageProps('/images/network-mesh.jpg')}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900/60 via-transparent to-slate-900/80"></div>
         <div className="relative z-10 w-full px-4 sm:px-6 lg:px-16 py-24">
@@ -116,7 +118,7 @@ const CommonCloud: React.FC = () => {
              <div className="flex flex-row items-center justify-center gap-4 sm:gap-6 md:gap-8 mb-6 flex-wrap">
                {/* Learn It */}
                <div className="flex flex-col items-center">
-                 <img src="/images/learnit.svg" alt="Learn" className="w-20 h-20 mb-3" />
+                 <img src="/images/learnit.svg" alt="Learn" width={80} height={80} className="w-20 h-20 mb-3" loading="lazy" decoding="async" />
                  <p className="font-bold text-primary text-lg">LEARN IT</p>
                </div>
                
@@ -124,7 +126,7 @@ const CommonCloud: React.FC = () => {
                
                {/* Document It */}
                <div className="flex flex-col items-center">
-                 <img src="/images/documentit.svg" alt="Document" className="w-20 h-20 mb-3" />
+                 <img src="/images/documentit.svg" alt="Document" width={80} height={80} className="w-20 h-20 mb-3" loading="lazy" decoding="async" />
                  <p className="font-bold text-accent text-lg">DOCUMENT IT</p>
                </div>
                
@@ -132,7 +134,7 @@ const CommonCloud: React.FC = () => {
                
                {/* Teach It */}
                <div className="flex flex-col items-center">
-                 <img src="/images/teachit.svg" alt="Teach" className="w-20 h-20 mb-3" />
+                 <img src="/images/teachit.svg" alt="Teach" width={80} height={80} className="w-20 h-20 mb-3" loading="lazy" decoding="async" />
                  <p className="font-bold text-primary text-lg">TEACH IT</p>
                </div>
                
@@ -141,7 +143,7 @@ const CommonCloud: React.FC = () => {
                {/* Get Paid */}
                <div className="flex flex-col items-center">
                  <div className="w-20 h-20 mb-3 flex items-center justify-center">
-                   <img src="/images/payus.svg" alt="Get Paid" className="w-full h-full object-contain" />
+                   <img src="/images/payus.svg" alt="Get Paid" width={80} height={80} className="w-full h-full object-contain" loading="lazy" decoding="async" />
                  </div>
                  <p className="font-bold text-accent text-lg">PAY US*</p>
                </div>
@@ -151,7 +153,7 @@ const CommonCloud: React.FC = () => {
                {/* Fund GRUHP */}
                <div className="flex flex-col items-center">
                  <Link to="/gruhp" className="hover:opacity-80 transition-opacity">
-                   <img src="/images/gruhp.svg" alt="GRUHP" className="w-20 h-20 mb-3" />
+                   <img src="/images/gruhp.svg" alt="GRUHP" width={80} height={80} className="w-20 h-20 mb-3" loading="lazy" decoding="async" />
                  </Link>
                  <p className="font-bold text-primary text-lg">FUND GRUHP</p>
                </div>

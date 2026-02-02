@@ -7,13 +7,9 @@ import LogoCloud from '../components/LogoCloud';
 import OptimizedImage from '../components/OptimizedImage';
 import { getHeroImageProps } from '../lib/image-utils';
 
-// Images from public folder - hardcoded paths for reliability
-// Using WebP directly for best performance
-const heroImage = '/images/austin-skyline.webp';
+// Images from public folder - responsive srcSet so mobile gets 640w/1024w, desktop gets 1920w/2560w
+const heroImageProps = getHeroImageProps('/images/austin-skyline.jpg');
 const profileImage = '/kristine-socall.jpg';
-
-// Note: For hero/LCP images, we use direct WebP instead of srcSet to avoid delay
-// Responsive images add overhead for LCP elements - browser has to evaluate which size to load
 
 const Home: React.FC = () => {
   return (
@@ -22,11 +18,9 @@ const Home: React.FC = () => {
       {/* Hero Section */}
       {/* Reserve space for hero image to prevent CLS - aspect ratio 2560:1440 = 16:9 */}
       <section className="relative text-white overflow-hidden min-h-[85vh] flex items-center bg-slate-900" style={{ aspectRatio: '16 / 9', minHeight: '85vh' }}>
-        {/* Optimized hero background image - LCP element with high priority */}
-        {/* Using direct WebP (not srcSet) to avoid browser evaluation delay for LCP */}
-        {/* Explicit dimensions and aspect ratio prevent layout shift */}
+        {/* Optimized hero - responsive srcSet (640w/1024w/1920w/2560w) so mobile loads smaller image; preload 640w in index.html */}
         <OptimizedImage
-          src={heroImage}
+          src="/images/austin-skyline.jpg"
           alt="Austin skyline"
           className="absolute inset-0 w-full h-full object-cover"
           isPriority={true}
@@ -34,6 +28,7 @@ const Home: React.FC = () => {
           width={2560}
           height={1440}
           style={{ aspectRatio: '16 / 9', width: '100%', height: '100%', objectFit: 'cover' }}
+          {...heroImageProps}
         />
         
         {/* Gradient box on left for text */}

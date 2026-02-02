@@ -65,7 +65,7 @@ const App: React.FC = () => {
   }, []);
 
   return (
-    <Router>
+    <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
       <ScrollToTop />
       <div className="flex flex-col min-h-screen bg-white font-sans text-slate-900">
         {/* Skip link for accessibility - hidden until focused */}

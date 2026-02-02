@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom';
 import Button from '../components/Button';
 import Reveal from '../components/Reveal';
 import OptimizedImage from '../components/OptimizedImage';
-// Note: Hero images use direct WebP (not srcSet) to avoid LCP delay
+import { getHeroImageProps } from '../lib/image-utils';
+
+const heroImageProps = getHeroImageProps('/images/about-hero.jpg');
 
 const About: React.FC = () => {
   return (
@@ -18,6 +20,7 @@ const About: React.FC = () => {
           height={1080}
           isPriority={true}
           loading="eager"
+          {...heroImageProps}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/70 to-slate-900/50"></div>
         <div className="relative z-10 w-full px-4 sm:px-6 lg:px-16 py-24">

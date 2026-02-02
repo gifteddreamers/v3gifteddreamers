@@ -4,7 +4,9 @@ import { CheckCircle, Zap, Shield } from 'lucide-react';
 import Button from '../components/Button';
 import Reveal from '../components/Reveal';
 import OptimizedImage from '../components/OptimizedImage';
-// Note: Hero images use direct WebP (not srcSet) to avoid LCP delay
+import { getHeroImageProps } from '../lib/image-utils';
+
+const heroImageProps = getHeroImageProps('/images/services-hero.jpg');
 
 // Brandfetch Logo API - compliant hotlinking (no attribution required)
 // Client ID from 1Password: Engineering/BrandFetch - Brand and Transaction API
@@ -85,6 +87,7 @@ const Services: React.FC = () => {
             height={1080}
             isPriority={true}
             loading="eager"
+            {...heroImageProps}
           />
           <div className="absolute inset-0 bg-gradient-to-r from-slate-900/80 via-slate-900/60 to-transparent"></div>
         </div>
@@ -114,8 +117,12 @@ const Services: React.FC = () => {
                 key={logo.name}
                 src={logo.url}
                 alt={logo.name}
+                width={32}
+                height={32}
                 className="h-6 md:h-8 object-contain hover:opacity-80 transition-all w-auto"
                 title={logo.name}
+                loading="lazy"
+                decoding="async"
               />
             ))}
           </div>
@@ -128,7 +135,7 @@ const Services: React.FC = () => {
           {/* Tech Perks Card */}
           <Reveal className="bg-white rounded-xl shadow-lg border border-slate-200 overflow-hidden flex flex-col h-full">
             <div className="h-48 bg-slate-100 relative">
-               <img src="/images/faq-hero.jpg" alt="Tech Perks dashboard interface" width="800" height="533" className="w-full h-full object-cover" />
+               <img src="/images/faq-hero.jpg" alt="Tech Perks dashboard interface" width={800} height={533} className="w-full h-full object-cover" loading="lazy" decoding="async" />
                <div className="absolute inset-0 bg-primary/10"></div>
             </div>
             <div className="p-8 flex-grow">
@@ -178,7 +185,7 @@ const Services: React.FC = () => {
           {/* Accounting Card */}
           <Reveal className="bg-white rounded-xl shadow-lg border border-slate-200 overflow-hidden flex flex-col h-full" delay={150}>
             <div className="h-48 bg-slate-100 relative">
-               <img src="/images/accounting-cleanup.jpg" alt="Accounting and bookkeeping" width="800" height="459" className="w-full h-full object-cover" />
+               <img src="/images/accounting-cleanup.jpg" alt="Accounting and bookkeeping" width={800} height={459} className="w-full h-full object-cover" loading="lazy" decoding="async" />
                <div className="absolute inset-0 bg-primary/10"></div>
             </div>
             <div className="p-8 flex-grow">

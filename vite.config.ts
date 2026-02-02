@@ -21,8 +21,8 @@ function cssPreloadPlugin(): Plugin {
       }
     },
     transformIndexHtml: {
-      enforce: 'post',
-      transform(html) {
+      order: 'post',
+      handler(html) {
         // Add preload link for CSS BEFORE the stylesheet link
         // Must match exact path format that Vite uses (absolute path with /)
         // Include crossorigin to match Vite's stylesheet link
