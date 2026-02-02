@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Button from '../components/Button';
 import Reveal from '../components/Reveal';
 import OptimizedImage from '../components/OptimizedImage';
+import LogoCloud from '../components/LogoCloud';
 import { getHeroImageProps, getResponsiveImageProps } from '../lib/image-utils';
 import { Video, MessageCircle, FileText, Calendar } from 'lucide-react';
 
@@ -164,6 +165,8 @@ const CommonCloud: React.FC = () => {
              </p>
            </div>
         </Reveal>
+
+        <LogoCloud />
       </div>
     </div>
   );

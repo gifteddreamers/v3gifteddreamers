@@ -17,6 +17,7 @@ const logos: Logo[] = [
   { name: 'Google', domain: 'google.com', url: getBrandLogo('google.com') },
   { name: 'Microsoft', domain: 'microsoft.com', url: getBrandLogo('microsoft.com') },
   { name: 'AWS', domain: 'aws.amazon.com', url: getBrandLogo('aws.amazon.com') },
+  { name: 'Cloudflare', domain: 'cloudflare.com', url: getBrandLogo('cloudflare.com') },
   { name: 'Salesforce', domain: 'salesforce.com', url: getBrandLogo('salesforce.com') },
   { name: 'Adobe', domain: 'adobe.com', url: getBrandLogo('adobe.com') },
   // Collaboration
