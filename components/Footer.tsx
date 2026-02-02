@@ -8,15 +8,17 @@ const Footer: React.FC = () => {
       className="bg-slate-900 text-slate-300" 
       style={{ 
         minHeight: '1100px',
+        height: '1100px',
         contain: 'layout style paint', 
         position: 'relative', 
         zIndex: 1, 
         boxSizing: 'border-box',
         display: 'block',
         visibility: 'visible',
-        // Prevent any layout shift
+        overflow: 'hidden',
+        // Fixed height prevents reflow when content/images load (CLS)
         willChange: 'auto',
-        transform: 'translateZ(0)', // Force GPU layer
+        transform: 'translateZ(0)',
       }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
