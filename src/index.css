@@ -15,6 +15,12 @@
   --color-brand-light: #00B4D8;
 }
 
+/* Mobile-first: prevent horizontal overflow and improve resize behavior */
+html {
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
   font-family: var(--font-family-sans);
   scroll-behavior: smooth;
@@ -71,12 +77,14 @@ footer.bg-slate-900 {
   contain: layout style paint !important;
 }
 
-/* Prevent root div from shifting - critical for CLS */
+/* Prevent root div from shifting - critical for CLS; contain width on mobile */
 #root {
   min-height: 100vh !important;
   contain: layout style !important;
   display: flex !important;
   flex-direction: column !important;
+  overflow-x: hidden !important;
+  max-width: 100vw !important;
 }
 
 /* Reserve space in flex container for footer BEFORE React renders */
@@ -87,9 +95,17 @@ body > #root > div.flex {
   flex-direction: column !important;
 }
 
-/* Ensure body has proper layout containment */
+/* Ensure body has proper layout containment and mobile-friendly width */
 body {
   contain: layout style !important;
   margin: 0 !important;
   padding: 0 !important;
+  overflow-x: hidden !important;
+  max-width: 100vw !important;
+}
+
+/* Responsive: keep content within viewport on small screens */
+img, video, iframe {
+  max-width: 100%;
+  height: auto;
 }

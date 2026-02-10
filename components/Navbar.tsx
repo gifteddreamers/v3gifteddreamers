@@ -6,7 +6,7 @@ import Button from './Button';
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
-  const menuRef = useRef<HTMLDivElement>(null);
+  const navRef = useRef<HTMLElement>(null);
 
   const navLinks = [
     { label: 'Services', path: '/services' },
@@ -19,10 +19,10 @@ const Navbar: React.FC = () => {
 
   const isActive = (path: string) => location.pathname === path;
 
-  // Close menu when clicking outside
+  // Close menu when clicking outside the entire nav (so mobile menu links receive the click and navigate)
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+      if (navRef.current && !navRef.current.contains(event.target as Node)) {
         setIsOpen(false);
       }
     };
@@ -42,11 +42,11 @@ const Navbar: React.FC = () => {
   }, [location.pathname]);
 
   return (
-    <nav className="sticky top-0 z-[100] bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
+    <nav ref={navRef} className="sticky top-0 z-[100] bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-20">
-          <div className="flex items-center">
-            <Link to="/" className="flex-shrink-0 flex items-center gap-3 group">
+          <div className="flex items-center min-w-0">
+            <Link to="/" className="flex-shrink-0 flex items-center gap-2 sm:gap-3 group">
               <img
                 src={`${import.meta.env.BASE_URL}images/logo.png`}
                 alt="Gifted Dreamers Logo"
@@ -80,13 +80,15 @@ const Navbar: React.FC = () => {
             </Link>
           </div>
 
-          {/* Hamburger Menu Button - Visible on all screens, functional on both mobile and desktop */}
-          <div className="flex items-center relative" ref={menuRef}>
+          {/* Hamburger Menu Button - Visible on md and below; on lg+ shows dropdown when desktop nav is hidden */}
+          <div className="flex items-center relative md:flex-none">
             <button
+              type="button"
               onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-slate-500 hover:text-primary hover:bg-slate-100 focus:outline-none transition-colors"
+              className="inline-flex items-center justify-center min-h-[44px] min-w-[44px] p-2 rounded-md text-slate-500 hover:text-primary hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition-colors touch-manipulation"
               aria-label="Toggle menu"
               aria-expanded={isOpen}
+              aria-controls="mobile-nav-menu"
             >
               {isOpen ? <X className="block h-6 w-6" /> : <Menu className="block h-6 w-6" />}
             </button>
@@ -123,30 +125,30 @@ const Navbar: React.FC = () => {
         </div>
       </div>
 
-      {/* Mobile Full-Screen Menu */}
+      {/* Mobile Full-Screen Menu - min touch target 44px, inside nav so click-outside doesn't steal link clicks */}
       {isOpen && (
-        <div className="md:hidden bg-white border-t border-slate-100 animate-in slide-in-from-top-4 duration-200">
+        <div id="mobile-nav-menu" className="md:hidden bg-white border-t border-slate-100 animate-in slide-in-from-top-4 duration-200" role="menu" aria-label="Mobile navigation">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
                 onClick={() => setIsOpen(false)}
-                className={`block px-3 py-4 rounded-md text-base font-bold transition-colors ${
+                className={`block px-3 py-4 min-h-[44px] rounded-md text-base font-bold transition-colors touch-manipulation ${
                   isActive(link.path)
                     ? 'text-primary bg-primary/5'
-                    : 'text-slate-600 hover:text-primary hover:bg-slate-50'
+                    : 'text-slate-600 hover:text-primary hover:bg-slate-50 active:bg-slate-100'
                 }`}
               >
                 {link.label}
               </Link>
             ))}
             <div className="pt-4 pb-2 px-3">
-               <Link to="/contact" onClick={() => setIsOpen(false)}>
-                 <Button fullWidth onClick={() => setIsOpen(false)} className="font-bold">
-                   Contact Us <ArrowRight className="ml-2 h-4 w-4" />
-                 </Button>
-               </Link>
+              <Link to="/contact" onClick={() => setIsOpen(false)} className="block">
+                <Button fullWidth className="font-bold min-h-[44px] touch-manipulation">
+                  Contact Us <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
