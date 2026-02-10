@@ -144,7 +144,7 @@ const Services: React.FC = () => {
           <h2 className="text-2xl font-bold text-slate-900 mb-6 text-center">How Is This So Affordable?</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
-              <h3 className="font-bold text-slate-900 mb-2">We use free and discounted tools</h3>
+              <h3 className="font-bold text-slate-900 mb-2">1. We use free and discounted tools</h3>
               <p className="text-sm text-slate-600">We're a nonprofit. We get the same perks we help you activate. Google Workspace, Microsoft 365, Canva Pro, Slack—all free or discounted.</p>
             </div>
             <div>
