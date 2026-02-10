@@ -77,27 +77,27 @@ const LogoCloud: React.FC<LogoCloudProps> = ({
   subtitle = "We leverage $380K+ in free & discounted nonprofit technology",
   className
 }) => {
-  const sectionClassName = className ?? 'py-16 bg-white';
+  const sectionClassName = className ?? 'py-10 sm:py-12 md:py-14 bg-white';
   return (
     <section className={sectionClassName}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-10">
-          <h3 className="text-sm font-bold uppercase tracking-widest text-primary mb-2">{title}</h3>
-          <p className="text-slate-600">{subtitle}</p>
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-6 md:mb-8">
+          <h3 className="text-xs sm:text-sm font-bold uppercase tracking-widest text-primary mb-1.5 md:mb-2">{title}</h3>
+          <p className="text-sm sm:text-base text-slate-600 max-w-2xl mx-auto">{subtitle}</p>
         </div>
-        <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+        <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-5 md:gap-6 lg:gap-7">
           {logos.map((logo) => (
             <div
               key={logo.name}
-              className="hover:grayscale hover:opacity-60 transition-all duration-300"
+              className="flex items-center justify-center hover:grayscale hover:opacity-60 transition-all duration-300 flex-shrink-0"
               title={logo.name}
             >
               <img
                 src={logo.url}
                 alt={logo.name}
-                width="32"
-                height="32"
-                className="h-8 md:h-10 object-contain w-auto"
+                width="28"
+                height="28"
+                className="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8 object-contain"
                 loading="lazy"
                 decoding="async"
                 fetchpriority="low"
